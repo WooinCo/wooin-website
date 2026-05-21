@@ -10,9 +10,14 @@ export const metadata: Metadata = {
 export default function Portfolio() {
   return (
     <div>
-      <PageBanner title="포트폴리오" subtitle="우인산업의 시공 사례를 확인하세요" />
+      <PageBanner
+        eyebrow="Portfolio"
+        title="포트폴리오"
+        subtitle="우인산업이 직접 시공한 다양한 현장의 사례를 확인하세요."
+        current="포트폴리오"
+      />
 
-      <section className="py-20">
+      <section className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <PortfolioGrid />
         </div>

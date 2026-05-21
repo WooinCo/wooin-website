@@ -1,14 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css');
 @import "tailwindcss";
+
+@theme {
+  --color-navy: #1c3177;
+  --color-navy-dark: #0f1f4d;
+  --color-navy-light: #2f4ba0;
+  --color-sky: #eef3fb;
+  --color-mist: #f6f8fc;
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+}
 
 :root {
   --background: #ffffff;
-  --foreground: #1a1a1a;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --foreground: #1a2236;
 }
 
 * {
@@ -22,6 +27,70 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+}
+
+/* ── 스크롤 리빌 애니메이션 ── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes heroZoom {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal.in-view {
+  animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-bg {
+  animation: heroZoom 8s ease-out forwards;
+}
+
+.hero-fade {
+  opacity: 0;
+  animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 스크롤바 */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f0f2f6;
+}
+::-webkit-scrollbar-thumb {
+  background: #c2cbdd;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1c3177;
 }
