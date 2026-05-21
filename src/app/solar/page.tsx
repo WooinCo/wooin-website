@@ -71,10 +71,10 @@ export default function Solar() {
       {/* ── 히어로 ── */}
       <section className="relative min-h-[100vh] flex items-center overflow-hidden">
         <Image
-          src="/images/solar/page-1.png"
+          src="/images/solar/hero.jpg"
           alt="우인솔라루프 WP-sr330"
           fill
-          className="object-cover object-top"
+          className="object-cover object-center"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/90 via-navy-dark/70 to-transparent" />
@@ -168,12 +168,13 @@ export default function Solar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
             <Reveal>
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+              <div className="rounded-3xl overflow-hidden shadow-2xl bg-white">
                 <Image
                   src="/images/solar/page-2.png"
                   alt="우인솔라루프 구조 상세"
-                  fill
-                  className="object-cover object-top"
+                  width={595}
+                  height={842}
+                  className="w-full h-auto"
                 />
               </div>
             </Reveal>
@@ -302,12 +303,13 @@ export default function Solar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
             <Reveal delay={0.15} className="lg:order-2">
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+              <div className="rounded-3xl overflow-hidden shadow-2xl bg-white">
                 <Image
                   src="/images/solar/page-4.png"
                   alt="우인산업 시공 방식"
-                  fill
-                  className="object-cover object-top"
+                  width={595}
+                  height={842}
+                  className="w-full h-auto"
                 />
               </div>
             </Reveal>
@@ -426,12 +428,13 @@ export default function Solar() {
           </Reveal>
 
           <Reveal>
-            <div className="relative aspect-[4/5] sm:aspect-[3/4] md:aspect-[16/10] max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl">
+            <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl bg-white">
               <Image
                 src="/images/solar/page-5.png"
                 alt="우인솔라루프 Before & After"
-                fill
-                className="object-cover object-bottom"
+                width={595}
+                height={842}
+                className="w-full h-auto"
               />
             </div>
           </Reveal>
@@ -442,12 +445,13 @@ export default function Solar() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <div className="relative aspect-[4/5] sm:aspect-[3/4] md:aspect-[16/10] max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-xl">
+            <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-white">
               <Image
                 src="/images/solar/page-3.png"
                 alt="우인산업 인증 현황"
-                fill
-                className="object-cover object-bottom"
+                width={595}
+                height={842}
+                className="w-full h-auto"
               />
             </div>
           </Reveal>
@@ -459,7 +463,7 @@ export default function Solar() {
         <div className="absolute inset-0 bg-navy-dark" />
         <div className="absolute inset-0 opacity-10">
           <Image
-            src="/images/solar/page-1.png"
+            src="/images/solar/hero.jpg"
             alt=""
             fill
             className="object-cover"

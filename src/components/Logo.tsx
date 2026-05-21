@@ -37,49 +37,51 @@ export default function Logo({
 function LogoMark({ color }: { color: string }) {
   return (
     <svg
-      viewBox="0 0 72 96"
+      viewBox="0 0 100 116"
       className="h-10 w-auto shrink-0"
       role="img"
       aria-label="우인산업 로고"
     >
-      {/* 궤도 링 — 뒤쪽 (건물 뒤) */}
-      <path
-        d="M 2 76 A 33 12 -18 0 1 64 56"
-        fill="none"
-        stroke={color}
-        strokeWidth="3.5"
-        strokeLinecap="round"
-      />
-
-      {/* 건물 — 솔리드 채움 */}
-      <g fill={color}>
-        <polygon points="15,88 15,52 21,42 21,88" />
-        <polygon points="23,88 23,40 29,28 29,88" />
-        <polygon points="31,88 31,26 39,12 39,88" />
-        <polygon points="41,88 41,44 47,34 47,88" />
+      {/* 궤도 링 — 뒤쪽 호 (건물 뒤) */}
+      <g transform="rotate(-15 52 80)">
+        <path
+          d="M 8 80 A 44 14 0 0 1 96 80"
+          fill="none"
+          stroke={color}
+          strokeWidth="3.5"
+          strokeLinecap="round"
+        />
       </g>
 
-      {/* 건물 내부 디테일 라인 */}
-      <g
-        fill="none"
-        stroke={color === "#ffffff" ? "#1c3177" : "#ffffff"}
-        strokeWidth="0.7"
-        opacity="0.2"
-      >
-        <line x1="18" y1="48" x2="18" y2="88" />
-        <line x1="26" y1="34" x2="26" y2="88" />
-        <line x1="34.5" y1="20" x2="34.5" y2="88" />
-        <line x1="44" y1="40" x2="44" y2="88" />
+      {/* 건물 4동 — 외곽선 + 중심선 */}
+      <g fill="none" stroke={color} strokeWidth="3.5" strokeLinejoin="round">
+        {/* 1동: 앞쪽 (가장 짧음) */}
+        <path d="M 18 104 L 18 66 L 28 58 L 28 104" />
+        <line x1="23" y1="62" x2="23" y2="104" strokeWidth="2" />
+
+        {/* 2동: 왼쪽 (중간 높이) */}
+        <path d="M 30 104 L 30 50 L 42 40 L 42 104" />
+        <line x1="36" y1="46" x2="36" y2="104" strokeWidth="2" />
+
+        {/* 3동: 가운데 (가장 높음) */}
+        <path d="M 44 104 L 44 28 L 58 14 L 58 104" />
+        <line x1="51" y1="22" x2="51" y2="104" strokeWidth="2" />
+
+        {/* 4동: 오른쪽 (반대 각도) */}
+        <path d="M 60 104 L 60 44 L 72 56 L 72 104" />
+        <line x1="66" y1="50" x2="66" y2="104" strokeWidth="2" />
       </g>
 
-      {/* 궤도 링 — 앞쪽 (건물 앞) */}
-      <path
-        d="M 2 76 A 33 12 -18 0 0 64 56"
-        fill="none"
-        stroke={color}
-        strokeWidth="3.5"
-        strokeLinecap="round"
-      />
+      {/* 궤도 링 — 앞쪽 호 (건물 앞) */}
+      <g transform="rotate(-15 52 80)">
+        <path
+          d="M 8 80 A 44 14 0 0 0 96 80"
+          fill="none"
+          stroke={color}
+          strokeWidth="3.5"
+          strokeLinecap="round"
+        />
+      </g>
     </svg>
   );
 }
