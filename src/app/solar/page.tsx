@@ -33,6 +33,21 @@ const features = [
 ];
 
 
+const processSteps = [
+  {
+    title: "우인산업",
+    steps: ["성형기 보유", "즉시 시공"],
+    highlight: true,
+    desc: "자체 장비로 현장에서 바로 생산 & 시공",
+  },
+  {
+    title: "타 업체",
+    steps: ["외주 제작", "도면 및 길이 확인", "운송", "시공"],
+    highlight: false,
+    desc: "외부 의뢰 후 대기 → 운송 → 시공",
+  },
+];
+
 const testResults = [
   {
     label: "풍동",
@@ -198,6 +213,84 @@ export default function Solar() {
                 ))}
               </div>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 빠른 시공 ── */}
+      <section className="py-24 md:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="text-center mb-14">
+            <p className="text-navy font-bold text-sm tracking-[0.18em] uppercase mb-3">
+              Fast Construction
+            </p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
+              다 똑같은 지붕 보수?
+            </h2>
+            <p className="text-gray-500 mt-4 text-lg">
+              <strong className="text-navy">빠른 시공</strong>의 차이는{" "}
+              <strong className="text-navy">장비보유</strong>에서 시작됩니다.
+            </p>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {processSteps.map((proc, i) => (
+              <Reveal key={proc.title} delay={i * 0.15}>
+                <div
+                  className={`rounded-3xl p-8 h-full ${
+                    proc.highlight
+                      ? "bg-navy text-white shadow-2xl"
+                      : "bg-mist border border-gray-100"
+                  }`}
+                >
+                  <div
+                    className={`text-xs font-bold tracking-widest mb-2 ${
+                      proc.highlight ? "text-blue-300" : "text-gray-400"
+                    }`}
+                  >
+                    {proc.highlight ? "OUR WAY" : "OTHERS"}
+                  </div>
+                  <h3
+                    className={`text-2xl font-extrabold mb-6 ${
+                      proc.highlight ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    {proc.title}
+                  </h3>
+                  <div className="flex items-center gap-2 flex-wrap mb-6">
+                    {proc.steps.map((step, si) => (
+                      <div key={step} className="flex items-center gap-2">
+                        <span
+                          className={`px-4 py-2 rounded-full text-sm font-bold ${
+                            proc.highlight
+                              ? "bg-white/15"
+                              : "bg-white border border-gray-200"
+                          }`}
+                        >
+                          {step}
+                        </span>
+                        {si < proc.steps.length - 1 && (
+                          <span
+                            className={
+                              proc.highlight ? "text-blue-300" : "text-gray-300"
+                            }
+                          >
+                            →
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  <p
+                    className={`text-sm leading-relaxed ${
+                      proc.highlight ? "text-blue-100/70" : "text-gray-500"
+                    }`}
+                  >
+                    {proc.desc}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
