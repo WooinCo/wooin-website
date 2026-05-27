@@ -345,23 +345,6 @@ export default function Solar() {
         </div>
       </section>
 
-      {/* ── 인증 현황 ── */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal>
-            <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-white">
-              <Image
-                src="/images/solar/page-3.png"
-                alt="우인산업 인증 현황"
-                width={595}
-                height={842}
-                className="w-full h-auto"
-              />
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* ── CTA ── */}
       <section className="relative py-28 overflow-hidden">
         <div className="absolute inset-0 bg-navy-dark" />
