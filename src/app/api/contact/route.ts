@@ -1,9 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { name, phone, email, serviceType, location, message } = body;
+    const formData = await request.formData();
+
+    const name = formData.get("name") as string;
+    const phone = formData.get("phone") as string;
+    const email = formData.get("email") as string;
+    const serviceType = formData.get("serviceType") as string;
+    const location = formData.get("location") as string;
+    const message = formData.get("message") as string;
+    const files = formData.getAll("files") as File[];
 
     if (!name || !phone || !serviceType || !message) {
       return NextResponse.json(
@@ -12,45 +20,73 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // ─────────────────────────────────────────────────────────
-    // TODO: 이메일 발송 설정
-    //
-    // 아래 주석을 해제하고 Nodemailer로 이메일을 발송할 수 있습니다.
-    // 먼저 npm install nodemailer @types/nodemailer 를 실행하세요.
-    //
-    // import nodemailer from "nodemailer";
-    //
-    // const transporter = nodemailer.createTransport({
-    //   service: "gmail",  // 또는 다른 SMTP 서비스
-    //   auth: {
-    //     user: process.env.EMAIL_USER,
-    //     pass: process.env.EMAIL_PASS,
-    //   },
-    // });
-    //
-    // await transporter.sendMail({
-    //   from: process.env.EMAIL_USER,
-    //   to: "수신할이메일@example.com",
-    //   subject: `[우인산업] ${name}님의 ${serviceType} 견적 문의`,
-    //   text: [
-    //     `이름: ${name}`,
-    //     `연락처: ${phone}`,
-    //     `이메일: ${email || "-"}`,
-    //     `공사종류: ${serviceType}`,
-    //     `공사위치: ${location || "-"}`,
-    //     `문의내용: ${message}`,
-    //   ].join("\n"),
-    // });
-    // ─────────────────────────────────────────────────────────
+    // 첨부파일 처리
+    const attachments = await Promise.all(
+      files
+        .filter((f) => f.size > 0)
+        .map(async (file) => ({
+          filename: file.name,
+          content: Buffer.from(await file.arrayBuffer()),
+        }))
+    );
 
-    console.log("[문의 접수]", {
-      name,
-      phone,
-      email,
-      serviceType,
-      location,
-      message,
-      receivedAt: new Date().toISOString(),
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    await transporter.sendMail({
+      from: `"우인산업 홈페이지" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_TO || process.env.EMAIL_USER,
+      subject: `[우인산업 견적문의] ${name}님 / ${serviceType}`,
+      html: `
+        <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;border:1px solid #e5e7eb;border-radius:12px;">
+          <h2 style="color:#1c3177;margin-bottom:24px;border-bottom:2px solid #1c3177;padding-bottom:12px;">
+            📋 새 견적 문의가 접수되었습니다
+          </h2>
+          <table style="width:100%;border-collapse:collapse;">
+            <tr style="background:#f3f6ff;">
+              <td style="padding:10px 14px;font-weight:bold;color:#1c3177;width:120px;">이름</td>
+              <td style="padding:10px 14px;">${name}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 14px;font-weight:bold;color:#1c3177;">연락처</td>
+              <td style="padding:10px 14px;">${phone}</td>
+            </tr>
+            <tr style="background:#f3f6ff;">
+              <td style="padding:10px 14px;font-weight:bold;color:#1c3177;">이메일</td>
+              <td style="padding:10px 14px;">${email || "-"}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 14px;font-weight:bold;color:#1c3177;">공사 종류</td>
+              <td style="padding:10px 14px;">${serviceType}</td>
+            </tr>
+            <tr style="background:#f3f6ff;">
+              <td style="padding:10px 14px;font-weight:bold;color:#1c3177;">공사 위치</td>
+              <td style="padding:10px 14px;">${location || "-"}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 14px;font-weight:bold;color:#1c3177;">첨부파일</td>
+              <td style="padding:10px 14px;">${
+                attachments.length > 0
+                  ? attachments.map((a) => a.filename).join(", ")
+                  : "없음"
+              }</td>
+            </tr>
+          </table>
+          <div style="margin-top:20px;background:#f9fafb;border-radius:8px;padding:16px;">
+            <p style="font-weight:bold;color:#1c3177;margin:0 0 8px;">문의 내용</p>
+            <p style="margin:0;white-space:pre-wrap;color:#374151;">${message}</p>
+          </div>
+          <p style="margin-top:24px;font-size:12px;color:#9ca3af;">
+            접수 시각: ${new Date().toLocaleString("ko-KR", { timeZone: "Asia/Seoul" })}
+          </p>
+        </div>
+      `,
+      attachments,
     });
 
     return NextResponse.json({ success: true });
