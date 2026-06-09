@@ -144,10 +144,11 @@ export default function ContactForm() {
       {/* 이메일 */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1.5">
-          이메일 <span className="text-gray-400 text-xs">(선택)</span>
+          이메일 <span className="text-red-500">*</span>
         </label>
         <input
           type="email"
+          required
           placeholder="이메일을 입력해주세요"
           value={form.email}
           onChange={set("email")}
