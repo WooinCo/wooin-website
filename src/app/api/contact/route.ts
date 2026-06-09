@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
     const message = formData.get("message") as string;
     const files = formData.getAll("files") as File[];
 
-    if (!name || !phone || !serviceType || !message) {
+    if (!name || !phone || !email || !serviceType || !message) {
       return NextResponse.json(
         { error: "필수 항목을 모두 입력해주세요." },
         { status: 400 }
