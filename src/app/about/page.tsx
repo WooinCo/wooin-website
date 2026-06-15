@@ -42,7 +42,7 @@ export default function About() {
             <Reveal>
               <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/steel.jpg"
+                  src="/images/building.png"
                   alt="우인산업"
                   fill
                   className="object-cover"
