@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
@@ -30,18 +32,17 @@ export async function POST(request: NextRequest) {
         }))
     );
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+    const toList = (process.env.EMAIL_TO || "info@wooin-j.co.kr")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
 
-    await transporter.sendMail({
-      from: `"우인산업 홈페이지" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_TO || process.env.EMAIL_USER,
+    const { error } = await resend.emails.send({
+      from: process.env.EMAIL_FROM || "우인산업 홈페이지 <onboarding@resend.dev>",
+      to: toList,
+      replyTo: email,
       subject: `[우인산업 견적문의] ${name}님 / ${serviceType}`,
+      attachments: attachments.length > 0 ? attachments : undefined,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;border:1px solid #e5e7eb;border-radius:12px;">
           <h2 style="color:#1c3177;margin-bottom:24px;border-bottom:2px solid #1c3177;padding-bottom:12px;">
@@ -58,7 +59,7 @@ export async function POST(request: NextRequest) {
             </tr>
             <tr style="background:#f3f6ff;">
               <td style="padding:10px 14px;font-weight:bold;color:#1c3177;">이메일</td>
-              <td style="padding:10px 14px;">${email || "-"}</td>
+              <td style="padding:10px 14px;">${email}</td>
             </tr>
             <tr>
               <td style="padding:10px 14px;font-weight:bold;color:#1c3177;">공사 종류</td>
@@ -70,11 +71,7 @@ export async function POST(request: NextRequest) {
             </tr>
             <tr>
               <td style="padding:10px 14px;font-weight:bold;color:#1c3177;">첨부파일</td>
-              <td style="padding:10px 14px;">${
-                attachments.length > 0
-                  ? attachments.map((a) => a.filename).join(", ")
-                  : "없음"
-              }</td>
+              <td style="padding:10px 14px;">${attachments.length > 0 ? attachments.map((a) => a.filename).join(", ") : "없음"}</td>
             </tr>
           </table>
           <div style="margin-top:20px;background:#f9fafb;border-radius:8px;padding:16px;">
@@ -86,8 +83,15 @@ export async function POST(request: NextRequest) {
           </p>
         </div>
       `,
-      attachments,
     });
+
+    if (error) {
+      console.error("Resend error:", error);
+      return NextResponse.json(
+        { error: "메일 발송에 실패했습니다." },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
