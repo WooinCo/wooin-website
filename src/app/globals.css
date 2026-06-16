@@ -86,7 +86,7 @@ body {
     transform: scale(1.12);
     opacity: 1;
   }
-  84% {
+  72% {
     transform: scale(1);
     opacity: 1;
   }
@@ -98,7 +98,7 @@ body {
 
 @keyframes heroBuilding {
   0%,
-  84% {
+  72% {
     opacity: 0;
     transform: scale(1.06);
   }
@@ -109,12 +109,12 @@ body {
 }
 
 .hero-sea {
-  animation: heroSea 9.5s ease-out forwards;
+  animation: heroSea 5.5s ease-out forwards;
 }
 
 .hero-building {
   opacity: 0;
-  animation: heroBuilding 9.5s ease-out forwards;
+  animation: heroBuilding 5.5s ease-out forwards;
 }
 
 /* 모션 최소화 환경: 애니메이션 없이 건물 정지 화면만 노출 */
