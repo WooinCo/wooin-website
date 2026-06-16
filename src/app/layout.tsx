@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SiteChrome from "@/components/SiteChrome";
 
 export const metadata: Metadata = {
   title: "(주)우인산업 | WOOIN Construction Industry",
@@ -18,9 +18,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <SiteChrome footer={<Footer />}>{children}</SiteChrome>
       </body>
     </html>
   );
