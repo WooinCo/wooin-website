@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import HeroBackdrop from "@/components/HeroBackdrop";
 import { youtubeVideos } from "@/lib/portfolio-data";
 
 const services = [
@@ -63,13 +64,7 @@ export default function Home() {
       {/* ───────── 히어로 ───────── */}
       <section className="relative h-screen min-h-[640px] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src="/images/hero.jpg"
-            alt="도시 전경"
-            fill
-            priority
-            className="object-cover hero-bg"
-          />
+          <HeroBackdrop />
           <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/90 via-navy-dark/60 to-navy-dark/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/70 via-transparent to-navy-dark/30" />
         </div>

@@ -80,6 +80,56 @@ body {
   animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+/* ── 히어로 시네마틱 배경: 바다 줌인 → 건물 디졸브 → 건물 정지 ── */
+@keyframes heroSea {
+  0% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+  84% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes heroBuilding {
+  0%,
+  84% {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-sea {
+  animation: heroSea 9.5s ease-out forwards;
+}
+
+.hero-building {
+  opacity: 0;
+  animation: heroBuilding 9.5s ease-out forwards;
+}
+
+/* 모션 최소화 환경: 애니메이션 없이 건물 정지 화면만 노출 */
+@media (prefers-reduced-motion: reduce) {
+  .hero-sea {
+    animation: none;
+    opacity: 0;
+  }
+  .hero-building {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* 스크롤바 */
 ::-webkit-scrollbar {
   width: 10px;
