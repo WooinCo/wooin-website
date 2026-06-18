@@ -75,6 +75,8 @@ export default function Solar() {
           src="/images/solar/hero.jpg"
           alt="우인솔라루프 WP-sr330"
           fill
+          sizes="100vw"
+          quality={90}
           className="object-cover object-center"
           priority
         />
