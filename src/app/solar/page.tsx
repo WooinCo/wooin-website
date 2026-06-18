@@ -76,7 +76,7 @@ export default function Solar() {
           alt="우인솔라루프 WP-sr330"
           fill
           sizes="100vw"
-          quality={90}
+          quality={100}
           className="object-cover object-center"
           priority
         />
