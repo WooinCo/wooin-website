@@ -80,7 +80,7 @@ export default function Solar() {
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/90 via-navy-dark/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-l from-navy-dark/90 via-navy-dark/70 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/60 via-transparent to-navy-dark/30" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 pt-36">
