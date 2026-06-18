@@ -171,14 +171,58 @@ export default function Solar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
             <Reveal>
-              <div className="rounded-3xl overflow-hidden shadow-2xl bg-white p-4 sm:p-6">
-                <Image
-                  src="/images/solar/structure-diagram.jpg"
-                  alt="우인솔라루프 결합 구조 상세도 — 전용 클램프, 산높이 61mm, 볼트레스"
-                  width={1110}
-                  height={1195}
-                  className="w-full h-auto"
-                />
+              <div className="rounded-3xl bg-white shadow-2xl p-5 sm:p-7">
+                {/* 메인 단면도 + 번호 핫스팟 */}
+                <div className="relative">
+                  <Image
+                    src="/images/solar/diagram-main.png"
+                    alt="우인솔라루프 결합 구조 단면도"
+                    width={2244}
+                    height={1890}
+                    className="w-full h-auto"
+                  />
+                  {[
+                    { n: 1, top: "47%", left: "27%" },
+                    { n: 2, top: "17%", left: "50%" },
+                    { n: 3, top: "44%", left: "50%" },
+                    { n: 4, top: "63%", left: "50%" },
+                  ].map((h) => (
+                    <span
+                      key={h.n}
+                      style={{ top: h.top, left: h.left }}
+                      className="hidden sm:flex absolute -translate-x-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-navy text-white text-xs font-bold items-center justify-center shadow-lg ring-2 ring-white"
+                    >
+                      {h.n}
+                    </span>
+                  ))}
+                </div>
+                {/* 디테일 인셋 */}
+                <div className="grid grid-cols-2 gap-4 mt-5">
+                  <div className="rounded-2xl overflow-hidden bg-mist border border-gray-100">
+                    <Image
+                      src="/images/solar/diagram-detail.png"
+                      alt="결합 예시도 클로즈업"
+                      width={1087}
+                      height={709}
+                      className="w-full h-auto"
+                    />
+                    <p className="text-center text-xs font-semibold text-gray-500 py-2">
+                      결합 예시도
+                    </p>
+                  </div>
+                  <div className="rounded-2xl overflow-hidden bg-mist border border-gray-100">
+                    <Image
+                      src="/images/solar/diagram-clamp.png"
+                      alt="전용 태양광 클램프"
+                      width={1073}
+                      height={1069}
+                      className="w-full h-auto"
+                    />
+                    <p className="text-center text-xs font-semibold text-gray-500 py-2">
+                      전용 태양광 클램프
+                    </p>
+                  </div>
+                </div>
               </div>
             </Reveal>
 
@@ -193,24 +237,39 @@ export default function Solar() {
               </h2>
               <p className="text-gray-500 leading-relaxed mt-6">
                 전용 태양광 클램프를 사용하여 볼트 외부 노출 없이 지붕 패널을
-                결합합니다. 클램프 결합으로 강력한 안밀력을 확보하고, 산높이
+                결합합니다. 클램프 결합으로 강력한 결합 인발력을 확보하고, 산높이
                 61mm의 정밀한 구조로 완벽한 방수 성능을 실현합니다.
               </p>
 
-              <div className="mt-8 space-y-4">
+              <div className="mt-8 space-y-5">
                 {[
-                  "볼트 외부 노출 없는 결합 구조",
-                  "전용 태양광 클램프로 강력한 고정력",
-                  "지붕 패널 구조적 누수 문제 원천 해결",
-                  "산높이 61mm 정밀 성형",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <span className="w-6 h-6 rounded-full bg-navy text-white flex items-center justify-center text-xs font-bold shrink-0">
-                      ✓
+                  {
+                    title: "산높이 61mm",
+                    desc: "더 높아진 산(山)으로 방수 성능을 한층 강화했습니다.",
+                  },
+                  {
+                    title: "전용 태양광 클램프",
+                    desc: "패널 전용 클램프로 태양광 모듈을 강력하게 결합합니다.",
+                  },
+                  {
+                    title: "클램프 결합 인발력",
+                    desc: "강력한 고정력으로 강풍·폭설에도 흔들리지 않습니다.",
+                  },
+                  {
+                    title: "볼트레스 결합",
+                    desc: "볼트 외부 노출이 없어 구조적 누수를 원천 차단합니다.",
+                  },
+                ].map((item, i) => (
+                  <div key={item.title} className="flex items-start gap-4">
+                    <span className="w-7 h-7 rounded-full bg-navy text-white flex items-center justify-center text-xs font-bold shrink-0">
+                      {i + 1}
                     </span>
-                    <span className="text-gray-700 font-medium text-sm">
-                      {item}
-                    </span>
+                    <div>
+                      <div className="font-bold text-gray-900">{item.title}</div>
+                      <div className="text-sm text-gray-500 mt-0.5">
+                        {item.desc}
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
