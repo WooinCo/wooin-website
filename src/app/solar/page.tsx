@@ -72,7 +72,7 @@ export default function Solar() {
       {/* ── 히어로 ── */}
       <section className="relative min-h-[100vh] flex items-center overflow-hidden">
         <Image
-          src="/images/solar/hero.jpg"
+          src="/images/solar/hero-main.png"
           alt="우인솔라루프 WP-sr330"
           fill
           sizes="100vw"
