@@ -199,30 +199,31 @@ export default function Solar() {
                 </div>
                 {/* 디테일 인셋 */}
                 <div className="grid grid-cols-2 gap-4 mt-5">
-                  <div className="rounded-2xl overflow-hidden bg-mist border border-gray-100">
-                    <Image
-                      src="/images/solar/diagram-detail.png"
-                      alt="결합 예시도 클로즈업"
-                      width={1087}
-                      height={709}
-                      className="w-full h-auto"
-                    />
-                    <p className="text-center text-xs font-semibold text-gray-500 py-2">
-                      결합 예시도
-                    </p>
-                  </div>
-                  <div className="rounded-2xl overflow-hidden bg-mist border border-gray-100">
-                    <Image
-                      src="/images/solar/diagram-clamp.png"
-                      alt="전용 태양광 클램프"
-                      width={1073}
-                      height={1069}
-                      className="w-full h-auto"
-                    />
-                    <p className="text-center text-xs font-semibold text-gray-500 py-2">
-                      전용 태양광 클램프
-                    </p>
-                  </div>
+                  {[
+                    { src: "/images/solar/diagram-detail.png", label: "결합 예시도" },
+                    {
+                      src: "/images/solar/diagram-clamp.png",
+                      label: "전용 태양광 클램프",
+                    },
+                  ].map((d) => (
+                    <div
+                      key={d.label}
+                      className="rounded-2xl overflow-hidden bg-mist border border-gray-100"
+                    >
+                      <div className="relative h-40 sm:h-44">
+                        <Image
+                          src={d.src}
+                          alt={d.label}
+                          fill
+                          sizes="(max-width: 1024px) 45vw, 22vw"
+                          className="object-contain p-3"
+                        />
+                      </div>
+                      <p className="text-center text-xs font-semibold text-gray-500 py-2 border-t border-gray-100">
+                        {d.label}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </Reveal>
