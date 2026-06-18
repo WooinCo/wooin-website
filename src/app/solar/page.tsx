@@ -171,12 +171,12 @@ export default function Solar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
             <Reveal>
-              <div className="rounded-3xl overflow-hidden shadow-2xl bg-white">
+              <div className="rounded-3xl overflow-hidden shadow-2xl bg-white p-4 sm:p-6">
                 <Image
-                  src="/images/solar/page-2.png"
-                  alt="우인솔라루프 구조 상세"
-                  width={595}
-                  height={842}
+                  src="/images/solar/structure-diagram.jpg"
+                  alt="우인솔라루프 결합 구조 상세도 — 전용 클램프, 산높이 61mm, 볼트레스"
+                  width={1110}
+                  height={1195}
                   className="w-full h-auto"
                 />
               </div>
@@ -302,14 +302,25 @@ export default function Solar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
             <Reveal delay={0.15} className="lg:order-2">
-              <div className="rounded-3xl overflow-hidden shadow-2xl bg-white">
-                <Image
-                  src="/images/solar/page-4.png"
-                  alt="우인산업 시공 방식"
-                  width={595}
-                  height={842}
-                  className="w-full h-auto"
-                />
+              <div className="space-y-5">
+                <div className="rounded-3xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="/images/solar/site-old.jpg"
+                    alt="기존 타사 시공 — 노후·부식된 지붕"
+                    width={527}
+                    height={240}
+                    className="w-full h-auto"
+                  />
+                </div>
+                <div className="rounded-3xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="/images/solar/ba-after-1.jpg"
+                    alt="우인산업 솔라루프 시공 완성 지붕"
+                    width={535}
+                    height={361}
+                    className="w-full h-auto"
+                  />
+                </div>
               </div>
             </Reveal>
 
@@ -357,16 +368,55 @@ export default function Solar() {
                 </div>
               </div>
 
-              <div className="mt-10 p-6 rounded-2xl bg-white/5 border border-white/10">
-                <div className="font-extrabold text-lg mb-1">
-                  아래에선 생산, 위에선 시공
-                </div>
-                <div className="text-blue-100/60 text-sm">
-                  철거 없는 NON STOP 시공으로 업무환경을 그대로 유지합니다.
-                </div>
-              </div>
             </Reveal>
           </div>
+
+          {/* 아래에선 생산, 위에선 시공 — NON STOP */}
+          <Reveal className="mt-16">
+            <div className="rounded-3xl bg-white/5 border border-white/10 p-8 md:p-10">
+              <div className="text-center mb-8">
+                <p className="text-blue-300 font-bold text-sm tracking-[0.18em] uppercase mb-2">
+                  Non Stop
+                </p>
+                <h3 className="text-2xl md:text-3xl font-extrabold">
+                  아래에선 생산, 위에선 시공
+                </h3>
+                <p className="text-blue-100/60 text-sm mt-3">
+                  철거 없는 NON STOP 시공으로 업무환경을 그대로 유지합니다.
+                </p>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <div className="rounded-2xl overflow-hidden shadow-xl">
+                    <Image
+                      src="/images/solar/site-factory.jpg"
+                      alt="현장 성형기로 직접 생산"
+                      width={558}
+                      height={288}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                  <p className="text-center text-sm font-semibold mt-3 text-blue-100/80">
+                    아래에선 — 현장 생산
+                  </p>
+                </div>
+                <div>
+                  <div className="rounded-2xl overflow-hidden shadow-xl">
+                    <Image
+                      src="/images/solar/site-roof.jpg"
+                      alt="지붕 위에서 즉시 시공"
+                      width={558}
+                      height={210}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                  <p className="text-center text-sm font-semibold mt-3 text-blue-100/80">
+                    위에선 — 즉시 시공
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -427,14 +477,23 @@ export default function Solar() {
           </Reveal>
 
           <Reveal>
-            <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl bg-white">
-              <Image
-                src="/images/solar/page-5.png"
-                alt="우인솔라루프 Before & After"
-                width={595}
-                height={842}
-                className="w-full h-auto"
-              />
+            <div className="max-w-5xl mx-auto grid grid-cols-2 gap-4 sm:gap-6">
+              {["ba-before-1", "ba-after-1", "ba-before-2", "ba-after-2"].map(
+                (name) => (
+                  <div
+                    key={name}
+                    className="rounded-2xl overflow-hidden shadow-xl bg-white"
+                  >
+                    <Image
+                      src={`/images/solar/${name}.jpg`}
+                      alt="우인솔라루프 시공 전후 항공 사진"
+                      width={535}
+                      height={361}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                )
+              )}
             </div>
           </Reveal>
         </div>
