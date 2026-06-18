@@ -186,6 +186,7 @@ export default function Solar() {
                     { n: 2, top: "17%", left: "50%" },
                     { n: 3, top: "44%", left: "50%" },
                     { n: 4, top: "63%", left: "50%" },
+                    { n: 5, top: "38%", left: "73%" },
                   ].map((h) => (
                     <span
                       key={h.n}
@@ -258,6 +259,10 @@ export default function Solar() {
                   {
                     title: "볼트레스 결합",
                     desc: "볼트 외부 노출이 없어 구조적 누수를 원천 차단합니다.",
+                  },
+                  {
+                    title: "삼원계 합금 도금강판 (Zn-Al-Mg)",
+                    desc: "아연·알루미늄·마그네슘 삼원계 합금 도금강판으로, 기존 강판 대비 최대 10배 강한 내식성과 견고한 인장력을 갖습니다.",
                   },
                 ].map((item, i) => (
                   <div key={item.title} className="flex items-start gap-4">
