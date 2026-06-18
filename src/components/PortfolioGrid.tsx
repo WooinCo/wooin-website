@@ -4,13 +4,14 @@ import { useState } from "react";
 import Image from "next/image";
 import {
   portfolioItems,
+  portfolioCategories,
   type PortfolioItem,
   type PortfolioCategory,
 } from "@/lib/portfolio-data";
 
 type FilterCategory = "전체" | PortfolioCategory;
 
-const categories: FilterCategory[] = ["전체", "판넬공사", "지붕공사", "강판공사"];
+const categories: FilterCategory[] = ["전체", ...portfolioCategories];
 
 export default function PortfolioGrid() {
   const [active, setActive] = useState<FilterCategory>("전체");
@@ -55,7 +56,11 @@ export default function PortfolioGrid() {
 
 function PortfolioCard({ item }: { item: PortfolioItem }) {
   const categoryColor: Record<PortfolioCategory, string> = {
-    판넬공사: "bg-blue-100 text-blue-700",
+    신축공사: "bg-blue-100 text-blue-700",
+    "증축·리모델링": "bg-indigo-100 text-indigo-700",
+    "보수·개보수": "bg-amber-100 text-amber-700",
+    철골공사: "bg-slate-100 text-slate-700",
+    판넬공사: "bg-sky-100 text-sky-700",
     지붕공사: "bg-green-100 text-green-700",
     강판공사: "bg-orange-100 text-orange-700",
   };

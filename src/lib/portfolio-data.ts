@@ -1,4 +1,11 @@
-export type PortfolioCategory = '판넬공사' | '지붕공사' | '강판공사';
+export type PortfolioCategory =
+  | '신축공사'
+  | '증축·리모델링'
+  | '보수·개보수'
+  | '철골공사'
+  | '판넬공사'
+  | '지붕공사'
+  | '강판공사';
 
 export interface PortfolioItem {
   id: number;
@@ -11,6 +18,17 @@ export interface PortfolioItem {
   year?: number;
 }
 
+// 필터 탭에 표시할 카테고리 순서 (헤더 사업영역과 동일)
+export const portfolioCategories: PortfolioCategory[] = [
+  '신축공사',
+  '증축·리모델링',
+  '보수·개보수',
+  '철골공사',
+  '판넬공사',
+  '지붕공사',
+  '강판공사',
+];
+
 // ─────────────────────────────────────────────
 // 이미지 추가 방법:
 //   type: 'image'
@@ -21,17 +39,19 @@ export interface PortfolioItem {
 //   type: 'youtube'
 //   src: 'YouTube 영상 ID'
 //   (예: https://www.youtube.com/watch?v=ABCDE12345 → src: 'ABCDE12345')
+//
+// category 는 위 portfolioCategories 중 하나를 그대로 사용하세요.
 // ─────────────────────────────────────────────
 
 export const portfolioItems: PortfolioItem[] = [
   // 아래에 시공 사례를 추가해주세요
   // {
   //   id: 1,
-  //   title: '○○ 공장 판넬공사',
-  //   category: '판넬공사',
+  //   title: '○○ 공장 신축공사',
+  //   category: '신축공사',
   //   type: 'image',
-  //   src: '/portfolio/panel-001.jpg',
-  //   description: '공장 외벽 판넬 시공',
+  //   src: '/portfolio/newbuild-001.jpg',
+  //   description: '철골 골조 + 판넬 외벽 신축 시공',
   //   location: '경기도 평택',
   //   year: 2024,
   // },
