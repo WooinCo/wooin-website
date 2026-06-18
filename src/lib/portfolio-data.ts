@@ -44,27 +44,26 @@ export const portfolioCategories: PortfolioCategory[] = [
 // ─────────────────────────────────────────────
 
 export const portfolioItems: PortfolioItem[] = [
-  // 아래에 시공 사례를 추가해주세요
-  // {
-  //   id: 1,
-  //   title: '○○ 공장 신축공사',
-  //   category: '신축공사',
-  //   type: 'image',
-  //   src: '/portfolio/newbuild-001.jpg',
-  //   description: '철골 골조 + 판넬 외벽 신축 시공',
-  //   location: '경기도 평택',
-  //   year: 2024,
-  // },
-  // {
-  //   id: 2,
-  //   title: '○○ 창고 지붕공사',
-  //   category: '지붕공사',
-  //   type: 'youtube',
-  //   src: 'YouTube영상ID',
-  //   description: '창고 지붕 시공 영상',
-  //   location: '경기도 안성',
-  //   year: 2024,
-  // },
+  {
+    id: 1,
+    title: '평택 공장 신축공사',
+    category: '신축공사',
+    type: 'image',
+    src: '/portfolio/1.png',
+    description: '판넬 외벽 시공',
+    location: '경기도 평택',
+    year: 2025,
+  },
+  {
+    id: 2,
+    title: '대전 라도무스 증축공사',
+    category: '증축·리모델링',
+    type: 'image',
+    src: '/portfolio/2.png',
+    description: '루버 외벽 시공',
+    location: '대전광역시',
+    year: 2025,
+  },
 ];
 
 export const youtubeVideos: { id: string; title: string }[] = [
