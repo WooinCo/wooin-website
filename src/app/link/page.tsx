@@ -71,8 +71,9 @@ function LinkButton({ link }: { link: LinkItem }) {
 
 export default function LinkPage() {
   return (
-    <div className="min-h-screen bg-navy-dark flex justify-center sm:py-10">
-      <div className="w-full max-w-md bg-white sm:rounded-3xl overflow-hidden shadow-2xl">
+    <div className="min-h-screen bg-navy-dark flex justify-center sm:py-10 sm:px-4">
+      <div className="w-full max-w-md sm:bg-gray-100 sm:rounded-[2.75rem] sm:p-2.5 sm:shadow-2xl">
+        <div className="bg-white sm:rounded-[2.25rem] overflow-hidden">
         {/* 커버 사진 */}
         <div className="relative h-44 sm:h-52">
           <Image
@@ -185,6 +186,7 @@ export default function LinkPage() {
           <p className="mt-8 text-center text-xs text-gray-400">
             © (주)우인산업 WOOIN Construction Industry
           </p>
+        </div>
         </div>
       </div>
     </div>
