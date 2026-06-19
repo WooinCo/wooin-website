@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import OutboundLink from "@/components/OutboundLink";
 
 export const metadata: Metadata = {
   title: "(주)우인산업 — 모든 채널 한눈에",
@@ -17,6 +18,7 @@ type LinkItem = {
   sub?: string;
   href: string;
   primary?: boolean;
+  event: string;
 };
 
 const topLinks: LinkItem[] = [
@@ -26,12 +28,14 @@ const topLinks: LinkItem[] = [
     sub: "온라인으로 빠르게 신청",
     href: "https://quote.wooin-j.co.kr",
     primary: true,
+    event: "link_quote",
   },
   {
     icon: "📞",
     label: "전화 상담",
     sub: "031-662-7890",
     href: "tel:031-662-7890",
+    event: "link_call",
   },
 ];
 
@@ -42,7 +46,8 @@ const BLOG = "https://blog.naver.com/wooin-in";
 function LinkButton({ link }: { link: LinkItem }) {
   const isExternal = link.href.startsWith("http");
   return (
-    <a
+    <OutboundLink
+      event={link.event}
       href={link.href}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
@@ -65,7 +70,7 @@ function LinkButton({ link }: { link: LinkItem }) {
           {link.sub}
         </span>
       )}
-    </a>
+    </OutboundLink>
   );
 }
 
@@ -129,7 +134,8 @@ export default function LinkPage() {
           </div>
 
           {/* 유튜브 배너 (채널 바로가기) */}
-          <a
+          <OutboundLink
+            event="link_youtube"
             href={YOUTUBE_CHANNEL}
             target="_blank"
             rel="noopener noreferrer"
@@ -144,11 +150,12 @@ export default function LinkPage() {
               sizes="(max-width: 768px) 100vw, 448px"
               className="w-full h-auto"
             />
-          </a>
+          </OutboundLink>
 
           {/* 인스타그램 + 블로그 배너 */}
           <div className="mt-3.5 grid grid-cols-2 gap-3.5">
-            <a
+            <OutboundLink
+              event="link_instagram"
               href={INSTAGRAM}
               target="_blank"
               rel="noopener noreferrer"
@@ -163,8 +170,9 @@ export default function LinkPage() {
                 sizes="(max-width: 768px) 50vw, 224px"
                 className="w-full h-auto"
               />
-            </a>
-            <a
+            </OutboundLink>
+            <OutboundLink
+              event="link_blog"
               href={BLOG}
               target="_blank"
               rel="noopener noreferrer"
@@ -179,7 +187,7 @@ export default function LinkPage() {
                 sizes="(max-width: 768px) 50vw, 224px"
                 className="w-full h-auto"
               />
-            </a>
+            </OutboundLink>
           </div>
 
           {/* 푸터 */}

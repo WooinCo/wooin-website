@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import SiteChrome from "@/components/SiteChrome";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "(주)우인산업 | WOOIN Construction Industry",
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className="min-h-screen flex flex-col">
         <SiteChrome footer={<Footer />}>{children}</SiteChrome>
+        <Analytics />
       </body>
     </html>
   );
