@@ -34,24 +34,60 @@ const links: LinkItem[] = [
     href: "tel:031-662-7890",
   },
   {
-    icon: "📷",
-    label: "Instagram",
-    sub: "@wooin_corp",
-    href: "https://www.instagram.com/wooin_corp/",
-  },
-  {
-    icon: "📰",
-    label: "네이버 블로그",
-    sub: "시공 사례·소식",
-    href: "https://blog.naver.com/wooin-in",
-  },
-  {
     icon: "📍",
     label: "오시는 길",
     sub: "경기도 평택시 목천로 74-28",
     href: "https://maps.google.com/maps?q=경기도+평택시+목천로+74-28",
   },
 ];
+
+// 브랜드 소셜 아이콘 (이미지형 버튼)
+function YouTubeGlyph() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-7 h-7" fill="currentColor" aria-hidden>
+      <path d="M9.5 16.5v-9l7 4.5-7 4.5z" />
+    </svg>
+  );
+}
+function InstagramGlyph() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="w-6 h-6"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      aria-hidden
+    >
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
+      <circle cx="12" cy="12" r="4.2" />
+      <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+const socials: { name: string; href: string; bg: string; node: React.ReactNode }[] =
+  [
+    {
+      name: "YouTube",
+      href: "https://www.youtube.com/@wooin_co",
+      bg: "bg-[#FF0000]",
+      node: <YouTubeGlyph />,
+    },
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/wooin_corp/",
+      bg: "bg-gradient-to-tr from-[#feda75] via-[#d62976] to-[#4f5bd5]",
+      node: <InstagramGlyph />,
+    },
+    {
+      name: "네이버 블로그",
+      href: "https://blog.naver.com/wooin-in",
+      bg: "bg-[#03C75A]",
+      node: <span className="text-white font-extrabold text-xs">blog</span>,
+    },
+  ];
 
 export default function LinkPage() {
   return (
@@ -147,8 +183,24 @@ export default function LinkPage() {
             })}
           </div>
 
+          {/* 소셜 브랜드 아이콘 */}
+          <div className="mt-8 flex justify-center gap-5">
+            {socials.map((s) => (
+              <a
+                key={s.name}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.name}
+                className={`w-14 h-14 rounded-full ${s.bg} text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform`}
+              >
+                {s.node}
+              </a>
+            ))}
+          </div>
+
           {/* 푸터 */}
-          <p className="mt-10 text-center text-xs text-blue-100/50">
+          <p className="mt-8 text-center text-xs text-blue-100/50">
             © (주)우인산업 WOOIN Construction Industry
           </p>
         </div>
