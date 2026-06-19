@@ -43,7 +43,7 @@ const services = [
   },
   {
     id: "repair",
-    img: "/images/roof.jpg",
+    img: "/portfolio/taerim.png",
     eng: "REPAIR & MAINTENANCE",
     title: "보수·개보수",
     desc: "노후된 지붕과 외벽의 누수·부식 문제를 근본부터 해결합니다. 정밀 진단 후 지붕 방수, 판넬·강판 교체, 부분 보수까지 건물 상태에 맞는 최적의 보수 솔루션을 제공합니다.",

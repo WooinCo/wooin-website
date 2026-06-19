@@ -20,7 +20,7 @@ const services = [
     href: "/business#remodel",
   },
   {
-    img: "/images/roof.jpg",
+    img: "/portfolio/taerim.png",
     eng: "REPAIR & MAINTENANCE",
     title: "보수·개보수",
     desc: "노후 지붕·외벽의 누수·부식을 근본부터 해결하는 건물 맞춤 보수 솔루션을 제공합니다.",
