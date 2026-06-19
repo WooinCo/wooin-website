@@ -146,41 +146,41 @@ export default function LinkPage() {
             />
           </a>
 
-          {/* 인스타그램 배너 */}
-          <a
-            href={INSTAGRAM}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="우인산업 인스타그램"
-            className="mt-3.5 block rounded-2xl overflow-hidden shadow-lg transition-transform active:scale-[0.98] hover:brightness-105"
-          >
-            <Image
-              src="/images/link-insta.png"
-              alt="우인산업 인스타그램"
-              width={1656}
-              height={1294}
-              sizes="(max-width: 768px) 100vw, 448px"
-              className="w-full h-auto"
-            />
-          </a>
-
-          {/* 블로그 배너 */}
-          <a
-            href={BLOG}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="우인산업 네이버 블로그"
-            className="mt-3.5 block rounded-2xl overflow-hidden shadow-lg transition-transform active:scale-[0.98] hover:brightness-105"
-          >
-            <Image
-              src="/images/link-blog.png"
-              alt="우인산업 네이버 블로그"
-              width={1605}
-              height={1277}
-              sizes="(max-width: 768px) 100vw, 448px"
-              className="w-full h-auto"
-            />
-          </a>
+          {/* 인스타그램 + 블로그 배너 */}
+          <div className="mt-3.5 grid grid-cols-2 gap-3.5">
+            <a
+              href={INSTAGRAM}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="우인산업 인스타그램"
+              className="block rounded-2xl overflow-hidden shadow-lg transition-transform active:scale-[0.98] hover:brightness-105"
+            >
+              <Image
+                src="/images/link-insta.png"
+                alt="우인산업 인스타그램"
+                width={1605}
+                height={1277}
+                sizes="(max-width: 768px) 50vw, 224px"
+                className="w-full h-auto"
+              />
+            </a>
+            <a
+              href={BLOG}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="우인산업 네이버 블로그"
+              className="block rounded-2xl overflow-hidden shadow-lg transition-transform active:scale-[0.98] hover:brightness-105"
+            >
+              <Image
+                src="/images/link-blog.png"
+                alt="우인산업 네이버 블로그"
+                width={1605}
+                height={1277}
+                sizes="(max-width: 768px) 50vw, 224px"
+                className="w-full h-auto"
+              />
+            </a>
+          </div>
 
           {/* 푸터 */}
           <p className="mt-8 text-center text-xs text-gray-400">
