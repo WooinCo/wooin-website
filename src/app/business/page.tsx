@@ -6,10 +6,25 @@ import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "사업소개 | (주)우인산업",
-  description: "우인산업의 판넬공사, 지붕공사, 강판공사 사업을 소개합니다.",
+  description: "우인산업의 철골공사, 판넬공사, 지붕공사, 강판공사 사업을 소개합니다.",
 };
 
 const services = [
+  {
+    id: "frame",
+    img: "/images/warehouse.jpg",
+    eng: "STEEL FRAME CONSTRUCTION",
+    title: "철골공사",
+    desc: "철골 구조는 건축물의 뼈대를 이루는 핵심 공정입니다. 우인산업은 공장, 창고, 물류센터 등 산업용 건축물의 철골 구조물 제작과 설치를 전문으로 하며, 정밀한 시공으로 안전하고 견고한 골조를 완성합니다.",
+    features: [
+      "철골 구조물 제작·설치",
+      "H형강 기둥·보 시공",
+      "데크 플레이트 시공",
+      "철골 계단·트러스",
+      "내화·방청 도장",
+      "구조 보강 공사",
+    ],
+  },
   {
     id: "panel",
     img: "/images/panel.jpg",
@@ -63,14 +78,14 @@ export default function Business() {
       <PageBanner
         eyebrow="Our Business"
         title="사업소개"
-        subtitle="판넬·지붕·강판, 우인산업의 전문 시공 서비스를 소개합니다."
+        subtitle="철골·판넬·지붕·강판, 우인산업의 전문 시공 서비스를 소개합니다."
         current="사업소개"
       />
 
       {/* 사업분야 요약 */}
       <section className="py-20 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {services.map((s, i) => (
               <Reveal key={s.id} delay={i * 0.1}>
                 <a
