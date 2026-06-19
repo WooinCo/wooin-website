@@ -36,7 +36,6 @@ const links: LinkItem[] = [
   {
     icon: "▶️",
     label: "YouTube",
-    sub: "시공 영상 보기",
     href: "https://www.youtube.com/@wooin_co",
   },
   {
