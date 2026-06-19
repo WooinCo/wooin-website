@@ -91,7 +91,7 @@ function PortfolioCard({
           <iframe
             src={`https://www.youtube.com/embed/${item.src}`}
             title={item.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
             allowFullScreen
             className="absolute inset-0 w-full h-full"
           />

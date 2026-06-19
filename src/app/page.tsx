@@ -383,7 +383,7 @@ export default function Home() {
                     <iframe
                       src={`https://www.youtube.com/embed/${video.id}`}
                       title={video.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
                       allowFullScreen
                       className="w-full h-full"
                     />
