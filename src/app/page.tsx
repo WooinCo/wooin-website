@@ -9,7 +9,7 @@ const services = [
     img: "/portfolio/1.png",
     eng: "NEW CONSTRUCTION",
     title: "신축공사",
-    desc: "철골 골조부터 외벽 판넬·금속 지붕·강판 마감까지, 공장·창고 신축을 한 번에 책임집니다.",
+    desc: "신축 현장의 외벽·지붕 판넬과 창호 시공을 전문으로, 현장에 따라 철골 구조까지 폭넓게 담당합니다.",
     href: "/business#newbuild",
   },
   {
