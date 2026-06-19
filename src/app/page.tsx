@@ -9,7 +9,7 @@ const services = [
     img: "/portfolio/1.png",
     eng: "NEW CONSTRUCTION",
     title: "신축공사",
-    desc: "신축 현장의 외벽·지붕 판넬과 창호 시공을 전문으로, 현장에 따라 철골 구조까지 폭넓게 담당합니다.",
+    desc: "신축 현장의 외벽·지붕 판넬 시공을 주력으로, 창호와 (현장에 따라) 철골 구조까지 담당합니다.",
     href: "/business#newbuild",
   },
   {
