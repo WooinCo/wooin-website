@@ -6,25 +6,25 @@ import { youtubeVideos } from "@/lib/portfolio-data";
 
 const services = [
   {
-    img: "/images/panel.jpg",
-    eng: "PANEL",
-    title: "판넬공사",
-    desc: "샌드위치 판넬을 활용한 건축물 외벽·내벽·지붕 시공. 우수한 단열성과 시공성으로 에너지 효율을 높입니다.",
-    href: "/business#panel",
+    img: "/portfolio/1.png",
+    eng: "NEW CONSTRUCTION",
+    title: "신축공사",
+    desc: "철골 골조부터 외벽 판넬·금속 지붕·강판 마감까지, 공장·창고 신축을 한 번에 책임집니다.",
+    href: "/business#newbuild",
+  },
+  {
+    img: "/portfolio/2.png",
+    eng: "EXTENSION & REMODELING",
+    title: "증축·리모델링",
+    desc: "운영 중인 건물의 증축과 리모델링. 외벽·지붕 교체와 단열 보강으로 공간을 확장하고 되살립니다.",
+    href: "/business#remodel",
   },
   {
     img: "/images/roof.jpg",
-    eng: "ROOF",
-    title: "지붕공사",
-    desc: "건축물 특성에 맞춘 지붕재 선정과 정밀 시공. 완벽한 방수·단열 성능으로 건물을 안전하게 보호합니다.",
-    href: "/business#roof",
-  },
-  {
-    img: "/images/steel.jpg",
-    eng: "STEEL",
-    title: "강판공사",
-    desc: "고강도 강판을 이용한 산업용 건축물 시공. 견고하고 경제적인 솔루션으로 최적의 결과를 만듭니다.",
-    href: "/business#steel",
+    eng: "REPAIR & MAINTENANCE",
+    title: "보수·개보수",
+    desc: "노후 지붕·외벽의 누수·부식을 근본부터 해결하는 건물 맞춤 보수 솔루션을 제공합니다.",
+    href: "/business#repair",
   },
 ];
 
@@ -197,7 +197,7 @@ export default function Home() {
               우인산업의 전문 사업분야
             </h2>
             <p className="text-gray-500 mt-4">
-              판넬·지붕·강판, 각 분야의 전문 시공 서비스를 제공합니다.
+              신축부터 증축·리모델링, 보수까지 책임지는 전문 시공 서비스를 제공합니다.
             </p>
           </Reveal>
 

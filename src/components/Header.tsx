@@ -24,15 +24,6 @@ const navLinks: NavLink[] = [
           { href: "/business#repair", label: "보수·개보수" },
         ],
       },
-      {
-        title: "전문 시공",
-        items: [
-          { href: "/business#frame", label: "철골공사" },
-          { href: "/business#panel", label: "판넬공사" },
-          { href: "/business#roof", label: "지붕공사" },
-          { href: "/business#steel", label: "강판공사" },
-        ],
-      },
     ],
   },
   { href: "/solar", label: "솔라루프" },

@@ -5,69 +5,55 @@ import PageBanner from "@/components/PageBanner";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "사업소개 | (주)우인산업",
-  description: "우인산업의 철골공사, 판넬공사, 지붕공사, 강판공사 사업을 소개합니다.",
+  title: "사업영역 | (주)우인산업",
+  description:
+    "우인산업의 신축공사, 증축·리모델링, 보수·개보수 사업을 소개합니다. 철골·판넬·지붕·강판까지 전 공정 직접 시공.",
 };
 
 const services = [
   {
-    id: "frame",
-    img: "/images/warehouse.jpg",
-    eng: "STEEL FRAME CONSTRUCTION",
-    title: "철골공사",
-    desc: "철골 구조는 건축물의 뼈대를 이루는 핵심 공정입니다. 우인산업은 공장, 창고, 물류센터 등 산업용 건축물의 철골 구조물 제작과 설치를 전문으로 하며, 정밀한 시공으로 안전하고 견고한 골조를 완성합니다.",
+    id: "newbuild",
+    img: "/portfolio/1.png",
+    eng: "NEW CONSTRUCTION",
+    title: "신축공사",
+    desc: "공장·창고·물류센터 신축을 골조부터 마감까지 한 번에 책임집니다. 철골 구조물 제작·설치부터 샌드위치 판넬 외벽, 금속 지붕, 강판 마감까지 전 공정을 직접 시공하여 공기를 단축하고 품질을 보장합니다.",
     features: [
       "철골 구조물 제작·설치",
-      "H형강 기둥·보 시공",
+      "외벽 샌드위치 판넬",
+      "금속(절곡) 지붕 시공",
+      "강판 외장·마감",
       "데크 플레이트 시공",
-      "철골 계단·트러스",
-      "내화·방청 도장",
-      "구조 보강 공사",
+      "채광·환기 설비",
     ],
   },
   {
-    id: "panel",
-    img: "/images/panel.jpg",
-    eng: "PANEL CONSTRUCTION",
-    title: "판넬공사",
-    desc: "샌드위치 판넬은 단열재를 두 장의 강판 사이에 넣어 만든 건축 자재로, 뛰어난 단열성·내구성·시공성을 자랑합니다. 우인산업은 공장, 창고, 물류센터 등 산업용 건축물부터 소규모 건물까지 다양한 현장에서 최적의 판넬 시공 솔루션을 제공합니다.",
+    id: "remodel",
+    img: "/portfolio/2.png",
+    eng: "EXTENSION & REMODELING",
+    title: "증축·리모델링",
+    desc: "운영 중인 건물의 증축과 리모델링을 안전하게 진행합니다. 기존 구조와의 연결을 고려한 철골 증축, 외벽·지붕 교체, 단열 보강 등으로 공간을 확장하고 노후 건물을 새것처럼 되살립니다.",
     features: [
-      "외벽 판넬 시공",
-      "내벽 판넬 시공",
-      "지붕 판넬 시공",
-      "단열 판넬 시공",
-      "컬러 강판 시공",
-      "방음·방화 판넬",
+      "철골 증축 골조",
+      "외벽 판넬 교체·보강",
+      "지붕 개량·교체",
+      "단열 성능 개선",
+      "내부 구조 변경",
+      "무중단(NON-STOP) 시공",
     ],
   },
   {
-    id: "roof",
+    id: "repair",
     img: "/images/roof.jpg",
-    eng: "ROOF CONSTRUCTION",
-    title: "지붕공사",
-    desc: "건축물의 지붕은 외부 환경으로부터 건물을 보호하는 가장 중요한 요소입니다. 우인산업은 절곡 지붕, 금속 지붕 등 다양한 지붕재를 활용하여 건축물의 특성과 고객의 요구에 맞는 최적의 지붕 시공을 제공하며, 완벽한 방수와 단열을 책임집니다.",
+    eng: "REPAIR & MAINTENANCE",
+    title: "보수·개보수",
+    desc: "노후된 지붕과 외벽의 누수·부식 문제를 근본부터 해결합니다. 정밀 진단 후 지붕 방수, 판넬·강판 교체, 부분 보수까지 건물 상태에 맞는 최적의 보수 솔루션을 제공합니다.",
     features: [
-      "절곡 금속 지붕",
-      "지붕 판넬 시공",
-      "기존 지붕 보수",
-      "방수 처리",
-      "단열 보강",
-      "채광창 설치",
-    ],
-  },
-  {
-    id: "steel",
-    img: "/images/steel.jpg",
-    eng: "STEEL PLATE CONSTRUCTION",
-    title: "강판공사",
-    desc: "고강도 강판은 내구성이 뛰어나고 다양한 형태로 가공이 가능하여 산업용 건축물에 폭넓게 활용됩니다. 우인산업은 철골 구조물 외벽, 공장 지붕, 각종 산업 시설의 강판 시공을 전문으로 하며, 경제적이면서도 견고한 결과물을 제공합니다.",
-    features: [
-      "외벽 강판 시공",
-      "지붕 강판 시공",
-      "내부 칸막이 시공",
-      "철골 패널 마감",
-      "방청 도장 처리",
-      "유지보수 및 보수",
+      "지붕 누수·방수 보수",
+      "노후 판넬 교체",
+      "강판·외벽 보수",
+      "부식·도장 보수",
+      "부분 구조 보강",
+      "정기 유지보수",
     ],
   },
 ];
@@ -77,15 +63,15 @@ export default function Business() {
     <div>
       <PageBanner
         eyebrow="Our Business"
-        title="사업소개"
-        subtitle="철골·판넬·지붕·강판, 우인산업의 전문 시공 서비스를 소개합니다."
-        current="사업소개"
+        title="사업영역"
+        subtitle="신축부터 증축·리모델링, 보수까지 — 철골·판넬·지붕·강판 전 공정을 직접 시공합니다."
+        current="사업영역"
       />
 
       {/* 사업분야 요약 */}
       <section className="py-20 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-3 gap-4">
             {services.map((s, i) => (
               <Reveal key={s.id} delay={i * 0.1}>
                 <a
