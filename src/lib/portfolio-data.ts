@@ -1,11 +1,7 @@
 export type PortfolioCategory =
   | '신축공사'
   | '증축·리모델링'
-  | '보수·개보수'
-  | '철골공사'
-  | '판넬공사'
-  | '지붕공사'
-  | '강판공사';
+  | '보수·개보수';
 
 export interface PortfolioItem {
   id: number;
@@ -23,10 +19,6 @@ export const portfolioCategories: PortfolioCategory[] = [
   '신축공사',
   '증축·리모델링',
   '보수·개보수',
-  '철골공사',
-  '판넬공사',
-  '지붕공사',
-  '강판공사',
 ];
 
 // ─────────────────────────────────────────────
@@ -87,7 +79,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 5,
     title: '엘에스화장품',
-    category: '판넬공사',
+    category: '신축공사',
     type: 'image',
     src: '/portfolio/ls-cosmetics.jpg',
     description: '복합 판넬 외장 시공',
