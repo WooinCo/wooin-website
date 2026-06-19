@@ -370,10 +370,10 @@ export default function Solar() {
               <div className="space-y-5">
                 <div className="rounded-3xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/solar/site-old.jpg"
+                    src="/images/solar/site-old.png"
                     alt="기존 타사 시공 — 노후·부식된 지붕"
-                    width={527}
-                    height={240}
+                    width={2390}
+                    height={1792}
                     className="w-full h-auto"
                   />
                 </div>
