@@ -72,7 +72,7 @@ function LinkButton({ link }: { link: LinkItem }) {
 
 export default function LinkPage() {
   return (
-    <div className="min-h-screen bg-gray-100 flex justify-center sm:py-10">
+    <div className="min-h-screen bg-navy-dark flex justify-center sm:py-10">
       <div className="w-full max-w-md bg-white sm:rounded-3xl overflow-hidden shadow-2xl">
         {/* 커버 사진 */}
         <div className="relative h-44 sm:h-52">
