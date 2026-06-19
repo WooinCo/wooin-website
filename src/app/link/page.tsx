@@ -19,7 +19,7 @@ type LinkItem = {
   primary?: boolean;
 };
 
-const links: LinkItem[] = [
+const topLinks: LinkItem[] = [
   {
     icon: "📝",
     label: "무료 견적문의",
@@ -33,61 +33,46 @@ const links: LinkItem[] = [
     sub: "031-662-7890",
     href: "tel:031-662-7890",
   },
-  {
-    icon: "📍",
-    label: "오시는 길",
-    sub: "경기도 평택시 목천로 74-28",
-    href: "https://maps.google.com/maps?q=경기도+평택시+목천로+74-28",
-  },
 ];
 
-// 브랜드 소셜 아이콘 (이미지형 버튼)
-function YouTubeGlyph() {
-  return (
-    <svg viewBox="0 0 24 24" className="w-7 h-7" fill="currentColor" aria-hidden>
-      <path d="M9.5 16.5v-9l7 4.5-7 4.5z" />
-    </svg>
-  );
-}
-function InstagramGlyph() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="w-6 h-6"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      aria-hidden
-    >
-      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
-      <circle cx="12" cy="12" r="4.2" />
-      <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
+const YOUTUBE_CHANNEL = "https://www.youtube.com/@wooin_co";
+const INSTAGRAM = "https://www.instagram.com/wooin_corp/";
+const BLOG = "https://blog.naver.com/wooin-in";
+const MAP =
+  "https://maps.google.com/maps?q=경기도+평택시+목천로+74-28";
 
-const socials: { name: string; href: string; bg: string; node: React.ReactNode }[] =
-  [
-    {
-      name: "YouTube",
-      href: "https://www.youtube.com/@wooin_co",
-      bg: "bg-[#FF0000]",
-      node: <YouTubeGlyph />,
-    },
-    {
-      name: "Instagram",
-      href: "https://www.instagram.com/wooin_corp/",
-      bg: "bg-gradient-to-tr from-[#feda75] via-[#d62976] to-[#4f5bd5]",
-      node: <InstagramGlyph />,
-    },
-    {
-      name: "네이버 블로그",
-      href: "https://blog.naver.com/wooin-in",
-      bg: "bg-[#03C75A]",
-      node: <span className="text-white font-extrabold text-xs">blog</span>,
-    },
-  ];
+function LinkButton({ link }: { link: LinkItem }) {
+  const isExternal = link.href.startsWith("http");
+  return (
+    <a
+      href={link.href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      className={`flex items-center gap-4 rounded-2xl px-5 py-4 transition-all active:scale-[0.98] ${
+        link.primary
+          ? "bg-white text-navy shadow-lg hover:bg-blue-50"
+          : "bg-white/10 text-white border border-white/15 hover:bg-white/20 backdrop-blur-sm"
+      }`}
+    >
+      <span className="text-2xl shrink-0">{link.icon}</span>
+      <span className="flex-1 text-left">
+        <span className="block font-bold leading-tight">{link.label}</span>
+        {link.sub && (
+          <span
+            className={`block text-xs mt-0.5 ${
+              link.primary ? "text-navy/50" : "text-blue-100/60"
+            }`}
+          >
+            {link.sub}
+          </span>
+        )}
+      </span>
+      <span className={`shrink-0 ${link.primary ? "text-navy/40" : "text-white/40"}`}>
+        ›
+      </span>
+    </a>
+  );
+}
 
 export default function LinkPage() {
   return (
@@ -129,8 +114,15 @@ export default function LinkPage() {
             </p>
           </div>
 
-          {/* 홍보영상 (자동재생 없음) */}
-          <div className="mt-8 rounded-2xl overflow-hidden shadow-lg aspect-video bg-black">
+          {/* 견적문의 · 전화 */}
+          <div className="mt-9 space-y-3.5">
+            {topLinks.map((link) => (
+              <LinkButton key={link.label} link={link} />
+            ))}
+          </div>
+
+          {/* 유튜브 홍보영상 (자동재생 없음) */}
+          <div className="mt-5 rounded-2xl overflow-hidden shadow-lg aspect-video bg-black">
             <iframe
               src="https://www.youtube.com/embed/FIkuBe-KMnw"
               title="(주)우인산업 홍보영상"
@@ -140,63 +132,70 @@ export default function LinkPage() {
             />
           </div>
 
-          {/* 링크 버튼 */}
-          <div className="mt-6 space-y-3.5">
-            {links.map((link) => {
-              const isExternal = link.href.startsWith("http");
-              return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noopener noreferrer" : undefined}
-                  className={`flex items-center gap-4 rounded-2xl px-5 py-4 transition-all active:scale-[0.98] ${
-                    link.primary
-                      ? "bg-white text-navy shadow-lg hover:bg-blue-50"
-                      : "bg-white/10 text-white border border-white/15 hover:bg-white/20 backdrop-blur-sm"
-                  }`}
-                >
-                  <span className="text-2xl shrink-0">{link.icon}</span>
-                  <span className="flex-1 text-left">
-                    <span className="block font-bold leading-tight">
-                      {link.label}
-                    </span>
-                    {link.sub && (
-                      <span
-                        className={`block text-xs mt-0.5 ${
-                          link.primary ? "text-navy/50" : "text-blue-100/60"
-                        }`}
-                      >
-                        {link.sub}
-                      </span>
-                    )}
-                  </span>
-                  <span
-                    className={`shrink-0 ${
-                      link.primary ? "text-navy/40" : "text-white/40"
-                    }`}
-                  >
-                    ›
-                  </span>
-                </a>
-              );
-            })}
+          {/* 유튜브 배너 (채널 바로가기) */}
+          <a
+            href={YOUTUBE_CHANNEL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="우인산업 유튜브 채널"
+            className="mt-3.5 block rounded-2xl overflow-hidden shadow-lg transition-transform active:scale-[0.98] hover:brightness-105"
+          >
+            <Image
+              src="/images/link-youtube.png"
+              alt="우인산업 유튜브 채널"
+              width={1600}
+              height={900}
+              sizes="(max-width: 768px) 100vw, 448px"
+              className="w-full h-auto"
+            />
+          </a>
+
+          {/* 인스타그램 + 블로그 배너 */}
+          <div className="mt-3.5 grid grid-cols-2 gap-3.5">
+            <a
+              href={INSTAGRAM}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="우인산업 인스타그램"
+              className="block rounded-2xl overflow-hidden shadow-lg transition-transform active:scale-[0.98] hover:brightness-105"
+            >
+              <Image
+                src="/images/link-insta.png"
+                alt="우인산업 인스타그램"
+                width={1656}
+                height={1294}
+                sizes="(max-width: 768px) 50vw, 224px"
+                className="w-full h-auto"
+              />
+            </a>
+            <a
+              href={BLOG}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="우인산업 네이버 블로그"
+              className="block rounded-2xl overflow-hidden shadow-lg transition-transform active:scale-[0.98] hover:brightness-105"
+            >
+              <Image
+                src="/images/link-blog.png"
+                alt="우인산업 네이버 블로그"
+                width={1605}
+                height={1277}
+                sizes="(max-width: 768px) 50vw, 224px"
+                className="w-full h-auto"
+              />
+            </a>
           </div>
 
-          {/* 소셜 브랜드 아이콘 */}
-          <div className="mt-8 flex justify-center gap-5">
-            {socials.map((s) => (
-              <a
-                key={s.name}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={s.name}
-                className={`w-14 h-14 rounded-full ${s.bg} text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform`}
-              >
-                {s.node}
-              </a>
-            ))}
+          {/* 오시는 길 */}
+          <div className="mt-3.5">
+            <LinkButton
+              link={{
+                icon: "📍",
+                label: "오시는 길",
+                sub: "경기도 평택시 목천로 74-28",
+                href: MAP,
+              }}
+            />
           </div>
 
           {/* 푸터 */}
