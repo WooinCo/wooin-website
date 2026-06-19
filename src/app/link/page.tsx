@@ -38,8 +38,7 @@ const topLinks: LinkItem[] = [
 const YOUTUBE_CHANNEL = "https://www.youtube.com/@wooin_co";
 const INSTAGRAM = "https://www.instagram.com/wooin_corp/";
 const BLOG = "https://blog.naver.com/wooin-in";
-const MAP =
-  "https://maps.google.com/maps?q=경기도+평택시+목천로+74-28";
+const MAP = "https://maps.google.com/maps?q=경기도+평택시+목천로+74-28";
 
 function LinkButton({ link }: { link: LinkItem }) {
   const isExternal = link.href.startsWith("http");
@@ -48,36 +47,33 @@ function LinkButton({ link }: { link: LinkItem }) {
       href={link.href}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      className={`flex items-center gap-4 rounded-2xl px-5 py-4 transition-all active:scale-[0.98] ${
+      className={`block rounded-2xl px-5 py-4 text-center transition-all active:scale-[0.98] ${
         link.primary
-          ? "bg-white text-navy shadow-lg hover:bg-blue-50"
-          : "bg-white/10 text-white border border-white/15 hover:bg-white/20 backdrop-blur-sm"
+          ? "bg-navy text-white shadow-lg hover:bg-navy-dark"
+          : "bg-mist text-gray-800 border border-gray-200 hover:bg-gray-100"
       }`}
     >
-      <span className="text-2xl shrink-0">{link.icon}</span>
-      <span className="flex-1 text-left">
-        <span className="block font-bold leading-tight">{link.label}</span>
-        {link.sub && (
-          <span
-            className={`block text-xs mt-0.5 ${
-              link.primary ? "text-navy/50" : "text-blue-100/60"
-            }`}
-          >
-            {link.sub}
-          </span>
-        )}
+      <span className="font-bold">
+        <span className="mr-1.5">{link.icon}</span>
+        {link.label}
       </span>
-      <span className={`shrink-0 ${link.primary ? "text-navy/40" : "text-white/40"}`}>
-        ›
-      </span>
+      {link.sub && (
+        <span
+          className={`block text-xs mt-0.5 ${
+            link.primary ? "text-blue-100/70" : "text-gray-400"
+          }`}
+        >
+          {link.sub}
+        </span>
+      )}
     </a>
   );
 }
 
 export default function LinkPage() {
   return (
-    <div className="min-h-screen bg-navy-dark flex justify-center sm:py-10">
-      <div className="w-full max-w-md bg-gradient-to-b from-navy via-navy to-navy-light sm:rounded-3xl overflow-hidden shadow-2xl">
+    <div className="min-h-screen bg-gray-100 flex justify-center sm:py-10">
+      <div className="w-full max-w-md bg-white sm:rounded-3xl overflow-hidden shadow-2xl">
         {/* 커버 사진 */}
         <div className="relative h-44 sm:h-52">
           <Image
@@ -88,13 +84,13 @@ export default function LinkPage() {
             sizes="(max-width: 768px) 100vw, 448px"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent" />
         </div>
 
         <div className="px-5 pb-12">
           {/* 프로필 */}
           <div className="-mt-14 relative flex flex-col items-center text-center">
-            <div className="w-24 h-24 rounded-full bg-white shadow-xl ring-4 ring-navy/40 flex items-center justify-center p-4">
+            <div className="w-24 h-24 rounded-full bg-white shadow-xl ring-4 ring-white flex items-center justify-center p-4">
               <Image
                 src="/images/logo-navy.png"
                 alt="(주)우인산업 로고"
@@ -104,10 +100,10 @@ export default function LinkPage() {
                 priority
               />
             </div>
-            <h1 className="mt-5 text-2xl font-extrabold text-white">
+            <h1 className="mt-5 text-2xl font-extrabold text-gray-900">
               (주)우인산업
             </h1>
-            <p className="mt-2 text-blue-100/80 text-sm leading-relaxed">
+            <p className="mt-2 text-gray-500 text-sm leading-relaxed">
               내일을 짓는 기술, 사람을 향한 우인(友人)
               <br />
               판넬 · 지붕 · 강판공사 전문 기업
@@ -199,7 +195,7 @@ export default function LinkPage() {
           </div>
 
           {/* 푸터 */}
-          <p className="mt-8 text-center text-xs text-blue-100/50">
+          <p className="mt-8 text-center text-xs text-gray-400">
             © (주)우인산업 WOOIN Construction Industry
           </p>
         </div>
