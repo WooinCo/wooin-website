@@ -34,11 +34,6 @@ const links: LinkItem[] = [
     href: "tel:031-662-7890",
   },
   {
-    icon: "▶️",
-    label: "YouTube",
-    href: "https://www.youtube.com/@wooin_co",
-  },
-  {
     icon: "📷",
     label: "Instagram",
     sub: "@wooin_corp",
@@ -98,8 +93,19 @@ export default function LinkPage() {
             </p>
           </div>
 
+          {/* 홍보영상 (자동재생 없음) */}
+          <div className="mt-8 rounded-2xl overflow-hidden shadow-lg aspect-video bg-black">
+            <iframe
+              src="https://www.youtube.com/embed/FIkuBe-KMnw"
+              title="(주)우인산업 홍보영상"
+              allow="clipboard-write; encrypted-media; picture-in-picture; fullscreen"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </div>
+
           {/* 링크 버튼 */}
-          <div className="mt-9 space-y-3.5">
+          <div className="mt-6 space-y-3.5">
             {links.map((link) => {
               const isExternal = link.href.startsWith("http");
               return (
