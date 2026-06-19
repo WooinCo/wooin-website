@@ -38,7 +38,6 @@ const topLinks: LinkItem[] = [
 const YOUTUBE_CHANNEL = "https://www.youtube.com/@wooin_co";
 const INSTAGRAM = "https://www.instagram.com/wooin_corp/";
 const BLOG = "https://blog.naver.com/wooin-in";
-const MAP = "https://maps.google.com/maps?q=경기도+평택시+목천로+74-28";
 
 function LinkButton({ link }: { link: LinkItem }) {
   const isExternal = link.href.startsWith("http");
@@ -146,53 +145,41 @@ export default function LinkPage() {
             />
           </a>
 
-          {/* 인스타그램 + 블로그 배너 */}
-          <div className="mt-3.5 grid grid-cols-2 gap-3.5">
-            <a
-              href={INSTAGRAM}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="우인산업 인스타그램"
-              className="block rounded-2xl overflow-hidden shadow-lg transition-transform active:scale-[0.98] hover:brightness-105"
-            >
-              <Image
-                src="/images/link-insta.png"
-                alt="우인산업 인스타그램"
-                width={1656}
-                height={1294}
-                sizes="(max-width: 768px) 50vw, 224px"
-                className="w-full h-auto"
-              />
-            </a>
-            <a
-              href={BLOG}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="우인산업 네이버 블로그"
-              className="block rounded-2xl overflow-hidden shadow-lg transition-transform active:scale-[0.98] hover:brightness-105"
-            >
-              <Image
-                src="/images/link-blog.png"
-                alt="우인산업 네이버 블로그"
-                width={1605}
-                height={1277}
-                sizes="(max-width: 768px) 50vw, 224px"
-                className="w-full h-auto"
-              />
-            </a>
-          </div>
-
-          {/* 오시는 길 */}
-          <div className="mt-3.5">
-            <LinkButton
-              link={{
-                icon: "📍",
-                label: "오시는 길",
-                sub: "경기도 평택시 목천로 74-28",
-                href: MAP,
-              }}
+          {/* 인스타그램 배너 */}
+          <a
+            href={INSTAGRAM}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="우인산업 인스타그램"
+            className="mt-3.5 block rounded-2xl overflow-hidden shadow-lg transition-transform active:scale-[0.98] hover:brightness-105"
+          >
+            <Image
+              src="/images/link-insta.png"
+              alt="우인산업 인스타그램"
+              width={1656}
+              height={1294}
+              sizes="(max-width: 768px) 100vw, 448px"
+              className="w-full h-auto"
             />
-          </div>
+          </a>
+
+          {/* 블로그 배너 */}
+          <a
+            href={BLOG}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="우인산업 네이버 블로그"
+            className="mt-3.5 block rounded-2xl overflow-hidden shadow-lg transition-transform active:scale-[0.98] hover:brightness-105"
+          >
+            <Image
+              src="/images/link-blog.png"
+              alt="우인산업 네이버 블로그"
+              width={1605}
+              height={1277}
+              sizes="(max-width: 768px) 100vw, 448px"
+              className="w-full h-auto"
+            />
+          </a>
 
           {/* 푸터 */}
           <p className="mt-8 text-center text-xs text-gray-400">
