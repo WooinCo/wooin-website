@@ -61,77 +61,92 @@ const links: LinkItem[] = [
 
 export default function LinkPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-navy-dark via-navy to-navy-light px-5 py-12">
-      <div className="max-w-md mx-auto">
-        {/* 프로필 */}
-        <div className="flex flex-col items-center text-center">
-          <div className="w-24 h-24 rounded-full bg-white shadow-xl flex items-center justify-center p-4">
-            <Image
-              src="/images/logo-navy.png"
-              alt="(주)우인산업 로고"
-              width={1183}
-              height={382}
-              className="w-full h-auto"
-              priority
-            />
-          </div>
-          <h1 className="mt-5 text-2xl font-extrabold text-white">
-            (주)우인산업
-          </h1>
-          <p className="mt-2 text-blue-100/80 text-sm leading-relaxed">
-            내일을 짓는 기술, 사람을 향한 우인(友人)
-            <br />
-            판넬 · 지붕 · 강판공사 전문 기업
-          </p>
+    <div className="min-h-screen bg-navy-dark flex justify-center sm:py-10">
+      <div className="w-full max-w-md bg-gradient-to-b from-navy via-navy to-navy-light sm:rounded-3xl overflow-hidden shadow-2xl">
+        {/* 커버 사진 */}
+        <div className="relative h-44 sm:h-52">
+          <Image
+            src="/images/building.png"
+            alt="(주)우인산업 사옥"
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 448px"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent" />
         </div>
 
-        {/* 링크 버튼 */}
-        <div className="mt-9 space-y-3.5">
-          {links.map((link) => {
-            const isExternal = link.href.startsWith("http");
-            return (
-              <a
-                key={link.label}
-                href={link.href}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noopener noreferrer" : undefined}
-                className={`flex items-center gap-4 rounded-2xl px-5 py-4 transition-all active:scale-[0.98] ${
-                  link.primary
-                    ? "bg-white text-navy shadow-lg hover:bg-blue-50"
-                    : "bg-white/10 text-white border border-white/15 hover:bg-white/20 backdrop-blur-sm"
-                }`}
-              >
-                <span className="text-2xl shrink-0">{link.icon}</span>
-                <span className="flex-1 text-left">
-                  <span className="block font-bold leading-tight">
-                    {link.label}
-                  </span>
-                  {link.sub && (
-                    <span
-                      className={`block text-xs mt-0.5 ${
-                        link.primary ? "text-navy/50" : "text-blue-100/60"
-                      }`}
-                    >
-                      {link.sub}
-                    </span>
-                  )}
-                </span>
-                <span
-                  className={`shrink-0 ${
-                    link.primary ? "text-navy/40" : "text-white/40"
+        <div className="px-5 pb-12">
+          {/* 프로필 */}
+          <div className="-mt-14 relative flex flex-col items-center text-center">
+            <div className="w-24 h-24 rounded-full bg-white shadow-xl ring-4 ring-navy/40 flex items-center justify-center p-4">
+              <Image
+                src="/images/logo-navy.png"
+                alt="(주)우인산업 로고"
+                width={1183}
+                height={382}
+                className="w-full h-auto"
+                priority
+              />
+            </div>
+            <h1 className="mt-5 text-2xl font-extrabold text-white">
+              (주)우인산업
+            </h1>
+            <p className="mt-2 text-blue-100/80 text-sm leading-relaxed">
+              내일을 짓는 기술, 사람을 향한 우인(友人)
+              <br />
+              판넬 · 지붕 · 강판공사 전문 기업
+            </p>
+          </div>
+
+          {/* 링크 버튼 */}
+          <div className="mt-9 space-y-3.5">
+            {links.map((link) => {
+              const isExternal = link.href.startsWith("http");
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                  className={`flex items-center gap-4 rounded-2xl px-5 py-4 transition-all active:scale-[0.98] ${
+                    link.primary
+                      ? "bg-white text-navy shadow-lg hover:bg-blue-50"
+                      : "bg-white/10 text-white border border-white/15 hover:bg-white/20 backdrop-blur-sm"
                   }`}
                 >
-                  ›
-                </span>
-              </a>
-            );
-          })}
-        </div>
+                  <span className="text-2xl shrink-0">{link.icon}</span>
+                  <span className="flex-1 text-left">
+                    <span className="block font-bold leading-tight">
+                      {link.label}
+                    </span>
+                    {link.sub && (
+                      <span
+                        className={`block text-xs mt-0.5 ${
+                          link.primary ? "text-navy/50" : "text-blue-100/60"
+                        }`}
+                      >
+                        {link.sub}
+                      </span>
+                    )}
+                  </span>
+                  <span
+                    className={`shrink-0 ${
+                      link.primary ? "text-navy/40" : "text-white/40"
+                    }`}
+                  >
+                    ›
+                  </span>
+                </a>
+              );
+            })}
+          </div>
 
-        {/* 푸터 */}
-        <p className="mt-10 text-center text-xs text-blue-100/50">
-          © (주)우인산업 WOOIN Construction Industry
-        </p>
+          {/* 푸터 */}
+          <p className="mt-10 text-center text-xs text-blue-100/50">
+            © (주)우인산업 WOOIN Construction Industry
+          </p>
+        </div>
       </div>
     </div>
   );
