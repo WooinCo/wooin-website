@@ -527,8 +527,30 @@ export default function Solar() {
             ))}
           </div>
 
-          <Reveal className="text-center text-sm text-gray-400">
+          <Reveal className="text-center text-sm text-gray-400 mb-10">
             KCL(한국건설생활환경시험연구원) 시험 성적서 취득 완료
+          </Reveal>
+
+          <Reveal>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              {[
+                { file: "풍동", label: "풍동 시험" },
+                { file: "하중", label: "하중 시험" },
+                { file: "인발력", label: "인발력 시험" },
+                { file: "수밀", label: "수밀 시험" },
+              ].map(({ file, label }) => (
+                <div key={file} className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-white">
+                  <Image
+                    src={`/images/solar/${file}.png`}
+                    alt={`KCL ${label} 성적서`}
+                    width={600}
+                    height={850}
+                    className="w-full h-auto"
+                  />
+                  <p className="text-center text-xs font-semibold text-gray-500 py-2">{label}</p>
+                </div>
+              ))}
+            </div>
           </Reveal>
         </div>
       </section>
