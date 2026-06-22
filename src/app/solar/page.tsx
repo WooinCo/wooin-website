@@ -382,7 +382,7 @@ export default function Solar() {
                 </div>
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/solar/site-roof.jpg"
+                    src="/images/solar/ba-after-1.jpg"
                     alt="우인산업 시공 — 이음새 없는 한 장 강판"
                     width={535}
                     height={361}
