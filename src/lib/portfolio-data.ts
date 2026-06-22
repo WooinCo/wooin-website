@@ -99,7 +99,5 @@ export const portfolioItems: PortfolioItem[] = [
 ];
 
 export const youtubeVideos: { id: string; title: string }[] = [
-  // 홈페이지 유튜브 섹션에 표시할 영상을 추가해주세요
-  // { id: 'YouTube영상ID', title: '판넬공사 시공 과정' },
-  // { id: 'YouTube영상ID', title: '지붕공사 현장' },
+  { id: 'FIkuBe-KMnw', title: '우인산업 회사 홍보영상' },
 ];
