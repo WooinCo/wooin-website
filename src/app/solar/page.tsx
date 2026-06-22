@@ -546,8 +546,8 @@ export default function Solar() {
               {[
                 { name: "솔라비포", ext: "png", w: 5334, h: 3000 },
                 { name: "솔라애프터", ext: "png", w: 5334, h: 3000 },
-                { name: "ba-before-2", ext: "jpg", w: 535, h: 361 },
-                { name: "ba-after-2", ext: "jpg", w: 535, h: 361 },
+                { name: "솔라비포2", ext: "png", w: 5334, h: 3000 },
+                { name: "솔라애프터2", ext: "png", w: 5334, h: 3000 },
               ].map(({ name, ext, w, h }) => (
                 <div
                   key={name}
