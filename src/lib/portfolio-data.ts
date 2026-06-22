@@ -99,7 +99,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 7,
     title: '태림포장 리모델링 및 솔라루프',
-    category: '증축·리모델링',
+    category: '보수·개보수',
     type: 'image',
     src: '/portfolio/taerim.png',
     description: '리모델링 및 솔라루프 시공',
