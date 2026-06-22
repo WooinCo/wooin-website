@@ -370,9 +370,6 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
               영상으로 보는 우인산업
             </h2>
-            <p className="text-gray-500 mt-4">
-              실제 시공 과정과 현장의 생생한 모습을 영상으로 만나보세요.
-            </p>
           </Reveal>
 
           {youtubeVideos.length > 0 ? (
