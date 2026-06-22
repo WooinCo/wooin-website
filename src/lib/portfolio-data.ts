@@ -106,6 +106,16 @@ export const portfolioItems: PortfolioItem[] = [
     location: '경남 마산',
     year: 2025,
   },
+  {
+    id: 8,
+    title: '주덕자원순환센터 신축공사',
+    category: '신축공사',
+    type: 'image',
+    src: '/portfolio/3.png',
+    description: '신축공사',
+    location: '충북 충주',
+    year: 2025,
+  },
 ];
 
 export const youtubeVideos: { id: string; title: string }[] = [
