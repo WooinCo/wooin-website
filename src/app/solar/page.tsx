@@ -444,10 +444,13 @@ export default function Solar() {
                   Non Stop
                 </p>
                 <h3 className="text-2xl md:text-3xl font-extrabold">
-                  아래에선 생산, 위에선 시공
+                  공장이 돌아가는 동안,
+                  <br />
+                  지붕 공사도 동시에 진행됩니다
                 </h3>
                 <p className="text-blue-100/60 text-sm mt-3">
-                  철거 없는 NON STOP 시공으로 업무환경을 그대로 유지합니다.
+                  아래에서 공장이 가동 중이어도 위에서 시공이 가능합니다.<br />
+                  철거 없는 NON STOP 시공으로 업무 중단 없이 완공합니다.
                 </p>
               </div>
               <div className="grid sm:grid-cols-2 gap-6">
@@ -462,7 +465,7 @@ export default function Solar() {
                     />
                   </div>
                   <p className="text-center text-sm font-semibold mt-3 text-blue-100/80">
-                    아래에선 — 현장 생산
+                    아래 — 공장 정상 가동 중
                   </p>
                 </div>
                 <div>
@@ -476,7 +479,7 @@ export default function Solar() {
                     />
                   </div>
                   <p className="text-center text-sm font-semibold mt-3 text-blue-100/80">
-                    위에선 — 즉시 시공
+                    위 — 동시에 지붕 시공 진행
                   </p>
                 </div>
               </div>
