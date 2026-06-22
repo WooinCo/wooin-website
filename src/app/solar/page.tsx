@@ -454,10 +454,10 @@ export default function Solar() {
                 <div>
                   <div className="rounded-2xl overflow-hidden shadow-xl">
                     <Image
-                      src="/images/solar/site-factory.jpg"
+                      src="/images/solar/bottom.png"
                       alt="현장 성형기로 직접 생산"
-                      width={558}
-                      height={288}
+                      width={5334}
+                      height={3000}
                       className="w-full h-auto"
                     />
                   </div>
@@ -468,10 +468,10 @@ export default function Solar() {
                 <div>
                   <div className="rounded-2xl overflow-hidden shadow-xl">
                     <Image
-                      src="/images/solar/site-roof.jpg"
+                      src="/images/solar/top.png"
                       alt="지붕 위에서 즉시 시공"
-                      width={558}
-                      height={210}
+                      width={5334}
+                      height={3000}
                       className="w-full h-auto"
                     />
                   </div>
