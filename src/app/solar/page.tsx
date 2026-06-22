@@ -320,7 +320,7 @@ export default function Solar() {
                 />
               </div>
               {/* 오버레이 */}
-              <div className="absolute inset-0 bg-black/30" />
+              <div className="absolute inset-0 bg-black/40" />
               {/* 텍스트 */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6">
                 <p className="text-sm md:text-base text-white/90 leading-relaxed max-w-lg">
