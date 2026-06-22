@@ -300,6 +300,25 @@ export default function Solar() {
             </p>
           </Reveal>
 
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-8">
+            {[
+              { src: "/images/solar/스크린샷 2026-06-22 143931.png", label: "우인산업" },
+              { src: "/images/solar/스크린샷 2026-06-22 143952.png", label: "타 업체" },
+            ].map(({ src, label }) => (
+              <Reveal key={label}>
+                <div className="rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                  <Image
+                    src={src}
+                    alt={label}
+                    width={1421}
+                    height={796}
+                    className="w-full h-auto"
+                  />
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {processSteps.map((proc, i) => (
               <Reveal key={proc.title} delay={i * 0.15}>
