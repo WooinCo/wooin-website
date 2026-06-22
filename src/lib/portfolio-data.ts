@@ -111,7 +111,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: '주덕자원순환센터 신축공사',
     category: '신축공사',
     type: 'image',
-    src: '/portfolio/3.png',
+    src: '/portfolio/KakaoTalk_20260429_114026736.jpg',
     description: '신축공사',
     location: '충북 충주',
     year: 2025,
