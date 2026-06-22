@@ -116,6 +116,16 @@ export const portfolioItems: PortfolioItem[] = [
     location: '충북 충주',
     year: 2025,
   },
+  {
+    id: 9,
+    title: '필링크 신축공사',
+    category: '신축공사',
+    type: 'image',
+    src: '/portfolio/KakaoTalk_20251210_134119629_04.jpg',
+    description: '신축공사',
+    location: '경기 화성',
+    year: 2025,
+  },
 ];
 
 export const youtubeVideos: { id: string; title: string }[] = [
