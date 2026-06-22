@@ -26,6 +26,7 @@ const navLinks: NavLink[] = [
       },
     ],
   },
+  { href: "/products", label: "제품소개" },
   { href: "/solar", label: "솔라루프 WP-sr330" },
   { href: "/portfolio", label: "포트폴리오" },
   { href: "/contact", label: "견적문의" },
