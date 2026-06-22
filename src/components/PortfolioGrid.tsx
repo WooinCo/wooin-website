@@ -19,14 +19,25 @@ const categoryColor: Record<PortfolioCategory, string> = {
   "보수·개보수": "bg-amber-100 text-amber-700",
 };
 
+const ITEMS_PER_PAGE = 15;
+
 export default function PortfolioGrid() {
   const [active, setActive] = useState<FilterCategory>("전체");
   const [selected, setSelected] = useState<PortfolioItem | null>(null);
+  const [page, setPage] = useState(1);
 
   const filtered =
     active === "전체"
       ? portfolioItems
       : portfolioItems.filter((item) => item.category === active);
+
+  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+  const paged = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
+
+  function handleFilter(cat: FilterCategory) {
+    setActive(cat);
+    setPage(1);
+  }
 
   return (
     <div>
@@ -35,7 +46,7 @@ export default function PortfolioGrid() {
         {categories.map((cat) => (
           <button
             key={cat}
-            onClick={() => setActive(cat)}
+            onClick={() => handleFilter(cat)}
             className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all ${
               active === cat
                 ? "bg-[#1C3177] text-white shadow-md"
@@ -52,13 +63,46 @@ export default function PortfolioGrid() {
         <EmptyState />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((item) => (
+          {paged.map((item) => (
             <PortfolioCard
               key={item.id}
               item={item}
               onOpen={() => setSelected(item)}
             />
           ))}
+        </div>
+      )}
+
+      {/* 페이지네이션 */}
+      {totalPages > 1 && (
+        <div className="flex items-center justify-center gap-2 mt-12">
+          <button
+            onClick={() => setPage((p) => Math.max(1, p - 1))}
+            disabled={page === 1}
+            className="px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+          >
+            ← 이전
+          </button>
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+            <button
+              key={p}
+              onClick={() => setPage(p)}
+              className={`w-10 h-10 rounded-full text-sm font-semibold transition-all ${
+                p === page
+                  ? "bg-[#1C3177] text-white shadow-md"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              {p}
+            </button>
+          ))}
+          <button
+            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+            disabled={page === totalPages}
+            className="px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+          >
+            다음 →
+          </button>
         </div>
       )}
 
