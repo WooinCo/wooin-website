@@ -368,7 +368,7 @@ export default function Solar() {
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
             <Reveal delay={0.15} className="lg:order-2">
               <div className="space-y-5">
-                <div className="rounded-3xl overflow-hidden shadow-2xl">
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                   <Image
                     src="/images/solar/site-old.png"
                     alt="기존 타사 시공 — 노후·부식된 지붕"
@@ -376,15 +376,21 @@ export default function Solar() {
                     height={1792}
                     className="w-full h-auto"
                   />
+                  <span className="absolute bottom-3 left-3 px-3 py-1 rounded-md text-xs font-bold tracking-widest text-white bg-gray-700/80">
+                    타사 시공
+                  </span>
                 </div>
-                <div className="rounded-3xl overflow-hidden shadow-2xl">
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/solar/ba-after-1.jpg"
-                    alt="우인산업 솔라루프 시공 완성 지붕"
+                    src="/images/solar/site-roof.jpg"
+                    alt="우인산업 시공 — 이음새 없는 한 장 강판"
                     width={535}
                     height={361}
                     className="w-full h-auto"
                   />
+                  <span className="absolute bottom-3 left-3 px-3 py-1 rounded-md text-xs font-bold tracking-widest text-white bg-navy/80">
+                    우인산업 시공
+                  </span>
                 </div>
               </div>
             </Reveal>
