@@ -539,15 +539,17 @@ export default function Solar() {
                 { file: "인발력", label: "인발력 시험" },
                 { file: "수밀", label: "수밀 시험" },
               ].map(({ file, label }) => (
-                <div key={file} className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-white">
-                  <Image
-                    src={`/images/solar/${file}.png`}
-                    alt={`KCL ${label} 성적서`}
-                    width={1142}
-                    height={1500}
-                    className="w-full h-auto"
-                  />
-                  <p className="text-center text-xs font-semibold text-gray-500 py-2">{label}</p>
+                <div key={file} className="flex flex-col items-center gap-3">
+                  <div className="rounded-2xl overflow-hidden shadow-md w-full">
+                    <Image
+                      src={`/images/solar/${file}.png`}
+                      alt={`KCL ${label} 성적서`}
+                      width={1142}
+                      height={1500}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                  <p className="text-xs font-semibold text-gray-500">{label}</p>
                 </div>
               ))}
             </div>
