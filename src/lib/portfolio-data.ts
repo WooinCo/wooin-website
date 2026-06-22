@@ -38,7 +38,7 @@ export const portfolioCategories: PortfolioCategory[] = [
 export const portfolioItems: PortfolioItem[] = [
   {
     id: 1,
-    title: '평택 공장 신축공사',
+    title: '평택 사업장 신축공사',
     category: '신축공사',
     type: 'image',
     src: '/portfolio/1.png',
@@ -88,7 +88,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 6,
-    title: '저스템(Justem) 증축공사',
+    title: '저스템 증축공사',
     category: '증축·리모델링',
     type: 'image',
     src: '/portfolio/4.png',
@@ -98,7 +98,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 7,
-    title: '태림포장 공장 리모델링 및 솔라루프',
+    title: '태림포장 리모델링 및 솔라루프',
     category: '증축·리모델링',
     type: 'image',
     src: '/portfolio/taerim.png',
