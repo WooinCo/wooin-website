@@ -544,11 +544,11 @@ export default function Solar() {
           <Reveal>
             <div className="max-w-5xl mx-auto grid grid-cols-2 gap-4 sm:gap-6">
               {[
-                { name: "솔라비포", ext: "png" },
-                { name: "솔라애프터", ext: "png" },
-                { name: "ba-before-2", ext: "jpg" },
-                { name: "ba-after-2", ext: "jpg" },
-              ].map(({ name, ext }) => (
+                { name: "솔라비포", ext: "png", w: 5334, h: 3000 },
+                { name: "솔라애프터", ext: "png", w: 5334, h: 3000 },
+                { name: "ba-before-2", ext: "jpg", w: 535, h: 361 },
+                { name: "ba-after-2", ext: "jpg", w: 535, h: 361 },
+              ].map(({ name, ext, w, h }) => (
                 <div
                   key={name}
                   className="rounded-2xl overflow-hidden shadow-xl bg-white"
@@ -556,8 +556,8 @@ export default function Solar() {
                   <Image
                     src={`/images/solar/${name}.${ext}`}
                     alt="우인솔라루프 시공 전후 항공 사진"
-                    width={535}
-                    height={361}
+                    width={w}
+                    height={h}
                     className="w-full h-auto"
                   />
                 </div>
