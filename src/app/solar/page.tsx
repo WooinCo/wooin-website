@@ -300,24 +300,40 @@ export default function Solar() {
             </p>
           </Reveal>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-8">
-            {[
-              { src: "/images/solar/스크린샷 2026-06-22 143931.png", label: "우인산업" },
-              { src: "/images/solar/스크린샷 2026-06-22 143952.png", label: "타 업체" },
-            ].map(({ src, label }) => (
-              <Reveal key={label}>
-                <div className="rounded-3xl overflow-hidden shadow-lg border border-gray-100">
-                  <Image
-                    src={src}
-                    alt={label}
-                    width={1421}
-                    height={796}
-                    className="w-full h-auto"
-                  />
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal className="max-w-4xl mx-auto mb-8">
+            <div className="relative rounded-3xl overflow-hidden shadow-xl">
+              {/* 두 이미지 나란히 */}
+              <div className="flex">
+                <Image
+                  src="/images/solar/스크린샷 2026-06-22 143931.png"
+                  alt="현장 강판 생산"
+                  width={1421}
+                  height={796}
+                  className="w-1/2 h-auto object-cover"
+                />
+                <Image
+                  src="/images/solar/스크린샷 2026-06-22 143952.png"
+                  alt="현장 강판 생산"
+                  width={1421}
+                  height={796}
+                  className="w-1/2 h-auto object-cover"
+                />
+              </div>
+              {/* 오버레이 */}
+              <div className="absolute inset-0 bg-black/30" />
+              {/* 텍스트 */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6">
+                <p className="text-xs font-bold tracking-[0.2em] uppercase text-white/70 mb-3">On-Site Production</p>
+                <h3 className="text-2xl md:text-3xl font-extrabold leading-snug mb-4">
+                  현장에서 직접 뽑아,<br />이음새 없이 시공합니다
+                </h3>
+                <p className="text-sm text-white/80 leading-relaxed max-w-lg">
+                  생산 가능 공간만 있다면 30m, 40m, 50m —<br />
+                  어떤 길이든 한 장으로 성형하여 오버랩 부위를 최소화합니다.
+                </p>
+              </div>
+            </div>
+          </Reveal>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {processSteps.map((proc, i) => (
