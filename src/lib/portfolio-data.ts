@@ -82,7 +82,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: '신축공사',
     type: 'image',
     src: '/portfolio/ls-cosmetics.jpg',
-    description: '복합 판넬 외장 시공',
+    description: '신축공사',
     location: '인천광역시',
     year: 2024,
   },
