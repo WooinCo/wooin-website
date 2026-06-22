@@ -323,11 +323,7 @@ export default function Solar() {
               <div className="absolute inset-0 bg-black/30" />
               {/* 텍스트 */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6">
-                <p className="text-xs font-bold tracking-[0.2em] uppercase text-white/70 mb-3">On-Site Production</p>
-                <h3 className="text-2xl md:text-3xl font-extrabold leading-snug mb-4">
-                  현장에서 직접 뽑아,<br />이음새 없이 시공합니다
-                </h3>
-                <p className="text-sm text-white/80 leading-relaxed max-w-lg">
+                <p className="text-sm md:text-base text-white/90 leading-relaxed max-w-lg">
                   생산 가능 공간만 있다면 30m, 40m, 50m —<br />
                   어떤 길이든 한 장으로 성형하여 오버랩 부위를 최소화합니다.
                 </p>
