@@ -544,14 +544,14 @@ export default function Solar() {
           <Reveal>
             <div className="max-w-5xl mx-auto grid grid-cols-2 gap-4 sm:gap-6">
               {[
-                { name: "솔라비포", ext: "png", w: 5334, h: 3000 },
-                { name: "솔라애프터", ext: "png", w: 5334, h: 3000 },
-                { name: "솔라비포2", ext: "png", w: 5334, h: 3000 },
-                { name: "솔라애프터2", ext: "png", w: 5334, h: 3000 },
-              ].map(({ name, ext, w, h }) => (
+                { name: "솔라비포", ext: "png", w: 5334, h: 3000, label: "BEFORE" },
+                { name: "솔라애프터", ext: "png", w: 5334, h: 3000, label: "AFTER" },
+                { name: "솔라비포2", ext: "png", w: 5334, h: 3000, label: "BEFORE" },
+                { name: "솔라애프터2", ext: "png", w: 5334, h: 3000, label: "AFTER" },
+              ].map(({ name, ext, w, h, label }) => (
                 <div
                   key={name}
-                  className="rounded-2xl overflow-hidden shadow-xl bg-white"
+                  className="relative rounded-2xl overflow-hidden shadow-xl bg-white"
                 >
                   <Image
                     src={`/images/solar/${name}.${ext}`}
@@ -560,6 +560,9 @@ export default function Solar() {
                     height={h}
                     className="w-full h-auto"
                   />
+                  <span className={`absolute bottom-3 left-3 px-3 py-1 rounded-md text-xs font-bold tracking-widest text-white ${label === "BEFORE" ? "bg-gray-700/80" : "bg-navy/80"}`}>
+                    {label}
+                  </span>
                 </div>
               ))}
             </div>
