@@ -543,8 +543,8 @@ export default function Solar() {
                   <Image
                     src={`/images/solar/${file}.png`}
                     alt={`KCL ${label} 성적서`}
-                    width={600}
-                    height={850}
+                    width={1142}
+                    height={1500}
                     className="w-full h-auto"
                   />
                   <p className="text-center text-xs font-semibold text-gray-500 py-2">{label}</p>
