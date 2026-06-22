@@ -373,8 +373,8 @@ export default function Home() {
           </Reveal>
 
           {youtubeVideos.length > 0 ? (
-            <div className="grid md:grid-cols-2 gap-7">
-              {youtubeVideos.slice(0, 4).map((video) => (
+            <div className="max-w-3xl mx-auto">
+              {youtubeVideos.slice(0, 1).map((video) => (
                 <Reveal key={video.id}>
                   <div className="rounded-2xl overflow-hidden shadow-lg aspect-video">
                     <iframe
