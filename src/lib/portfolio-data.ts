@@ -68,7 +68,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 4,
-    title: '에이맥스(A-MAX) 신축공사',
+    title: '에이맥스 신축공사',
     category: '신축공사',
     type: 'image',
     src: '/portfolio/amax.jpg',
