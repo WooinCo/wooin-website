@@ -31,7 +31,7 @@ export default function About() {
       <PageBanner
         eyebrow="About Us"
         title="회사소개"
-        subtitle="내일을 짓는 기술, 사람을 향한 우인(友人) — (주)우인산업을 소개합니다."
+        subtitle="내일을 짓는 기술, 사람을 향한 우인(佑人) — (주)우인산업을 소개합니다."
         current="회사소개"
       />
 
@@ -70,7 +70,7 @@ export default function About() {
                 </p>
                 <p>
                   <span className="text-navy font-semibold">
-                    &ldquo;내일을 짓는 기술, 사람을 향한 우인(友人)&rdquo;
+                    &ldquo;내일을 짓는 기술, 사람을 향한 우인(佑人)&rdquo;
                   </span>
                   라는 슬로건처럼, 단순히 건축물을 짓는 것을 넘어 사람과 사람
                   사이의 신뢰를 짓는 기업이 되고자 합니다.

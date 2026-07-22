@@ -83,7 +83,7 @@ export default function Home() {
             내일을 짓는 기술,
             <br />
             <span className="text-blue-200">사람</span>을 향한 우인
-            <span className="text-blue-200">(友人)</span>
+            <span className="text-blue-200">(佑人)</span>
           </h1>
           <p
             className="hero-fade text-base sm:text-lg text-blue-50/80 mt-7 max-w-xl leading-relaxed"
@@ -177,7 +177,7 @@ export default function Home() {
                   <p className="font-bold leading-snug">
                     내일을 짓는 기술,
                     <br />
-                    사람을 향한 우인(友人)
+                    사람을 향한 우인(佑人)
                   </p>
                 </div>
               </div>

@@ -109,7 +109,7 @@ export default function LinkPage() {
               (주)우인산업
             </h1>
             <p className="mt-2 text-gray-500 text-sm leading-relaxed">
-              내일을 짓는 기술, 사람을 향한 우인(友人)
+              내일을 짓는 기술, 사람을 향한 우인(佑人)
               <br />
               판넬 · 지붕 · 강판공사 전문 기업
             </p>

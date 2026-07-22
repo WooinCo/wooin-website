@@ -53,7 +53,7 @@ export default function Footer() {
           <div className="md:col-span-5">
             <Logo light />
             <p className="text-blue-200/70 text-sm mt-5 leading-relaxed">
-              내일을 짓는 기술, 사람을 향한 우인(友人).
+              내일을 짓는 기술, 사람을 향한 우인(佑人).
               <br />
               정직한 시공과 책임감으로 고객의 신뢰에 보답하겠습니다.
             </p>
