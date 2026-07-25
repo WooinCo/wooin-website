@@ -66,6 +66,7 @@ export default function Business() {
         title="사업영역"
         subtitle="신축부터 증축·리모델링, 보수까지 — 철골·판넬·지붕·강판 전 공정을 직접 시공합니다."
         current="사업영역"
+        imageSrc="/images/solar/ba-after-1.jpg"
       />
 
       {/* 사업분야 요약 */}

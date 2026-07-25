@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 interface PageBannerProps {
@@ -7,6 +8,8 @@ interface PageBannerProps {
   eyebrow?: string;
   /** 현재 페이지명 (브레드크럼) */
   current: string;
+  /** 배경 이미지 경로 (없으면 순수 navy) */
+  imageSrc?: string;
 }
 
 export default function PageBanner({
@@ -14,15 +17,35 @@ export default function PageBanner({
   subtitle,
   eyebrow,
   current,
+  imageSrc,
 }: PageBannerProps) {
   return (
     <div className="relative pt-20 overflow-hidden bg-navy-dark">
+      {/* 배경 이미지 */}
+      {imageSrc && (
+        <Image
+          src={imageSrc}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+          priority
+        />
+      )}
+
+      {/* 오버레이 */}
+      <div className="absolute inset-0 bg-navy-dark/80" />
+
       {/* 배경 장식 */}
       <div className="absolute inset-0">
-        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-navy-light/30 blur-3xl" />
-        <div className="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-navy/40 blur-3xl" />
+        {!imageSrc && (
+          <>
+            <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-navy-light/30 blur-3xl" />
+            <div className="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-navy/40 blur-3xl" />
+          </>
+        )}
         <div
-          className="absolute inset-0 opacity-[0.07]"
+          className="absolute inset-0 opacity-[0.05]"
           style={{
             backgroundImage:
               "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",

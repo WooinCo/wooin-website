@@ -401,26 +401,26 @@ export default function Solar() {
               <div className="space-y-5">
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/solar/site-old.png"
-                    alt="기존 타사 시공 — 노후·부식된 지붕"
-                    width={2390}
-                    height={1792}
+                    src="/images/solar/ba-after-1.jpg"
+                    alt="우인산업 시공 — 이음새 없는 한 장 강판"
+                    width={9959}
+                    height={6688}
                     className="w-full h-auto"
                   />
-                  <span className="absolute bottom-3 left-3 px-3 py-1 rounded-md text-xs font-bold tracking-widest text-white bg-gray-700/80">
-                    타사 시공
+                  <span className="absolute bottom-3 left-3 px-3 py-1 rounded-md text-xs font-bold tracking-widest text-white bg-navy/80">
+                    이음새 없는 한 장 강판
                   </span>
                 </div>
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/solar/ba-after-1.jpg"
-                    alt="우인산업 시공 — 이음새 없는 한 장 강판"
-                    width={535}
-                    height={361}
+                    src="/images/solar/솔라애프터.png"
+                    alt="우인솔라루프 시공 완료 — 항공 사진"
+                    width={5334}
+                    height={3000}
                     className="w-full h-auto"
                   />
                   <span className="absolute bottom-3 left-3 px-3 py-1 rounded-md text-xs font-bold tracking-widest text-white bg-navy/80">
-                    우인산업 시공
+                    솔라루프 시공 완료
                   </span>
                 </div>
               </div>

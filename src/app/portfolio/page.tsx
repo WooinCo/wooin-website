@@ -15,6 +15,7 @@ export default function Portfolio() {
         title="포트폴리오"
         subtitle="우인산업이 직접 시공한 다양한 현장의 사례를 확인하세요."
         current="포트폴리오"
+        imageSrc="/portfolio/1.png"
       />
 
       <section className="py-24 md:py-32 bg-white">

@@ -33,6 +33,7 @@ export default function About() {
         title="회사소개"
         subtitle="내일을 짓는 기술, 사람을 향한 우인(佑人) — (주)우인산업을 소개합니다."
         current="회사소개"
+        imageSrc="/images/building.png"
       />
 
       {/* ── 대표이사 인사말 ── */}

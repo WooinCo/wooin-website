@@ -46,6 +46,7 @@ export default function Contact() {
         title="견적문의"
         subtitle="전문 상담원이 신속하고 정확하게 답변드리겠습니다."
         current="견적문의"
+        imageSrc="/images/building.png"
       />
 
       {/* 연락처 카드 */}
