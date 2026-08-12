@@ -163,8 +163,8 @@ export default function Home() {
               <div className="relative">
                 <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/warehouse.jpg"
-                    alt="우인산업 시공 현장"
+                    src="/images/building.png"
+                    alt="(주)우인산업 사옥"
                     fill
                     className="object-cover"
                   />
