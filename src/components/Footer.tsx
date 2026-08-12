@@ -4,6 +4,7 @@ import Logo from "./Logo";
 const sitemap = [
   { href: "/about", label: "회사소개" },
   { href: "/business", label: "사업영역" },
+  { href: "/products", label: "제품소개" },
   { href: "/solar", label: "솔라루프" },
   { href: "/portfolio", label: "포트폴리오" },
   { href: "/contact", label: "견적문의" },
