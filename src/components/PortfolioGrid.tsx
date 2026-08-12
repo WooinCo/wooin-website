@@ -141,16 +141,38 @@ function PortfolioCard({
           type="button"
           onClick={onOpen}
           aria-label={`${item.title} 크게 보기`}
-          className="relative aspect-video bg-gray-100 w-full block cursor-pointer"
+          className="relative aspect-video bg-gray-100 w-full block cursor-pointer overflow-hidden"
         >
-          <Image
-            src={item.src}
-            alt={item.title}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
-          />
+          {item.beforeSrc ? (
+            /* 비포/애프터 분할 썸네일 */
+            <>
+              {/* Before — 왼쪽 절반 */}
+              <div className="absolute left-0 top-0 bottom-0 w-1/2 overflow-hidden">
+                <Image src={item.beforeSrc} alt="시공 전" fill className="object-cover" />
+              </div>
+              {/* After — 오른쪽 절반 */}
+              <div className="absolute right-0 top-0 bottom-0 w-1/2 overflow-hidden">
+                <Image src={item.src} alt="시공 후" fill className="object-cover" />
+              </div>
+              {/* 중앙 구분선 */}
+              <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-white/90 z-10" />
+              <span className="absolute bottom-2 left-2.5 z-10 bg-black/55 text-white text-[10px] font-bold px-2 py-0.5 rounded-full tracking-widest">
+                BEFORE
+              </span>
+              <span className="absolute bottom-2 right-2.5 z-10 bg-navy/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full tracking-widest">
+                AFTER
+              </span>
+            </>
+          ) : (
+            <Image
+              src={item.src}
+              alt={item.title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          )}
           {/* 확대 힌트 */}
-          <span className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/25 transition-colors">
+          <span className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/25 transition-colors z-20">
             <span className="opacity-0 group-hover:opacity-100 transition-opacity w-11 h-11 rounded-full bg-white/90 text-navy flex items-center justify-center text-lg shadow-lg">
               🔍
             </span>
@@ -227,15 +249,40 @@ function Lightbox({
         className="relative w-full max-w-5xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative w-full aspect-video bg-black rounded-xl overflow-hidden">
-          <Image
-            src={item.src}
-            alt={item.title}
-            fill
-            sizes="(max-width: 1024px) 100vw, 1024px"
-            className="object-contain"
-          />
-        </div>
+        {item.beforeSrc ? (
+          /* 비포/애프터 나란히 */
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { src: item.beforeSrc, label: "BEFORE" },
+              { src: item.src, label: "AFTER" },
+            ].map(({ src, label }) => (
+              <div key={label}>
+                <div className="relative w-full aspect-video bg-black rounded-xl overflow-hidden">
+                  <Image
+                    src={src}
+                    alt={label}
+                    fill
+                    sizes="(max-width: 1024px) 50vw, 512px"
+                    className="object-contain"
+                  />
+                </div>
+                <p className="text-center text-xs font-bold tracking-widest text-white/50 mt-2">
+                  {label}
+                </p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="relative w-full aspect-video bg-black rounded-xl overflow-hidden">
+            <Image
+              src={item.src}
+              alt={item.title}
+              fill
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              className="object-contain"
+            />
+          </div>
+        )}
         <div className="mt-4 text-center text-white">
           <span
             className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-2 ${

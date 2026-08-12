@@ -9,31 +9,19 @@ export interface PortfolioItem {
   category: PortfolioCategory;
   type: 'image' | 'youtube';
   src: string;
+  /** 비포/애프터 썸네일용 — 있으면 src가 AFTER, 이 값이 BEFORE */
+  beforeSrc?: string;
   description?: string;
   location?: string;
   year?: number;
 }
 
-// 필터 탭에 표시할 카테고리 순서 (헤더 사업영역과 동일)
+// 필터 탭에 표시할 카테고리 순서
 export const portfolioCategories: PortfolioCategory[] = [
   '신축공사',
   '증축·리모델링',
   '보수·개보수',
 ];
-
-// ─────────────────────────────────────────────
-// 이미지 추가 방법:
-//   type: 'image'
-//   src: '/portfolio/파일명.jpg'
-//   → public/portfolio/ 폴더에 이미지를 넣고 파일명을 src에 입력하세요
-//
-// YouTube 영상 추가 방법:
-//   type: 'youtube'
-//   src: 'YouTube 영상 ID'
-//   (예: https://www.youtube.com/watch?v=ABCDE12345 → src: 'ABCDE12345')
-//
-// category 는 위 portfolioCategories 중 하나를 그대로 사용하세요.
-// ─────────────────────────────────────────────
 
 export const portfolioItems: PortfolioItem[] = [
   {
@@ -42,8 +30,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: '신축공사',
     type: 'image',
     src: '/portfolio/1.png',
-    description: '신축공사',
-    location: '경기도 평택',
+    location: '경기 평택',
     year: 2025,
   },
   {
@@ -52,8 +39,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: '증축·리모델링',
     type: 'image',
     src: '/portfolio/2.png',
-    description: '증축공사',
-    location: '대전광역시',
+    location: '대전',
     year: 2025,
   },
   {
@@ -62,7 +48,6 @@ export const portfolioItems: PortfolioItem[] = [
     category: '보수·개보수',
     type: 'image',
     src: '/portfolio/taerim.png',
-    description: '리모델링 및 솔라루프 시공',
     location: '경남 마산',
     year: 2025,
   },
@@ -72,7 +57,6 @@ export const portfolioItems: PortfolioItem[] = [
     category: '신축공사',
     type: 'image',
     src: '/portfolio/3.png',
-    description: '신축공사',
     location: '충북 충주',
     year: 2025,
   },
@@ -82,7 +66,6 @@ export const portfolioItems: PortfolioItem[] = [
     category: '신축공사',
     type: 'image',
     src: '/portfolio/KakaoTalk_20251210_134119629_04.jpg',
-    description: '신축공사',
     location: '경기 화성',
     year: 2025,
   },
@@ -92,8 +75,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: '신축공사',
     type: 'image',
     src: '/portfolio/mokdong.png',
-    description: '신축공사',
-    location: '경기도 광주',
+    location: '경기 광주',
     year: 2024,
   },
   {
@@ -102,8 +84,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: '신축공사',
     type: 'image',
     src: '/portfolio/ls-cosmetics.jpg',
-    description: '신축공사',
-    location: '인천광역시',
+    location: '인천',
     year: 2024,
   },
   {
@@ -112,8 +93,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: '신축공사',
     type: 'image',
     src: '/portfolio/amax.jpg',
-    description: '신축공사',
-    location: '경기도 평택',
+    location: '경기 평택',
     year: 2023,
   },
   {
@@ -122,9 +102,18 @@ export const portfolioItems: PortfolioItem[] = [
     category: '증축·리모델링',
     type: 'image',
     src: '/portfolio/4.png',
-    description: '증축공사',
-    location: '경기도 화성',
+    location: '경기 화성',
     year: 2023,
+  },
+  {
+    id: 10,
+    title: '원주 신축공사',
+    category: '신축공사',
+    type: 'image',
+    src: '/portfolio/wonju-after.png',
+    beforeSrc: '/portfolio/wonju-before.png',
+    location: '강원 원주',
+    year: 2025,
   },
 ];
 
