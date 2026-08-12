@@ -44,7 +44,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 3,
-    title: '마산 리모델링 및 솔라루프',
+    title: '마산 리모델링 우인솔라루프',
     category: '보수·개보수',
     type: 'image',
     src: '/portfolio/taerim.png',
