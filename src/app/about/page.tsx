@@ -107,22 +107,24 @@ export default function About() {
             </h2>
           </Reveal>
 
-          <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
+          <div className="grid md:grid-cols-3 gap-5">
             {values.map((v, i) => (
               <Reveal key={v.title} delay={i * 0.14}>
-                <div className="px-8 py-10 md:px-12 md:py-0 flex flex-col gap-5">
-                  {/* 번호 */}
-                  <span className="text-7xl md:text-8xl font-black text-white/[0.06] leading-none select-none">
-                    0{i + 1}
-                  </span>
-                  {/* 구분선 */}
-                  <div className="w-10 h-0.5 bg-sky" />
+                <div className="bg-white/[0.06] rounded-3xl p-9 md:p-10 flex flex-col gap-6 h-full ring-1 ring-white/10">
+                  {/* 번호 + 구분선 */}
+                  <div className="flex items-center gap-4">
+                    <span className="text-4xl font-black text-white/20 leading-none select-none tabular-nums">
+                      0{i + 1}
+                    </span>
+                    <div className="flex-1 h-px bg-white/10" />
+                    <div className="w-6 h-0.5 bg-sky" />
+                  </div>
                   {/* 제목 */}
-                  <h3 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+                  <h3 className="text-2xl font-extrabold text-white tracking-tight">
                     {v.title}
                   </h3>
                   {/* 설명 */}
-                  <p className="text-blue-200/70 text-sm md:text-base leading-relaxed">
+                  <p className="text-blue-200/60 text-sm leading-relaxed mt-auto">
                     {v.desc}
                   </p>
                 </div>
