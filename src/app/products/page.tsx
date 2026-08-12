@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 const categories = [
   {
     name: "샌드위치 패널",
+    eng: "Sandwich Panel",
     desc: "다양한 용도와 환경에 맞는 고품질 샌드위치 패널 라인업",
     products: [
       { name: "징크패널", desc: "고급스러운 외관과 내구성을 갖춘 징크 소재 패널" },
@@ -26,6 +27,7 @@ const categories = [
   },
   {
     name: "성형강판",
+    eng: "Formed Steel",
     desc: "현장 맞춤 성형이 가능한 다양한 강판 제품",
     products: [
       { name: "성형강판", desc: "현장에서 직접 성형하여 이음새 없이 시공 가능한 강판" },
@@ -35,6 +37,7 @@ const categories = [
   },
   {
     name: "부자재",
+    eng: "Accessories",
     desc: "시공 완성도를 높이는 각종 부자재",
     products: [
       { name: "후레싱", desc: "외벽·지붕 마감에 사용되는 금속 마감재" },
@@ -43,6 +46,8 @@ const categories = [
     ],
   },
 ];
+
+const sectionBg = ["bg-white", "bg-navy-dark", "bg-white"];
 
 export default function Products() {
   return (
@@ -55,44 +60,93 @@ export default function Products() {
         imageSrc="/images/solar/ba-after-1.jpg"
       />
 
-      {/* 카테고리별 제품 */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-          {categories.map((cat, ci) => (
-            <Reveal key={cat.name} delay={ci * 0.08}>
-              <div>
-                {/* 카테고리 헤더 */}
-                <div className="flex items-center gap-4 mb-10">
-                  <span className="w-11 h-11 rounded-2xl bg-navy text-white text-sm font-black flex items-center justify-center shrink-0">
-                    0{ci + 1}
-                  </span>
-                  <div className="min-w-0">
-                    <h2 className="text-xl font-extrabold text-gray-900">{cat.name}</h2>
-                    <p className="text-gray-400 text-sm mt-0.5">{cat.desc}</p>
+      {categories.map((cat, ci) => {
+        const isDark = ci === 1;
+        return (
+          <section key={cat.name} className={`py-24 md:py-32 ${sectionBg[ci]}`}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {/* 카테고리 헤더 */}
+              <Reveal>
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-14 pb-6 border-b border-current/10">
+                  <div className="flex items-center gap-5">
+                    <span
+                      className={`text-6xl md:text-7xl font-black leading-none select-none ${
+                        isDark ? "text-white/10" : "text-gray-900/[0.06]"
+                      }`}
+                    >
+                      0{ci + 1}
+                    </span>
+                    <div>
+                      <p
+                        className={`text-xs font-bold tracking-[0.2em] uppercase mb-1 ${
+                          isDark ? "text-sky" : "text-navy"
+                        }`}
+                      >
+                        {cat.eng}
+                      </p>
+                      <h2
+                        className={`text-2xl md:text-3xl font-extrabold tracking-tight ${
+                          isDark ? "text-white" : "text-gray-900"
+                        }`}
+                      >
+                        {cat.name}
+                      </h2>
+                    </div>
                   </div>
-                  <div className="flex-1 hidden sm:block h-px bg-gray-100 ml-1" />
+                  <p
+                    className={`text-sm md:text-base ${
+                      isDark ? "text-blue-200/60" : "text-gray-400"
+                    }`}
+                  >
+                    {cat.desc}
+                  </p>
                 </div>
+              </Reveal>
 
-                {/* 제품 카드 */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {cat.products.map((product, pi) => (
-                    <Reveal key={product.name} delay={pi * 0.04}>
-                      <div className="rounded-2xl bg-mist p-6 hover:bg-navy hover:text-white transition-colors duration-300 group h-full">
-                        <h3 className="font-bold text-gray-900 group-hover:text-white mb-2">
-                          {product.name}
-                        </h3>
-                        <p className="text-sm text-gray-500 group-hover:text-blue-100/70 leading-relaxed">
-                          {product.desc}
-                        </p>
-                      </div>
-                    </Reveal>
-                  ))}
-                </div>
+              {/* 제품 카드 */}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {cat.products.map((product, pi) => (
+                  <Reveal key={product.name} delay={pi * 0.04}>
+                    <div
+                      className={`rounded-2xl p-6 h-full group transition-all duration-300 ${
+                        isDark
+                          ? "bg-white/[0.06] ring-1 ring-white/10 hover:bg-white/10"
+                          : "bg-mist hover:bg-navy hover:text-white"
+                      }`}
+                    >
+                      <p
+                        className={`text-xs font-bold tabular-nums mb-3 ${
+                          isDark
+                            ? "text-sky/70 group-hover:text-sky"
+                            : "text-navy/40 group-hover:text-sky"
+                        }`}
+                      >
+                        {String(ci + 1).padStart(2, "0")} — {String(pi + 1).padStart(2, "0")}
+                      </p>
+                      <h3
+                        className={`font-bold mb-2 ${
+                          isDark ? "text-white" : "text-gray-900 group-hover:text-white"
+                        }`}
+                      >
+                        {product.name}
+                      </h3>
+                      <p
+                        className={`text-sm leading-relaxed ${
+                          isDark
+                            ? "text-blue-200/60"
+                            : "text-gray-500 group-hover:text-blue-100/70"
+                        }`}
+                      >
+                        {product.desc}
+                      </p>
+                    </div>
+                  </Reveal>
+                ))}
               </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+            </div>
+          </section>
+        );
+      })}
 
       {/* CTA */}
       <section className="bg-mist py-20">
