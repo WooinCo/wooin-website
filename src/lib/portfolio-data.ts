@@ -107,7 +107,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 10,
-    title: '원주 신축공사 (우인모노루프)',
+    title: '원주 신축공사 우인모노루프',
     category: '신축공사',
     type: 'image',
     src: '/portfolio/wonju-after.png',
