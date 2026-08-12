@@ -44,14 +44,6 @@ export default function PageBanner({
             <div className="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-navy/40 blur-3xl" />
           </>
         )}
-        <div
-          className="absolute inset-0 opacity-[0.05]"
-          style={{
-            backgroundImage:
-              "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
-            backgroundSize: "48px 48px",
-          }}
-        />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-24">
