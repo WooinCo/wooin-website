@@ -26,7 +26,7 @@ export const portfolioCategories: PortfolioCategory[] = [
 export const portfolioItems: PortfolioItem[] = [
   {
     id: 1,
-    title: '평택 사업장 신축공사',
+    title: '평택 신축공사',
     category: '신축공사',
     type: 'image',
     src: '/portfolio/1.png',
@@ -35,7 +35,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 2,
-    title: '라도무스 증축공사',
+    title: '대전 증축공사',
     category: '증축·리모델링',
     type: 'image',
     src: '/portfolio/2.png',
@@ -44,7 +44,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 3,
-    title: '태림포장 리모델링 및 솔라루프',
+    title: '마산 리모델링 및 솔라루프',
     category: '보수·개보수',
     type: 'image',
     src: '/portfolio/taerim.png',
@@ -53,7 +53,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 4,
-    title: '주덕자원순환센터 신축공사',
+    title: '충주 신축공사',
     category: '신축공사',
     type: 'image',
     src: '/portfolio/3.png',
@@ -62,7 +62,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 5,
-    title: '필링크 신축공사',
+    title: '화성 신축공사',
     category: '신축공사',
     type: 'image',
     src: '/portfolio/KakaoTalk_20251210_134119629_04.jpg',
@@ -71,7 +71,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 6,
-    title: '오비맥주 물류창고 신축공사',
+    title: '광주 신축공사',
     category: '신축공사',
     type: 'image',
     src: '/portfolio/mokdong.png',
@@ -80,7 +80,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 7,
-    title: '엘에스화장품 신축공사',
+    title: '인천 신축공사',
     category: '신축공사',
     type: 'image',
     src: '/portfolio/ls-cosmetics.jpg',
@@ -89,7 +89,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 8,
-    title: '에이맥스 신축공사',
+    title: '평택 신축공사',
     category: '신축공사',
     type: 'image',
     src: '/portfolio/amax.jpg',
@@ -98,7 +98,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 9,
-    title: '저스템 증축공사',
+    title: '화성 증축공사',
     category: '증축·리모델링',
     type: 'image',
     src: '/portfolio/4.png',
@@ -114,6 +114,15 @@ export const portfolioItems: PortfolioItem[] = [
     beforeSrc: '/portfolio/wonju-before.png',
     location: '강원 원주',
     year: 2025,
+  },
+  {
+    id: 11,
+    title: '서산 신축 강판공사',
+    category: '신축공사',
+    type: 'image',
+    src: '/portfolio/KakaoTalk_20260422_150256987.jpg',
+    location: '충남 서산',
+    year: 2026,
   },
 ];
 
