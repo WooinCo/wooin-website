@@ -115,13 +115,13 @@ export default function Products() {
                       }`}
                     >
                       <p
-                        className={`text-xs font-bold tabular-nums mb-3 ${
+                        className={`text-xs font-bold tabular-nums mb-3 tracking-widest ${
                           isDark
                             ? "text-sky/70 group-hover:text-sky"
                             : "text-navy/40 group-hover:text-sky"
                         }`}
                       >
-                        {String(ci + 1).padStart(2, "0")} — {String(pi + 1).padStart(2, "0")}
+                        No. {String(pi + 1).padStart(2, "0")}
                       </p>
                       <h3
                         className={`font-bold mb-2 ${
