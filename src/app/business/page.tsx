@@ -158,7 +158,7 @@ export default function Business() {
 
       {/* CTA */}
       <section className="relative py-28 overflow-hidden">
-        <Image src="/images/warehouse.jpg" alt="" fill className="object-cover" />
+        <Image src="/images/solar/솔라애프터.png" alt="" fill className="object-cover object-top" />
         <div className="absolute inset-0 bg-navy-dark/85" />
         <div className="relative max-w-3xl mx-auto px-4 text-center">
           <Reveal>

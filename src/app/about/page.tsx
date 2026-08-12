@@ -90,25 +90,47 @@ export default function About() {
       </section>
 
       {/* ── 핵심 가치 ── */}
-      <section className="py-24 md:py-32 bg-mist">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="text-center mb-14">
-            <p className="text-navy font-bold text-sm tracking-[0.2em] uppercase mb-3">
+      <section className="relative py-28 md:py-36 bg-navy-dark overflow-hidden">
+        {/* 배경 장식 */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-32 -left-32 w-[36rem] h-[36rem] rounded-full bg-navy/60 blur-3xl" />
+          <div className="absolute -bottom-20 right-0 w-[28rem] h-[28rem] rounded-full bg-sky/10 blur-3xl" />
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage:
+                "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
+              backgroundSize: "48px 48px",
+            }}
+          />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="text-center mb-16">
+            <p className="text-sky font-bold text-sm tracking-[0.25em] uppercase mb-4">
               Core Value
             </p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
               우인산업이 지키는 가치
             </h2>
           </Reveal>
-          <div className="grid md:grid-cols-3 gap-7">
+
+          <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
             {values.map((v, i) => (
-              <Reveal key={v.title} delay={i * 0.12}>
-                <div className="bg-white rounded-3xl p-9 text-center shadow-[0_8px_30px_rgba(15,31,77,0.06)] h-full">
-                  <div className="text-5xl mb-5">{v.icon}</div>
-                  <h3 className="text-xl font-extrabold text-gray-900 mb-3">
+              <Reveal key={v.title} delay={i * 0.14}>
+                <div className="px-8 py-10 md:px-12 md:py-0 flex flex-col gap-5">
+                  {/* 번호 */}
+                  <span className="text-7xl md:text-8xl font-black text-white/[0.06] leading-none select-none">
+                    0{i + 1}
+                  </span>
+                  {/* 구분선 */}
+                  <div className="w-10 h-0.5 bg-sky" />
+                  {/* 제목 */}
+                  <h3 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
                     {v.title}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">
+                  {/* 설명 */}
+                  <p className="text-blue-200/70 text-sm md:text-base leading-relaxed">
                     {v.desc}
                   </p>
                 </div>
