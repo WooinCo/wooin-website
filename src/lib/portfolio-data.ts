@@ -39,7 +39,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: '증축·리모델링',
     type: 'image',
     src: '/portfolio/2.png',
-    location: '대전',
+    location: '대전광역시',
     year: 2025,
   },
   {
@@ -84,7 +84,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: '신축공사',
     type: 'image',
     src: '/portfolio/ls-cosmetics.jpg',
-    location: '인천',
+    location: '인천광역시',
     year: 2024,
   },
   {
