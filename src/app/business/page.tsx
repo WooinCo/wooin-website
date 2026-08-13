@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const services = [
   {
     id: "newbuild",
-    img: "/portfolio/1.png",
+    img: "/portfolio/mokdong.png",
     eng: "NEW CONSTRUCTION",
     title: "신축공사",
     desc: "신축 현장에서 외벽·지붕 판넬 시공을 주력으로 담당합니다. 창호 시공도 함께 진행하며, 현장 여건에 따라 철골 구조물 시공까지 책임집니다. 공장·창고·물류센터 등 산업용 건축물의 외피(외장)를 전문으로 합니다.",
