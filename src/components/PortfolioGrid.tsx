@@ -63,7 +63,7 @@ export default function PortfolioGrid() {
               onClick={() => handleFilter(cat)}
               className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all ${
                 active === cat
-                  ? "bg-[#1C3177] text-white shadow-md"
+                  ? "bg-navy text-white shadow-md"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
@@ -120,7 +120,7 @@ export default function PortfolioGrid() {
               onClick={() => setPage(p)}
               className={`w-10 h-10 rounded-full text-sm font-semibold transition-all ${
                 p === page
-                  ? "bg-[#1C3177] text-white shadow-md"
+                  ? "bg-navy text-white shadow-md"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >

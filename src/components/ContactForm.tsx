@@ -90,16 +90,16 @@ export default function ContactForm() {
     return (
       <div className="text-center py-16">
         <div className="text-6xl mb-4">✅</div>
-        <h3 className="text-2xl font-bold text-[#1C3177] mb-3">문의가 접수되었습니다</h3>
+        <h3 className="text-2xl font-bold text-navy mb-3">문의가 접수되었습니다</h3>
         <p className="text-gray-600 mb-2">빠른 시일 내에 연락드리겠습니다. 감사합니다.</p>
         <p className="text-sm text-gray-400 mb-8">
           급한 문의는{" "}
-          <a href="tel:031-662-7890" className="text-[#1C3177] font-semibold">
+          <a href="tel:031-662-7890" className="text-navy font-semibold">
             031-662-7890
           </a>
           으로 전화 주세요.
         </p>
-        <button onClick={() => setStatus("idle")} className="text-[#1C3177] underline text-sm">
+        <button onClick={() => setStatus("idle")} className="text-navy underline text-sm">
           다시 문의하기
         </button>
       </div>
@@ -107,7 +107,7 @@ export default function ContactForm() {
   }
 
   const inputClass =
-    "w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#1C3177] focus:border-transparent transition";
+    "w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent transition";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
@@ -236,8 +236,8 @@ export default function ContactForm() {
           onClick={() => fileInputRef.current?.click()}
           className={`border-2 border-dashed rounded-xl px-4 py-6 text-center cursor-pointer transition-colors ${
             dragOver
-              ? "border-[#1C3177] bg-blue-50"
-              : "border-gray-300 hover:border-[#1C3177] hover:bg-gray-50"
+              ? "border-navy bg-blue-50"
+              : "border-gray-300 hover:border-navy hover:bg-gray-50"
           }`}
         >
           <div className="text-2xl mb-1">📎</div>
@@ -302,7 +302,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full bg-[#1C3177] text-white py-4 rounded-xl font-bold text-base hover:bg-[#0d1b4b] disabled:opacity-60 transition-colors"
+        className="w-full bg-navy text-white py-4 rounded-xl font-bold text-base hover:bg-navy-dark disabled:opacity-60 transition-colors"
       >
         {status === "loading" ? "전송 중..." : "견적 문의 보내기"}
       </button>

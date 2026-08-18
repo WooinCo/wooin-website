@@ -109,7 +109,7 @@ export default function Header() {
                       {link.label}
                       <Caret className="transition-transform duration-200 group-hover:rotate-180" />
                       <span
-                        className={`absolute left-4 right-4 -bottom-0.5 h-0.5 rounded-full transition-transform duration-300 origin-left ${
+                        className={`absolute left-4 right-4 -bottom-0.5 h-[3px] rounded-full transition-transform duration-300 origin-left ${
                           transparent ? "bg-white" : "bg-navy"
                         } ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
                       />
@@ -164,7 +164,7 @@ export default function Header() {
                 >
                   {link.label}
                   <span
-                    className={`absolute left-4 right-4 -bottom-0.5 h-0.5 rounded-full transition-transform duration-300 origin-left ${
+                    className={`absolute left-4 right-4 -bottom-0.5 h-[3px] rounded-full transition-transform duration-300 origin-left ${
                       transparent ? "bg-white" : "bg-navy"
                     } ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
                   />
