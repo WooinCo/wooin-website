@@ -175,11 +175,15 @@ export default function ContactForm() {
               <option value="신축 - 강판공사">강판공사</option>
               <option value="신축 - 솔라루프">솔라루프</option>
             </optgroup>
-            <optgroup label="증축·보수공사">
-              <option value="증축·보수 - 판넬공사">판넬공사</option>
-              <option value="증축·보수 - 지붕공사">지붕공사</option>
-              <option value="증축·보수 - 강판공사">강판공사</option>
-              <option value="증축·보수 - 솔라루프">솔라루프</option>
+            <optgroup label="증축·리모델링">
+              <option value="증축·리모델링 - 판넬공사">판넬공사</option>
+              <option value="증축·리모델링 - 지붕공사">지붕공사</option>
+              <option value="증축·리모델링 - 강판공사">강판공사</option>
+            </optgroup>
+            <optgroup label="보수·개보수">
+              <option value="보수 - 지붕 누수·방수">지붕 누수·방수</option>
+              <option value="보수 - 판넬 교체">판넬 교체</option>
+              <option value="보수 - 강판·외벽 보수">강판·외벽 보수</option>
             </optgroup>
             <option value="기타">기타</option>
           </select>
