@@ -89,9 +89,9 @@ export default function Home() {
             className="hero-fade text-base sm:text-lg text-blue-50/80 mt-7 max-w-xl leading-relaxed"
             style={{ animationDelay: "0.4s" }}
           >
-            판넬공사 · 지붕공사 · 강판공사 전문 기업.
+            공장, 창고, 물류센터 —
             <br />
-            정직한 시공과 책임감으로 고객의 신뢰에 보답합니다.
+            외벽부터 지붕까지 전 공정을 직접 책임집니다.
           </p>
           <div
             className="hero-fade flex flex-col sm:flex-row gap-4 mt-10"
