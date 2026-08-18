@@ -169,10 +169,18 @@ export default function ContactForm() {
             className={`${inputClass} bg-white`}
           >
             <option value="">공사 종류를 선택해주세요</option>
-            <option value="판넬공사">판넬공사</option>
-            <option value="지붕공사">지붕공사</option>
-            <option value="강판공사">강판공사</option>
-            <option value="솔라루프">솔라루프</option>
+            <optgroup label="신축공사">
+              <option value="신축 - 판넬공사">판넬공사</option>
+              <option value="신축 - 지붕공사">지붕공사</option>
+              <option value="신축 - 강판공사">강판공사</option>
+              <option value="신축 - 솔라루프">솔라루프</option>
+            </optgroup>
+            <optgroup label="증축·보수공사">
+              <option value="증축·보수 - 판넬공사">판넬공사</option>
+              <option value="증축·보수 - 지붕공사">지붕공사</option>
+              <option value="증축·보수 - 강판공사">강판공사</option>
+              <option value="증축·보수 - 솔라루프">솔라루프</option>
+            </optgroup>
             <option value="기타">기타</option>
           </select>
         </div>
