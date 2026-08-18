@@ -124,6 +124,24 @@ export const portfolioItems: PortfolioItem[] = [
     location: '충남 서산',
     year: 2026,
   },
+  {
+    id: 12,
+    title: '인천 증축공사',
+    category: '증축·리모델링',
+    type: 'image',
+    src: '/portfolio/daeduk-gas.jpg',
+    location: '인천광역시',
+    year: 2023,
+  },
+  {
+    id: 13,
+    title: '용인 신축공사',
+    category: '신축공사',
+    type: 'image',
+    src: '/portfolio/yongin-jubukri.jpg',
+    location: '경기 용인',
+    year: 2021,
+  },
 ];
 
 export const youtubeVideos: { id: string; title: string }[] = [
