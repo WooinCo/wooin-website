@@ -1,7 +1,7 @@
 export type PortfolioCategory =
   | '신축공사'
-  | '증축·리모델링'
-  | '보수·개보수';
+  | '증축·보수·리모델링'
+  | '태양광';
 
 export interface PortfolioItem {
   id: number;
@@ -19,8 +19,8 @@ export interface PortfolioItem {
 // 필터 탭에 표시할 카테고리 순서
 export const portfolioCategories: PortfolioCategory[] = [
   '신축공사',
-  '증축·리모델링',
-  '보수·개보수',
+  '증축·보수·리모델링',
+  '태양광',
 ];
 
 export const portfolioItems: PortfolioItem[] = [
@@ -36,7 +36,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 2,
     title: '대전 증축공사',
-    category: '증축·리모델링',
+    category: '증축·보수·리모델링',
     type: 'image',
     src: '/portfolio/2.png',
     location: '대전광역시',
@@ -45,7 +45,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 3,
     title: '마산 리모델링 우인솔라루프',
-    category: '보수·개보수',
+    category: '태양광',
     type: 'image',
     src: '/portfolio/taerim.png',
     location: '경남 마산',
@@ -99,7 +99,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 9,
     title: '화성 증축공사',
-    category: '증축·리모델링',
+    category: '증축·보수·리모델링',
     type: 'image',
     src: '/portfolio/4.png',
     location: '경기 화성',
@@ -127,7 +127,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 12,
     title: '인천 증축공사',
-    category: '증축·리모델링',
+    category: '증축·보수·리모델링',
     type: 'image',
     src: '/portfolio/daeduk-gas.jpg',
     location: '인천광역시',
