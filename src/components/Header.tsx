@@ -239,7 +239,11 @@ export default function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className={`w-8 h-8 rounded-full ${s.bg} flex items-center justify-center shrink-0 hover:scale-110 transition-transform`}
+                  className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 hover:scale-110 transition-all ${
+                    transparent
+                      ? "bg-white/20 hover:bg-white/35"
+                      : `${s.bg} opacity-80 hover:opacity-100`
+                  }`}
                 >
                   {s.icon}
                 </a>
