@@ -12,7 +12,7 @@ const partners = [
   { name: "LG화학", group: "LG그룹", logo: null },
   { name: "코오롱글로벌(주)", group: "코오롱그룹", logo: null },
   { name: "(주) 티시스", group: "태광그룹", logo: "/partners/tsis.png" },
-  { name: "(주) 동원건설산업", group: "동원그룹", logo: null },
+  { name: "(주) 동원건설산업", group: "동원그룹", logo: "/partners/dongwon.png" },
   { name: "(주) 아이마켓코리아", group: null, logo: "/partners/imarketkorea.png" },
   { name: "아벤종합건설(주)", group: "동아쏘시오그룹", logo: "/partners/aben.png" },
   { name: "(주) 벨이앤씨", group: "중근당그룹", logo: "/partners/bell.gif" },
