@@ -52,7 +52,7 @@ export default function Partners() {
             </h2>
             <p className="text-gray-500 mt-6 max-w-2xl mx-auto leading-relaxed">
               우인산업은 단순한 협력을 넘어 <strong className="text-gray-800">상생</strong>의 관계를 추구합니다.
-              파트너사와 함께 기술을 나누고 신뢰를 쌓으며, 모두가 함께 성장하는 건축 생태계를 만들어갑니다.
+              파트너사와 함께 기술을 나누고 신뢰를 쌓으며, 모두가 <strong className="text-gray-800">함께 성장하는 건축 생태계</strong>를 만들어갑니다.
             </p>
           </Reveal>
 
