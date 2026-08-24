@@ -16,7 +16,7 @@ const partners = [
   { name: "(주) 아이마켓코리아", group: null, logo: "/partners/imarketkorea.png" },
   { name: "아벤종합건설(주)", group: "동아쏘시오그룹", logo: "/partners/aben.png" },
   { name: "(주) 벨이앤씨", group: "중근당그룹", logo: "/partners/bell.gif" },
-  { name: "(주) 화성산업", group: null, logo: "/partners/hwasung.jpg" },
+  { name: "(주) 화성산업", group: null, logo: "/partners/hwasung2.png" },
   { name: "(주) 보미건설", group: null, logo: "/partners/bomi.png" },
   { name: "(주) 세웅종합건설", group: null, logo: "/partners/sewoong.png" },
   { name: "(주) 현승종합건설", group: null, logo: "/partners/hyunseung3.png" },
