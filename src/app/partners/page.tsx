@@ -53,15 +53,17 @@ export default function Partners() {
             {partners.map((partner, i) => (
               <Reveal key={partner.name} delay={i * 0.05}>
                 <div className="bg-white border border-gray-100 rounded-2xl p-6 flex flex-col items-center justify-center gap-3 shadow-sm hover:shadow-md transition-shadow aspect-[4/3]">
-                  <div className="relative w-36 h-14 shrink-0">
+                  <div className="w-40 h-16 shrink-0 p-3 flex items-center justify-center">
                     {partner.logo ? (
-                      <Image
-                        src={partner.logo}
-                        alt={partner.name}
-                        fill
-                        sizes="144px"
-                        className="object-contain"
-                      />
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={partner.logo}
+                          alt={partner.name}
+                          fill
+                          sizes="128px"
+                          className="object-contain"
+                        />
+                      </div>
                     ) : (
                       <div className="w-full h-full bg-gray-100 rounded-lg" />
                     )}
