@@ -7,7 +7,7 @@ import Reveal from "@/components/Reveal";
 export const metadata: Metadata = {
   title: "사업영역 | (주)우인산업",
   description:
-    "우인산업의 신축공사, 증축·리모델링, 보수·개보수 사업을 소개합니다. 철골·판넬·지붕·강판까지 전 공정 직접 시공.",
+    "우인산업의 신축공사, 증축·보수·리모델링, 태양광(솔라루프) 사업을 소개합니다. 철골·판넬·지붕·강판까지 전 공정 직접 시공.",
 };
 
 const services = [
@@ -29,31 +29,31 @@ const services = [
   {
     id: "remodel",
     img: "/portfolio/2.png",
-    eng: "EXTENSION & REMODELING",
-    title: "증축·리모델링",
-    desc: "운영 중인 건물의 증축과 리모델링을 안전하게 진행합니다. 기존 구조와의 연결을 고려한 철골 증축, 외벽·지붕 교체, 단열 보강 등으로 공간을 확장하고 노후 건물을 새것처럼 되살립니다.",
+    eng: "EXTENSION, REPAIR & REMODELING",
+    title: "증축·보수·리모델링",
+    desc: "운영 중인 건물의 증축·리모델링부터 노후 지붕·외벽의 누수·부식 보수까지 함께 진행합니다. 기존 구조와의 연결을 고려한 철골 증축, 외벽·지붕 교체, 단열 보강, 정밀 진단 후 방수·부분 보수까지 건물 상태에 맞는 최적의 솔루션을 제공합니다.",
     features: [
       "철골 증축 골조",
       "외벽 판넬 교체·보강",
       "지붕 개량·교체",
-      "단열 성능 개선",
-      "내부 구조 변경",
+      "지붕 누수·방수 보수",
+      "강판·외벽 보수",
       "무중단(NON-STOP) 시공",
     ],
   },
   {
-    id: "repair",
-    img: "/portfolio/taerim.png",
-    eng: "REPAIR & MAINTENANCE",
-    title: "보수·개보수",
-    desc: "노후된 지붕과 외벽의 누수·부식 문제를 근본부터 해결합니다. 정밀 진단 후 지붕 방수, 판넬·강판 교체, 부분 보수까지 건물 상태에 맞는 최적의 보수 솔루션을 제공합니다.",
+    id: "solar",
+    img: "/images/solar/hero-main.png",
+    eng: "SOLAR ROOF",
+    title: "태양광(솔라루프)",
+    desc: "지붕 방수와 태양광 발전을 하나의 시스템으로 해결하는 우인솔라루프 WP-sr330. 볼트리스 구조로 누수 문제를 원천 차단하고, 자체 성형기를 보유해 현장에서 바로 생산·시공하는 NON-STOP 공정을 제공합니다.",
     features: [
-      "지붕 누수·방수 보수",
-      "노후 판넬 교체",
-      "강판·외벽 보수",
-      "부식·도장 보수",
-      "부분 구조 보강",
-      "정기 유지보수",
+      "볼트리스 구조 (누수 원천 차단)",
+      "태양광 발전 일체형",
+      "현장 생산·즉시 시공",
+      "KCL 인증 내구성",
+      "풍동 50m/s 이상 통과",
+      "인발력 10kN 이상 통과",
     ],
   },
 ];
@@ -64,7 +64,7 @@ export default function Business() {
       <PageBanner
         eyebrow="Our Business"
         title="사업영역"
-        subtitle="신축부터 증축·리모델링, 보수까지 — 철골·판넬·지붕·강판 전 공정을 직접 시공합니다."
+        subtitle="신축부터 증축·보수·리모델링, 태양광(솔라루프)까지 — 철골·판넬·지붕·강판 전 공정을 직접 시공합니다."
         current="사업영역"
         imageSrc="/images/solar/ba-after-1.jpg"
       />
@@ -144,12 +144,22 @@ export default function Business() {
                   </div>
                 </div>
 
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 mt-9 px-7 py-3.5 rounded-full bg-navy text-white font-bold text-sm hover:bg-navy-dark transition-colors"
-                >
-                  {service.title} 견적 문의하기 <span>→</span>
-                </Link>
+                <div className="flex flex-wrap items-center gap-3 mt-9">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-navy text-white font-bold text-sm hover:bg-navy-dark transition-colors"
+                  >
+                    {service.title} 견적 문의하기 <span>→</span>
+                  </Link>
+                  {service.id === "solar" && (
+                    <Link
+                      href="/solar"
+                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border-2 border-navy text-navy font-bold text-sm hover:bg-sky transition-colors"
+                    >
+                      솔라루프 자세히 보기 <span>→</span>
+                    </Link>
+                  )}
+                </div>
               </Reveal>
             </div>
           </div>

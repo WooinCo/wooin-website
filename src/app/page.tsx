@@ -14,17 +14,17 @@ const services = [
   },
   {
     img: "/portfolio/2.png",
-    eng: "EXTENSION & REMODELING",
-    title: "증축·리모델링",
-    desc: "운영 중인 건물의 증축과 리모델링. 외벽·지붕 교체와 단열 보강으로 공간을 확장하고 되살립니다.",
+    eng: "EXTENSION, REPAIR & REMODELING",
+    title: "증축·보수·리모델링",
+    desc: "운영 중인 건물의 증축·리모델링과 노후 지붕·외벽의 누수·부식 보수까지, 공간을 확장하고 건물을 되살립니다.",
     href: "/business#remodel",
   },
   {
-    img: "/portfolio/taerim.png",
-    eng: "REPAIR & MAINTENANCE",
-    title: "보수·개보수",
-    desc: "노후 지붕·외벽의 누수·부식을 근본부터 해결하는 건물 맞춤 보수 솔루션을 제공합니다.",
-    href: "/business#repair",
+    img: "/images/solar/hero-main.png",
+    eng: "SOLAR ROOF",
+    title: "태양광(솔라루프)",
+    desc: "지붕 방수와 태양광 발전을 하나로 해결하는 우인솔라루프 WP-sr330. 볼트리스 구조로 누수를 원천 차단합니다.",
+    href: "/solar",
   },
 ];
 
