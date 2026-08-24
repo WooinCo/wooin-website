@@ -39,7 +39,6 @@ const navLinks: NavLink[] = [
     ],
   },
   { href: "/portfolio", label: "포트폴리오" },
-  { href: "/contact", label: "견적문의" },
 ];
 
 // 드롭다운 화살표
