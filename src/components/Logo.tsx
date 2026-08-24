@@ -17,7 +17,7 @@ export default function Logo({
         alt="(주)우인산업 로고"
         width={1183}
         height={382}
-        className="h-10 w-auto"
+        className="h-14 w-auto"
         priority
       />
     </div>
