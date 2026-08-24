@@ -33,7 +33,7 @@ const navLinks: NavLink[] = [
       {
         title: "태양광(솔라루프)",
         items: [
-          { href: "/solar", label: "솔라루프 WP-sr330" },
+          { href: "/solar", label: "솔라루프" },
         ],
       },
     ],
