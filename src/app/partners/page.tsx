@@ -8,7 +8,9 @@ export const metadata: Metadata = {
   description: "우인산업의 협력기업 현황입니다.",
 };
 
-const partners = [
+type Partner = { name: string; group: string | null; logo: string; scale?: number };
+
+const partners: Partner[] = [
   { name: "LG화학", group: "LG그룹", logo: "/partners/lg.png" },
   { name: "코오롱글로벌(주)", group: "코오롱그룹", logo: "/partners/kolon.png" },
   { name: "(주) 티시스", group: "태광그룹", logo: "/partners/tsis.png" },
