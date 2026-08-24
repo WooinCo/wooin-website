@@ -29,7 +29,7 @@ export default function Partners() {
       <PageBanner
         eyebrow="Partnership"
         title="협력사"
-        subtitle="우인산업은 신뢰할 수 있는 파트너사와 함께 더 견고한 건축 솔루션을 완성해 나갑니다."
+        subtitle="상생의 파트너십으로 더 나은 건축 솔루션을 만들어갑니다."
         current="협력사"
         imageSrc="/images/building.png"
       />
@@ -43,6 +43,10 @@ export default function Partners() {
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
               (주)우인산업 협력기업 현황
             </h2>
+            <p className="text-gray-500 mt-6 max-w-2xl mx-auto leading-relaxed">
+              우인산업은 단순한 협력을 넘어 <strong className="text-gray-800">상생</strong>의 관계를 추구합니다.
+              파트너사와 함께 기술을 나누고 신뢰를 쌓으며, 모두가 함께 성장하는 건축 생태계를 만들어갑니다.
+            </p>
           </Reveal>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
