@@ -57,7 +57,7 @@ const navLinks: NavLink[] = [
         ],
       },
       {
-        title: "증축·보수·리모델링",
+        title: "리모델링",
         items: [
           { href: "/business#remodel", label: "증축·리모델링" },
           { href: "/business#repair", label: "보수·개보수" },
