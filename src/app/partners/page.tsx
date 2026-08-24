@@ -18,7 +18,7 @@ type Partner = { name: string; group: string | null; logo: string; scale: number
 const partners: Partner[] = [
   { name: "LG화학", group: "LG그룹", logo: "/partners/lg.png", scale: 1.02 },
   { name: "코오롱글로벌(주)", group: "코오롱그룹", logo: "/partners/kolon.png", scale: 1.3 },
-  { name: "(주) 티시스", group: "태광그룹", logo: "/partners/tsis.png", scale: 0.73 },
+  { name: "(주) 티시스", group: "태광그룹", logo: "/partners/tsis-logo.png", scale: 0.93 },
   { name: "(주) 동원건설산업", group: "동원그룹", logo: "/partners/dongwon.png", scale: 0.91 },
   { name: "(주) 아이마켓코리아", group: null, logo: "/partners/imarketkorea.png", scale: 1.13 },
   { name: "아벤종합건설(주)", group: "동아쏘시오그룹", logo: "/partners/aben.png", scale: 0.98 },
