@@ -13,32 +13,26 @@ export const metadata: Metadata = {
 
 const features = [
   {
-    icon: "🧱",
     title: "외벽 샌드위치 판넬",
     desc: "단열·차음 성능을 갖춘 샌드위치 판넬로 외벽을 정밀하게 시공합니다.",
   },
   {
-    icon: "🏠",
     title: "지붕 판넬 시공",
     desc: "현장 여건에 맞는 지붕 판넬로 방수와 단열을 동시에 완성합니다.",
   },
   {
-    icon: "🪟",
     title: "창호(샤시) 시공",
     desc: "건물 용도에 맞는 창호 시공을 함께 진행해 마감 품질을 높입니다.",
   },
   {
-    icon: "⚙️",
     title: "강판 외장·마감",
     desc: "강판 외장재로 내구성과 심미성을 모두 갖춘 마감을 완성합니다.",
   },
   {
-    icon: "🏗️",
     title: "철골 구조물 시공",
     desc: "현장에 따라 철골 구조물 시공까지 직접 담당해 책임 시공합니다.",
   },
   {
-    icon: "🛡️",
     title: "단열·방수 마감",
     desc: "정밀한 단열·방수 마감으로 완공 이후까지 성능을 보장합니다.",
   },
@@ -83,7 +77,9 @@ export default function Newbuild() {
             {features.map((f, i) => (
               <Reveal key={f.title} delay={i * 0.08}>
                 <div className="rounded-3xl bg-mist p-8 h-full hover:bg-navy hover:text-white transition-colors duration-300 group">
-                  <div className="text-4xl mb-5">{f.icon}</div>
+                  <div className="text-sm font-extrabold text-navy-light group-hover:text-blue-300 tracking-[0.2em] mb-4">
+                    0{i + 1}
+                  </div>
                   <h3 className="text-lg font-extrabold text-gray-900 group-hover:text-white mb-2">
                     {f.title}
                   </h3>
