@@ -8,21 +8,26 @@ export const metadata: Metadata = {
   description: "우인산업의 협력기업 현황입니다.",
 };
 
-type Partner = { name: string; group: string | null; logo: string; scale?: number };
+type Partner = { name: string; group: string | null; logo: string; scale: number };
 
+/**
+ * scale — 로고 파일마다 내부 여백이 0~74%로 제각각이라, 같은 박스에 넣어도
+ * 실제 보이는 크기가 5배까지 차이 남. 각 파일의 잉크 영역(여백 제외)을 재서
+ * 시각적 면적이 균일해지도록 보정한 값.
+ */
 const partners: Partner[] = [
-  { name: "LG화학", group: "LG그룹", logo: "/partners/lg.png" },
-  { name: "코오롱글로벌(주)", group: "코오롱그룹", logo: "/partners/kolon.png" },
-  { name: "(주) 티시스", group: "태광그룹", logo: "/partners/tsis.png" },
-  { name: "(주) 동원건설산업", group: "동원그룹", logo: "/partners/dongwon.png" },
-  { name: "(주) 아이마켓코리아", group: null, logo: "/partners/imarketkorea.png" },
-  { name: "아벤종합건설(주)", group: "동아쏘시오그룹", logo: "/partners/aben.png" },
-  { name: "(주) 벨이앤씨", group: "중근당그룹", logo: "/partners/bell.gif" },
-  { name: "(주) 화성산업", group: null, logo: "/partners/hwasung2.png" },
-  { name: "(주) 보미건설", group: null, logo: "/partners/bomi.png", scale: 0.6 },
-  { name: "(주) 세웅종합건설", group: null, logo: "/partners/sewoong.png" },
-  { name: "(주) 현승종합건설", group: null, logo: "/partners/hyunseung3.png" },
-  { name: "에스엠디자인", group: null, logo: "/partners/sm3.png" },
+  { name: "LG화학", group: "LG그룹", logo: "/partners/lg.png", scale: 1.02 },
+  { name: "코오롱글로벌(주)", group: "코오롱그룹", logo: "/partners/kolon.png", scale: 1.3 },
+  { name: "(주) 티시스", group: "태광그룹", logo: "/partners/tsis.png", scale: 0.73 },
+  { name: "(주) 동원건설산업", group: "동원그룹", logo: "/partners/dongwon.png", scale: 0.91 },
+  { name: "(주) 아이마켓코리아", group: null, logo: "/partners/imarketkorea.png", scale: 1.13 },
+  { name: "아벤종합건설(주)", group: "동아쏘시오그룹", logo: "/partners/aben.png", scale: 0.98 },
+  { name: "(주) 벨이앤씨", group: "중근당그룹", logo: "/partners/bell.gif", scale: 0.82 },
+  { name: "(주) 화성산업", group: null, logo: "/partners/hwasung-logo.png", scale: 1.09 },
+  { name: "(주) 보미건설", group: null, logo: "/partners/bomi-logo.png", scale: 1.06 },
+  { name: "(주) 세웅종합건설", group: null, logo: "/partners/sewoong.png", scale: 0.67 },
+  { name: "(주) 현승종합건설", group: null, logo: "/partners/hyunseung-logo.png", scale: 0.93 },
+  { name: "에스엠디자인", group: null, logo: "/partners/sm-logo.png", scale: 1.04 },
 ];
 
 export default function Partners() {
@@ -55,19 +60,15 @@ export default function Partners() {
             {partners.map((partner, i) => (
               <Reveal key={partner.name} delay={i * 0.05}>
                 <div className="bg-white border border-gray-100 rounded-2xl p-6 flex flex-col items-center justify-center gap-3 shadow-sm hover:shadow-md transition-shadow aspect-[4/3]">
-                  <div className="w-36 h-16 shrink-0 flex items-center justify-center">
-                    {partner.logo ? (
-                      <Image
-                        src={partner.logo}
-                        alt={partner.name}
-                        width={120}
-                        height={56}
-                        className="max-w-[120px] max-h-14 w-auto h-auto object-contain mix-blend-multiply"
-                        style={partner.scale ? { transform: `scale(${partner.scale})` } : undefined}
-                      />
-                    ) : (
-                      <div className="w-20 h-8 bg-gray-100 rounded-lg" />
-                    )}
+                  <div className="w-40 h-16 shrink-0 flex items-center justify-center">
+                    <Image
+                      src={partner.logo}
+                      alt={partner.name}
+                      width={120}
+                      height={56}
+                      className="max-w-[120px] max-h-14 w-auto h-auto object-contain"
+                      style={{ transform: `scale(${partner.scale})` }}
+                    />
                   </div>
                   <div className="text-center">
                     <p className="font-bold text-gray-800 text-sm leading-snug">
