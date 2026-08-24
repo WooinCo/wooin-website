@@ -53,7 +53,6 @@ const navLinks: NavLink[] = [
         title: "건축공사",
         items: [
           { href: "/business#newbuild", label: "신축공사" },
-          { href: "/products", label: "제품소개", sub: true },
         ],
       },
       {
@@ -71,6 +70,7 @@ const navLinks: NavLink[] = [
       },
     ],
   },
+  { href: "/products", label: "제품소개" },
   { href: "/portfolio", label: "포트폴리오" },
 ];
 
@@ -135,7 +135,7 @@ export default function Header() {
             {navLinks.map((link) => {
               // ── 사업영역: 2단 메가메뉴 ──
               if (link.mega) {
-                const active = pathname === "/business" || pathname === "/products" || pathname === "/solar";
+                const active = pathname === "/business" || pathname === "/solar";
                 return (
                   <div key={link.label} className="relative group">
                     <Link
@@ -304,7 +304,7 @@ export default function Header() {
           {navLinks.map((link) => {
             // ── 사업영역: 모바일 아코디언 ──
             if (link.mega) {
-              const active = pathname === "/business" || pathname === "/products" || pathname === "/solar";
+              const active = pathname === "/business" || pathname === "/solar";
               return (
                 <div key={link.label}>
                   <button
