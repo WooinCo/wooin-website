@@ -32,7 +32,7 @@ const socialLinks = [
     bg: "bg-[#03C75A]",
     icon: (
       <svg viewBox="0 0 24 24" fill="white" className="w-4 h-4">
-        <path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727z"/>
+        <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 3c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM7 7h3v1H7V7zm10 10H7v-1h10v1zm0-3H7v-1h10v1zm0-3H7v-1h10v1z"/>
       </svg>
     ),
   },
