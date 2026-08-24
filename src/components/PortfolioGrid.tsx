@@ -343,7 +343,7 @@ function Watermark() {
       aria-hidden="true"
       className="absolute inset-0 z-20 pointer-events-none select-none"
       style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='15' font-weight='bold' fill='rgba(255%2C255%2C255%2C0.18)' text-anchor='middle' dominant-baseline='middle' transform='rotate(-35 110 110)'%3E%28%EC%A3%BC%29%EC%9A%B0%EC%9D%B8%EC%82%B0%EC%97%85%3C%2Ftext%3E%3C%2Fsvg%3E")`,
+        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='15' font-weight='bold' fill='rgba(255%2C255%2C255%2C0.35)' text-anchor='middle' dominant-baseline='middle' transform='rotate(-35 110 110)'%3E%28%EC%A3%BC%29%EC%9A%B0%EC%9D%B8%EC%82%B0%EC%97%85%3C%2Ftext%3E%3C%2Fsvg%3E")`,
         backgroundSize: "220px 220px",
       }}
     />
