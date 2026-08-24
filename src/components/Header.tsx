@@ -68,13 +68,13 @@ const navLinks: NavLink[] = [
       {
         title: "건축공사",
         items: [
-          { href: "/business#newbuild", label: "신축공사" },
+          { href: "/newbuild", label: "신축공사" },
         ],
       },
       {
         title: "증축·보수·리모델링",
         items: [
-          { href: "/business#remodel", label: "증축·보수·리모델링" },
+          { href: "/remodel", label: "증축·보수·리모델링" },
         ],
       },
       {

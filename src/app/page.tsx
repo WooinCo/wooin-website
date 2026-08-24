@@ -10,14 +10,14 @@ const services = [
     eng: "NEW CONSTRUCTION",
     title: "신축공사",
     desc: "신축 현장의 외벽·지붕 판넬 시공을 주력으로, 창호와 (현장에 따라) 철골 구조까지 담당합니다.",
-    href: "/business#newbuild",
+    href: "/newbuild",
   },
   {
     img: "/portfolio/2.png",
     eng: "EXTENSION, REPAIR & REMODELING",
     title: "증축·보수·리모델링",
     desc: "운영 중인 건물의 증축·리모델링과 노후 지붕·외벽의 누수·부식 보수까지, 공간을 확장하고 건물을 되살립니다.",
-    href: "/business#remodel",
+    href: "/remodel",
   },
   {
     img: "/images/solar/hero-main.png",

@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 const services = [
   {
     id: "newbuild",
+    detailHref: "/newbuild",
     img: "/portfolio/mokdong.png",
     eng: "NEW CONSTRUCTION",
     title: "신축공사",
@@ -28,6 +29,7 @@ const services = [
   },
   {
     id: "remodel",
+    detailHref: "/remodel",
     img: "/portfolio/2.png",
     eng: "EXTENSION, REPAIR & REMODELING",
     title: "증축·보수·리모델링",
@@ -43,6 +45,7 @@ const services = [
   },
   {
     id: "solar",
+    detailHref: "/solar",
     img: "/images/solar/hero-main.png",
     eng: "SOLAR ROOF",
     title: "태양광(솔라루프)",
@@ -151,14 +154,12 @@ export default function Business() {
                   >
                     {service.title} 견적 문의하기 <span>→</span>
                   </Link>
-                  {service.id === "solar" && (
-                    <Link
-                      href="/solar"
-                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border-2 border-navy text-navy font-bold text-sm hover:bg-sky transition-colors"
-                    >
-                      솔라루프 자세히 보기 <span>→</span>
-                    </Link>
-                  )}
+                  <Link
+                    href={service.detailHref}
+                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border-2 border-navy text-navy font-bold text-sm hover:bg-sky transition-colors"
+                  >
+                    {service.title} 자세히 보기 <span>→</span>
+                  </Link>
                 </div>
               </Reveal>
             </div>
