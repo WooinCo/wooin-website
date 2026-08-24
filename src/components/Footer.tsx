@@ -4,8 +4,8 @@ import Logo from "./Logo";
 const sitemap = [
   { href: "/about", label: "회사소개" },
   { href: "/business", label: "사업영역" },
-  { href: "/products", label: "제품소개" },
-  { href: "/solar", label: "솔라루프" },
+  { href: "/products", label: "제품소개 (건축공사)" },
+  { href: "/solar", label: "솔라루프 WP-sr330 (태양광)" },
   { href: "/portfolio", label: "포트폴리오" },
   { href: "/contact", label: "견적문의" },
 ];

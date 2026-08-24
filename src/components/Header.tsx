@@ -17,17 +17,27 @@ const navLinks: NavLink[] = [
     label: "사업영역",
     mega: [
       {
-        title: "공사 유형",
+        title: "건축공사",
         items: [
           { href: "/business#newbuild", label: "신축공사" },
+          { href: "/products", label: "제품소개" },
+        ],
+      },
+      {
+        title: "증축·보수·리모델링",
+        items: [
           { href: "/business#remodel", label: "증축·리모델링" },
           { href: "/business#repair", label: "보수·개보수" },
         ],
       },
+      {
+        title: "태양광(솔라루프)",
+        items: [
+          { href: "/solar", label: "솔라루프 WP-sr330" },
+        ],
+      },
     ],
   },
-  { href: "/products", label: "제품소개" },
-  { href: "/solar", label: "솔라루프 WP-sr330" },
   { href: "/portfolio", label: "포트폴리오" },
   { href: "/contact", label: "견적문의" },
 ];
@@ -93,7 +103,7 @@ export default function Header() {
             {navLinks.map((link) => {
               // ── 사업영역: 2단 메가메뉴 ──
               if (link.mega) {
-                const active = pathname === "/business";
+                const active = pathname === "/business" || pathname === "/products" || pathname === "/solar";
                 return (
                   <div key={link.label} className="relative group">
                     <Link
@@ -230,7 +240,7 @@ export default function Header() {
           {navLinks.map((link) => {
             // ── 사업영역: 모바일 아코디언 ──
             if (link.mega) {
-              const active = pathname === "/business";
+              const active = pathname === "/business" || pathname === "/products" || pathname === "/solar";
               return (
                 <div key={link.label}>
                   <button
