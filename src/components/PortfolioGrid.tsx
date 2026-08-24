@@ -10,33 +10,26 @@ import {
 } from "@/lib/portfolio-data";
 
 type FilterCategory = "전체" | PortfolioCategory;
-type SortOrder = "newest" | "oldest";
 
 const categories: FilterCategory[] = ["전체", ...portfolioCategories];
 
 const categoryColor: Record<PortfolioCategory, string> = {
   신축공사: "bg-blue-100 text-blue-700",
-  "증축·리모델링": "bg-indigo-100 text-indigo-700",
-  "보수·개보수": "bg-amber-100 text-amber-700",
+  "증축·보수·리모델링": "bg-indigo-100 text-indigo-700",
+  태양광: "bg-amber-100 text-amber-700",
 };
 
 const ITEMS_PER_PAGE = 15;
 
 export default function PortfolioGrid() {
   const [active, setActive] = useState<FilterCategory>("전체");
-  const [sort, setSort] = useState<SortOrder>("newest");
   const [selected, setSelected] = useState<PortfolioItem | null>(null);
   const [page, setPage] = useState(1);
 
-  const filtered = (
+  const filtered =
     active === "전체"
       ? portfolioItems
-      : portfolioItems.filter((item) => item.category === active)
-  ).slice().sort((a, b) => {
-    const ay = a.year ?? 0;
-    const by = b.year ?? 0;
-    return sort === "newest" ? by - ay : ay - by;
-  });
+      : portfolioItems.filter((item) => item.category === active);
 
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
   const paged = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
@@ -46,47 +39,23 @@ export default function PortfolioGrid() {
     setPage(1);
   }
 
-  function handleSort(order: SortOrder) {
-    setSort(order);
-    setPage(1);
-  }
-
   return (
     <div>
-      {/* 필터 + 정렬 */}
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-10">
-        {/* 카테고리 필터 */}
-        <div className="flex flex-wrap gap-2">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => handleFilter(cat)}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all ${
-                active === cat
-                  ? "bg-navy text-white shadow-md"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-        {/* 날짜 정렬 */}
-        <div className="flex items-center gap-1 bg-gray-100 rounded-full p-1">
-          {(["newest", "oldest"] as SortOrder[]).map((order) => (
-            <button
-              key={order}
-              onClick={() => handleSort(order)}
-              className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
-                sort === order
-                  ? "bg-white text-gray-900 shadow-sm"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
-            >
-              {order === "newest" ? "최신순" : "오래된순"}
-            </button>
-          ))}
-        </div>
+      {/* 카테고리 필터 */}
+      <div className="flex flex-wrap gap-2 mb-10">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => handleFilter(cat)}
+            className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all ${
+              active === cat
+                ? "bg-navy text-white shadow-md"
+                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
       </div>
 
       {/* 그리드 */}
@@ -329,7 +298,6 @@ function Lightbox({
           )}
           <div className="flex items-center justify-center gap-3 mt-2 text-xs text-white/60">
             {item.location && <span>📍 {item.location}</span>}
-            {item.year && <span>📅 {item.year}년</span>}
           </div>
         </div>
       </div>
