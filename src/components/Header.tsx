@@ -2,8 +2,30 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
+
+const socialLinks = [
+  {
+    href: "https://www.youtube.com/@wooin_co",
+    label: "YouTube",
+    img: "/images/link-youtube.png",
+    bg: "bg-[#FF0000]",
+  },
+  {
+    href: "https://www.instagram.com/wooin_corp/",
+    label: "Instagram",
+    img: "/images/link-insta.png",
+    bg: "bg-gradient-to-br from-[#833AB4] via-[#E1306C] to-[#F77737]",
+  },
+  {
+    href: "https://blog.naver.com/wooin-in",
+    label: "네이버 블로그",
+    img: "/images/link-blog.png",
+    bg: "bg-[#03C75A]",
+  },
+];
 
 type NavChild = { href: string; label: string; sub?: boolean };
 type NavGroup = { title: string; items: NavChild[] };
@@ -197,6 +219,21 @@ export default function Header() {
 
           {/* 우측 CTA */}
           <div className="hidden lg:flex items-center gap-4">
+            {/* SNS 아이콘 */}
+            <div className="flex items-center gap-2">
+              {socialLinks.map((s) => (
+                <a
+                  key={s.href}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className={`w-8 h-8 rounded-full ${s.bg} flex items-center justify-center shrink-0 hover:scale-110 transition-transform`}
+                >
+                  <Image src={s.img} alt={s.label} width={18} height={18} className="object-contain" />
+                </a>
+              ))}
+            </div>
             <a
               href="tel:031-662-7890"
               className={`flex items-center gap-1.5 text-sm font-bold transition-colors ${
