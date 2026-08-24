@@ -230,7 +230,6 @@ function PortfolioCard({
         <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
         <div className="flex items-center gap-3 mt-3 text-xs text-gray-400">
           {item.location && <span>📍 {item.location}</span>}
-          {item.year && <span>📅 {item.year}년</span>}
         </div>
       </div>
     </div>
