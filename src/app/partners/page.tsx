@@ -19,8 +19,8 @@ const partners = [
   { name: "(주) 화성산업", group: null, logo: "/partners/hwasung.jpg" },
   { name: "(주) 보미건설", group: null, logo: "/partners/bomi.png" },
   { name: "(주) 세웅종합건설", group: null, logo: "/partners/sewoong.png" },
-  { name: "(주) 현승종합건설", group: null, logo: "/partners/hyunseung2.png" },
-  { name: "에스엠디자인", group: null, logo: "/partners/sm2.png" },
+  { name: "(주) 현승종합건설", group: null, logo: "/partners/hyunseung3.png" },
+  { name: "에스엠디자인", group: null, logo: "/partners/sm3.png" },
 ];
 
 export default function Partners() {
