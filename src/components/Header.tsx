@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 
-type NavChild = { href: string; label: string };
+type NavChild = { href: string; label: string; sub?: boolean };
 type NavGroup = { title: string; items: NavChild[] };
 type NavLink = { href: string; label: string; mega?: NavGroup[] };
 
@@ -20,7 +20,7 @@ const navLinks: NavLink[] = [
         title: "건축공사",
         items: [
           { href: "/business#newbuild", label: "신축공사" },
-          { href: "/products", label: "제품소개" },
+          { href: "/products", label: "제품소개", sub: true },
         ],
       },
       {
@@ -135,7 +135,20 @@ export default function Header() {
                             {col.items.map((item) => {
                               const cActive =
                                 !item.href.includes("#") && pathname === item.href;
-                              return (
+                              return item.sub ? (
+                                <Link
+                                  key={item.href}
+                                  href={item.href}
+                                  className={`flex items-center gap-1.5 pl-5 pr-3 py-1.5 text-xs rounded-lg transition-colors ${
+                                    cActive
+                                      ? "text-navy font-semibold"
+                                      : "text-gray-400 hover:text-navy"
+                                  }`}
+                                >
+                                  <span className="text-gray-300">└</span>
+                                  {item.label}
+                                </Link>
+                              ) : (
                                 <Link
                                   key={item.href}
                                   href={item.href}
