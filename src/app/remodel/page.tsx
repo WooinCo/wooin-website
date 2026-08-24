@@ -13,32 +13,26 @@ export const metadata: Metadata = {
 
 const features = [
   {
-    icon: "🏗️",
     title: "철골 증축 골조",
     desc: "기존 구조와의 연결을 고려한 철골 증축으로 공간을 확장합니다.",
   },
   {
-    icon: "🧱",
     title: "외벽 판넬 교체·보강",
     desc: "노후 외벽 판넬을 교체·보강해 건물을 새것처럼 되살립니다.",
   },
   {
-    icon: "🏠",
     title: "지붕 개량·교체",
     desc: "노후 지붕을 개량·교체해 단열·방수 성능을 끌어올립니다.",
   },
   {
-    icon: "💧",
     title: "지붕 누수·방수 보수",
     desc: "정밀 진단 후 누수 원인을 근본부터 해결하는 방수 보수를 진행합니다.",
   },
   {
-    icon: "🛠️",
     title: "강판·외벽 보수",
     desc: "부식·손상된 강판과 외벽을 부분·전체 보수로 대응합니다.",
   },
   {
-    icon: "⏱️",
     title: "무중단(NON-STOP) 시공",
     desc: "운영 중단 없이 공장이 가동되는 동안에도 시공을 진행합니다.",
   },
@@ -83,7 +77,9 @@ export default function Remodel() {
             {features.map((f, i) => (
               <Reveal key={f.title} delay={i * 0.08}>
                 <div className="rounded-3xl bg-mist p-8 h-full hover:bg-navy hover:text-white transition-colors duration-300 group">
-                  <div className="text-4xl mb-5">{f.icon}</div>
+                  <div className="text-sm font-extrabold text-navy-light group-hover:text-blue-300 tracking-[0.2em] mb-4">
+                    0{i + 1}
+                  </div>
                   <h3 className="text-lg font-extrabold text-gray-900 group-hover:text-white mb-2">
                     {f.title}
                   </h3>
