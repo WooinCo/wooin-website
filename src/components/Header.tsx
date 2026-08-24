@@ -44,7 +44,19 @@ type NavLink = { href: string; label: string; mega?: NavGroup[] };
 
 const navLinks: NavLink[] = [
   { href: "/", label: "홈" },
-  { href: "/about", label: "회사소개" },
+  {
+    href: "/about",
+    label: "회사소개",
+    mega: [
+      {
+        title: "회사소개",
+        items: [
+          { href: "/about", label: "회사소개" },
+          { href: "/partners", label: "협력사" },
+        ],
+      },
+    ],
+  },
   {
     href: "/business",
     label: "사업영역",
@@ -133,9 +145,10 @@ export default function Header() {
           {/* 데스크탑 네비게이션 */}
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => {
-              // ── 사업영역: 2단 메가메뉴 ──
+              // ── 메가메뉴 ──
               if (link.mega) {
-                const active = pathname === "/business" || pathname === "/solar";
+                const subHrefs = link.mega.flatMap((col) => col.items.map((i) => i.href.split("#")[0]));
+                const active = pathname === link.href || subHrefs.includes(pathname);
                 return (
                   <div key={link.label} className="relative group">
                     <Link
@@ -302,9 +315,10 @@ export default function Header() {
       >
         <nav className="px-4 py-3">
           {navLinks.map((link) => {
-            // ── 사업영역: 모바일 아코디언 ──
+            // ── 모바일 아코디언 ──
             if (link.mega) {
-              const active = pathname === "/business" || pathname === "/solar";
+              const subHrefs = link.mega.flatMap((col) => col.items.map((i) => i.href.split("#")[0]));
+              const active = pathname === link.href || subHrefs.includes(pathname);
               return (
                 <div key={link.label}>
                   <button
