@@ -60,7 +60,7 @@ export default function Partners() {
                         alt={partner.name}
                         width={120}
                         height={56}
-                        className="max-w-[120px] max-h-14 w-auto h-auto object-contain"
+                        className="max-w-[120px] max-h-14 w-auto h-auto object-contain mix-blend-multiply"
                         style={partner.scale ? { transform: `scale(${partner.scale})` } : undefined}
                       />
                     ) : (
