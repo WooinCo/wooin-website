@@ -17,7 +17,7 @@ const partners = [
   { name: "아벤종합건설(주)", group: "동아쏘시오그룹", logo: "/partners/aben.png" },
   { name: "(주) 벨이앤씨", group: "중근당그룹", logo: "/partners/bell.gif" },
   { name: "(주) 화성산업", group: null, logo: "/partners/hwasung2.png" },
-  { name: "(주) 보미건설", group: null, logo: "/partners/bomi.png" },
+  { name: "(주) 보미건설", group: null, logo: "/partners/bomi.png", scale: 0.6 },
   { name: "(주) 세웅종합건설", group: null, logo: "/partners/sewoong.png" },
   { name: "(주) 현승종합건설", group: null, logo: "/partners/hyunseung3.png" },
   { name: "에스엠디자인", group: null, logo: "/partners/sm3.png" },
@@ -61,6 +61,7 @@ export default function Partners() {
                         width={120}
                         height={56}
                         className="max-w-[120px] max-h-14 w-auto h-auto object-contain"
+                        style={partner.scale ? { transform: `scale(${partner.scale})` } : undefined}
                       />
                     ) : (
                       <div className="w-20 h-8 bg-gray-100 rounded-lg" />
