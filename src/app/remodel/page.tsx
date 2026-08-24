@@ -8,7 +8,7 @@ import { portfolioItems } from "@/lib/portfolio-data";
 export const metadata: Metadata = {
   title: "증축·보수·리모델링 | (주)우인산업",
   description:
-    "운영 중인 건물의 증축·리모델링부터 노후 지붕·외벽의 누수·부식 보수까지 — (주)우인산업이 무중단(NON-STOP) 시공으로 안전하게 진행합니다.",
+    "운영 중인 건물의 증축·리모델링부터 노후 지붕·외벽의 누수·부식 보수까지 — (주)우인산업이 안전하게 책임 시공합니다.",
 };
 
 const features = [
@@ -33,8 +33,8 @@ const features = [
     desc: "부식·손상된 강판과 외벽을 부분·전체 보수로 대응합니다.",
   },
   {
-    title: "무중단(NON-STOP) 시공",
-    desc: "운영 중단 없이 공장이 가동되는 동안에도 시공을 진행합니다.",
+    title: "정밀 사전 진단",
+    desc: "현장 상태를 꼼꼼히 진단해 건물에 맞는 최적의 시공·보수 방식을 제안합니다.",
   },
 ];
 
@@ -48,7 +48,7 @@ export default function Remodel() {
       <PageBanner
         eyebrow="Extension, Repair & Remodeling"
         title="증축·보수·리모델링"
-        subtitle="증축·리모델링부터 노후 지붕·외벽 보수까지, 운영 중단 없이 안전하게 진행합니다."
+        subtitle="증축·리모델링부터 노후 지붕·외벽 보수까지, 안전하게 책임 시공합니다."
         current="증축·보수·리모델링"
         imageSrc="/images/panel.jpg"
       />
@@ -63,7 +63,7 @@ export default function Remodel() {
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight leading-snug">
               증축부터 보수까지,
               <br />
-              운영 중단 없이 진행합니다
+              건물 상태에 맞게 진행합니다
             </h2>
             <p className="text-gray-500 leading-relaxed mt-6 text-lg">
               운영 중인 건물의 증축·리모델링부터 노후 지붕·외벽의 누수·부식
@@ -90,26 +90,6 @@ export default function Remodel() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* 무중단 시공 강조 */}
-      <section className="py-24 md:py-32 bg-navy-dark text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Reveal>
-            <p className="text-blue-300 font-bold text-sm tracking-[0.18em] uppercase mb-3">
-              Non Stop
-            </p>
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
-              공장이 돌아가는 동안에도
-              <br />
-              증축·보수 공사가 진행됩니다
-            </h2>
-            <p className="text-blue-100/60 mt-5 text-lg max-w-2xl mx-auto">
-              가동 중단은 곧 손실입니다. 우인산업은 운영 중인 현장의 특성을
-              고려한 공정 설계로, 업무 중단 없이 안전하게 공사를 완료합니다.
-            </p>
-          </Reveal>
         </div>
       </section>
 
