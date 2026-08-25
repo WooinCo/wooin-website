@@ -124,17 +124,19 @@ export default function History() {
                     style={{ height: "calc(100% + 2.5rem)" }}
                   />
                 )}
-                {/* 점 — 선이 그려진 뒤 통통 튀며 등장 */}
+                {/* 점이 착지하는 순간 퍼지는 충격파 링 */}
+                <span
+                  aria-hidden="true"
+                  className="timeline-ring absolute -left-10 sm:-left-14 top-1.5 w-4 h-4 rounded-full bg-navy/40"
+                />
+                {/* 점 — 선이 그려진 뒤 크게 튀며 등장 */}
                 <span
                   aria-hidden="true"
                   className="timeline-dot absolute -left-10 sm:-left-14 top-1.5 w-4 h-4 rounded-full bg-navy ring-4 ring-white shadow-md"
                 />
 
                 <div className="pb-14">
-                  <span
-                    className="timeline-item inline-block text-2xl font-extrabold text-navy tracking-tight mb-3"
-                    style={{ animationDelay: "0.35s" }}
-                  >
+                  <span className="timeline-year text-2xl font-extrabold text-navy tracking-tight mb-3">
                     {h.year}
                   </span>
                   <ul className="space-y-2.5">
@@ -142,7 +144,7 @@ export default function History() {
                       <li
                         key={item.text}
                         className="timeline-item flex items-center gap-2.5 flex-wrap"
-                        style={{ animationDelay: `${0.45 + ii * 0.1}s` }}
+                        style={{ animationDelay: `${1.15 + ii * 0.12}s` }}
                       >
                         <span
                           className={`shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full ${tagColor[item.tag]}`}
