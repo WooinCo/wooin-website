@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageBanner from "@/components/PageBanner";
 import Reveal from "@/components/Reveal";
+import CountUp from "@/components/CountUp";
 
 export const metadata: Metadata = {
   title: "연혁 | (주)우인산업",
@@ -58,12 +59,6 @@ const history = [
   },
 ];
 
-const stats = [
-  { value: "2018", label: "설립연도" },
-  { value: "8건", label: "인증·등록·특허" },
-  { value: "3건", label: "ISO 국제인증" },
-];
-
 export default function History() {
   return (
     <div>
@@ -79,16 +74,30 @@ export default function History() {
       <section className="bg-navy-dark py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-3 divide-x divide-white/10">
-            {stats.map((s, i) => (
-              <Reveal key={s.label} delay={i * 0.08} className="text-center px-2">
-                <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-                  {s.value}
-                </div>
-                <div className="text-blue-200/60 text-xs sm:text-sm mt-2">
-                  {s.label}
-                </div>
-              </Reveal>
-            ))}
+            <Reveal className="text-center px-2">
+              <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight tabular-nums">
+                <CountUp to={2018} />
+              </div>
+              <div className="text-blue-200/60 text-xs sm:text-sm mt-2">
+                설립연도
+              </div>
+            </Reveal>
+            <Reveal delay={0.12} className="text-center px-2">
+              <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight tabular-nums">
+                <CountUp to={8} suffix="건" />
+              </div>
+              <div className="text-blue-200/60 text-xs sm:text-sm mt-2">
+                인증·등록·특허
+              </div>
+            </Reveal>
+            <Reveal delay={0.24} className="text-center px-2">
+              <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight tabular-nums">
+                <CountUp to={3} suffix="건" />
+              </div>
+              <div className="text-blue-200/60 text-xs sm:text-sm mt-2">
+                ISO 국제인증
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -115,21 +124,25 @@ export default function History() {
                     style={{ height: "calc(100% + 2.5rem)" }}
                   />
                 )}
-                {/* 점 */}
+                {/* 점 — 선이 그려진 뒤 통통 튀며 등장 */}
                 <span
                   aria-hidden="true"
-                  className="absolute -left-10 sm:-left-14 top-1.5 w-4 h-4 rounded-full bg-navy ring-4 ring-white shadow-md"
+                  className="timeline-dot absolute -left-10 sm:-left-14 top-1.5 w-4 h-4 rounded-full bg-navy ring-4 ring-white shadow-md"
                 />
 
                 <div className="pb-14">
-                  <span className="inline-block text-2xl font-extrabold text-navy tracking-tight mb-3">
+                  <span
+                    className="timeline-item inline-block text-2xl font-extrabold text-navy tracking-tight mb-3"
+                    style={{ animationDelay: "0.35s" }}
+                  >
                     {h.year}
                   </span>
                   <ul className="space-y-2.5">
-                    {h.items.map((item) => (
+                    {h.items.map((item, ii) => (
                       <li
                         key={item.text}
-                        className="flex items-center gap-2.5 flex-wrap"
+                        className="timeline-item flex items-center gap-2.5 flex-wrap"
+                        style={{ animationDelay: `${0.45 + ii * 0.1}s` }}
                       >
                         <span
                           className={`shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full ${tagColor[item.tag]}`}
