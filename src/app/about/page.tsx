@@ -134,18 +134,26 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── 조직도 안내 ── */}
+      {/* ── 연혁·조직도 안내 ── */}
       <section className="py-16 bg-mist">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-gray-500">
-            (주)우인산업의 조직 구성이 궁금하신가요?
+            (주)우인산업의 걸어온 길과 조직 구성이 궁금하신가요?
           </p>
-          <Link
-            href="/organization"
-            className="inline-flex items-center gap-2 mt-4 px-7 py-3.5 rounded-full bg-navy text-white font-bold text-sm hover:bg-navy-dark transition-colors"
-          >
-            조직도 보기 <span>→</span>
-          </Link>
+          <div className="flex flex-wrap items-center justify-center gap-3 mt-4">
+            <Link
+              href="/history"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-navy text-white font-bold text-sm hover:bg-navy-dark transition-colors"
+            >
+              연혁 보기 <span>→</span>
+            </Link>
+            <Link
+              href="/organization"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border-2 border-navy text-navy font-bold text-sm hover:bg-white transition-colors"
+            >
+              조직도 보기 <span>→</span>
+            </Link>
+          </div>
         </div>
       </section>
 

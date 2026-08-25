@@ -56,6 +56,7 @@ const navLinks: NavLink[] = [
         title: "회사소개",
         items: [
           { href: "/about", label: "회사소개" },
+          { href: "/history", label: "연혁" },
           { href: "/organization", label: "조직도" },
           { href: "/partners", label: "협력사" },
         ],

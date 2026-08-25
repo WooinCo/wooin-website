@@ -71,6 +71,26 @@ body {
   animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+/* ── 연혁 타임라인: 선이 위에서 아래로 그려지는 효과 ── */
+@keyframes growLine {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.timeline-line {
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.reveal.in-view .timeline-line {
+  animation: growLine 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.15s;
+}
+
 .hero-bg {
   animation: heroZoom 8s ease-out forwards;
 }
