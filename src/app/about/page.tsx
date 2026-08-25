@@ -158,41 +158,8 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── 회사 정보 ── */}
-      <section className="py-24 md:py-32 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="text-center mb-12">
-            <p className="text-navy font-bold text-sm tracking-[0.2em] uppercase mb-3">
-              Company Info
-            </p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
-              회사 정보
-            </h2>
-          </Reveal>
-          <Reveal>
-            <div className="rounded-3xl border border-gray-100 overflow-hidden shadow-[0_8px_30px_rgba(15,31,77,0.06)]">
-              {companyInfo.map((info, idx) => (
-                <div
-                  key={info.label}
-                  className={`flex ${
-                    idx !== companyInfo.length - 1 ? "border-b border-gray-100" : ""
-                  }`}
-                >
-                  <div className="w-28 sm:w-44 bg-mist px-5 sm:px-7 py-5 font-bold text-navy text-sm shrink-0">
-                    {info.label}
-                  </div>
-                  <div className="px-5 sm:px-7 py-5 text-gray-700 text-sm flex items-center">
-                    {info.value}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* ── 보유 인증 ── */}
-      <section className="py-24 md:py-32 bg-mist">
+      <section className="py-24 md:py-32 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center mb-12">
             <p className="text-navy font-bold text-sm tracking-[0.2em] uppercase mb-3">
@@ -212,7 +179,7 @@ export default function About() {
       </section>
 
       {/* ── 오시는 길 ── */}
-      <section className="py-24 md:py-32 bg-white">
+      <section className="py-24 md:py-32 bg-mist">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center mb-12">
             <p className="text-navy font-bold text-sm tracking-[0.2em] uppercase mb-3">
@@ -264,6 +231,39 @@ export default function About() {
               견적 문의하기 <span>→</span>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ── 회사 정보 ── */}
+      <section className="py-24 md:py-32 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="text-center mb-12">
+            <p className="text-navy font-bold text-sm tracking-[0.2em] uppercase mb-3">
+              Company Info
+            </p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
+              회사 정보
+            </h2>
+          </Reveal>
+          <Reveal>
+            <div className="rounded-3xl border border-gray-100 overflow-hidden shadow-[0_8px_30px_rgba(15,31,77,0.06)]">
+              {companyInfo.map((info, idx) => (
+                <div
+                  key={info.label}
+                  className={`flex ${
+                    idx !== companyInfo.length - 1 ? "border-b border-gray-100" : ""
+                  }`}
+                >
+                  <div className="w-28 sm:w-44 bg-mist px-5 sm:px-7 py-5 font-bold text-navy text-sm shrink-0">
+                    {info.label}
+                  </div>
+                  <div className="px-5 sm:px-7 py-5 text-gray-700 text-sm flex items-center">
+                    {info.value}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
     </div>
