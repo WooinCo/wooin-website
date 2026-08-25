@@ -2,18 +2,18 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import Image from "next/image";
 
 interface Product {
   name: string;
   desc: string;
-  image?: string;
+  images: string[];
 }
 
 /**
  * 제품 카드 — 이미지가 있으면 클릭 시 라이트박스로 크게 보여준다.
- * (제품 이미지가 아직 규격이 통일되지 않아, 목록에는 텍스트만 노출하고
- * 클릭했을 때만 원본 이미지를 보여주는 방식으로 우선 처리)
+ * 제품 이미지가 카탈로그 통이미지라 규격(비율)이 제각각이고 세로로 매우
+ * 긴 경우도 있어, 목록에는 텍스트만 노출하고 클릭했을 때만 원본 이미지를
+ * 스크롤 가능한 라이트박스로 보여주는 방식으로 처리한다.
  */
 export function ProductCard({
   product,
@@ -25,7 +25,7 @@ export function ProductCard({
   isDark: boolean;
 }) {
   const [open, setOpen] = useState(false);
-  const hasImage = Boolean(product.image);
+  const hasImage = product.images.length > 0;
 
   return (
     <>
@@ -86,9 +86,9 @@ export function ProductCard({
         </p>
       </div>
 
-      {open && product.image && (
+      {open && hasImage && (
         <Lightbox
-          src={product.image}
+          images={product.images}
           title={product.name}
           onClose={() => setOpen(false)}
         />
@@ -98,11 +98,11 @@ export function ProductCard({
 }
 
 function Lightbox({
-  src,
+  images,
   title,
   onClose,
 }: {
-  src: string;
+  images: string[];
   title: string;
   onClose: () => void;
 }) {
@@ -131,25 +131,31 @@ function Lightbox({
         type="button"
         onClick={onClose}
         aria-label="닫기"
-        className="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/15 hover:bg-white/30 text-white text-2xl leading-none flex items-center justify-center transition-colors"
+        className="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/15 hover:bg-white/30 text-white text-2xl leading-none flex items-center justify-center transition-colors z-10"
       >
         ×
       </button>
 
       <div
-        className="relative w-full max-w-3xl"
+        className="relative w-full max-w-3xl max-h-full flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative w-full aspect-[4/3] bg-white rounded-xl overflow-hidden shadow-2xl">
-          <Image
-            src={src}
-            alt={title}
-            fill
-            sizes="(max-width: 768px) 100vw, 768px"
-            className="object-contain"
-          />
+        <p className="text-center text-white text-lg font-bold mb-3 shrink-0">
+          {title}
+        </p>
+        <div className="rounded-xl overflow-y-auto bg-white shadow-2xl max-h-[80vh]">
+          {images.map((src, i) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={src}
+              src={src}
+              alt={`${title} ${i + 1}`}
+              className={`w-full h-auto block ${
+                i !== images.length - 1 ? "border-b border-gray-100" : ""
+              }`}
+            />
+          ))}
         </div>
-        <p className="mt-4 text-center text-white text-lg font-bold">{title}</p>
       </div>
     </div>,
     document.body
