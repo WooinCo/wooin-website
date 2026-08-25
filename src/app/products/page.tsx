@@ -77,13 +77,10 @@ const keyMaterials = [
   },
 ];
 
-// 라이트박스 상단에 보여줄 설명 — keyMaterials에 있는 제품(EPS/그라스울/우레탄)은
-// 표에 쓴 상세 설명을 그대로 재사용 (카탈로그 이미지 자체에 설명 문구가 없어서)
-const longDescBySlug = new Map(keyMaterials.map((m) => [m.slug, m.desc]));
-
 // products 폴더에 slug(2, 3...)와 일치하는 이미지 파일이 있으면 그 경로들을 붙여준다.
 // (제품 이미지가 카탈로그 통이미지라 규격이 통일되지 않아, 있는 제품만 클릭 시
-// 확대해서 보여줌. slug2.jpg, slug3.jpg처럼 번호를 붙이면 한 제품에 여러 장도 가능)
+// 확대해서 보여줌. slug2.jpg, slug3.jpg처럼 번호를 붙이면 한 제품에 여러 장도 가능.
+// slug-intro.jpg가 있으면 완성된 소개 배너 이미지를 맨 앞에 붙여줌)
 const PRODUCTS_DIR = path.join(process.cwd(), "public", "products");
 const IMAGE_EXTS = ["jpg", "jpeg", "png", "webp"];
 const MAX_IMAGES_PER_PRODUCT = 6;
@@ -97,10 +94,14 @@ function findFile(name: string): string | undefined {
 
 function findProductImages(slug: string): string[] {
   const images: string[] = [];
+
+  // 완성된 소개 배너 이미지가 있으면 맨 앞에
+  const intro = findFile(`${slug}-intro`);
+  if (intro) images.push(intro);
+
   // 첫 장은 slug.jpg 또는 slug1.jpg 둘 다 허용
   const first = findFile(slug) ?? findFile(`${slug}1`);
-  if (!first) return images;
-  images.push(first);
+  if (first) images.push(first);
   for (let i = 2; i <= MAX_IMAGES_PER_PRODUCT; i++) {
     const next = findFile(`${slug}${i}`);
     if (!next) break;
@@ -234,7 +235,6 @@ export default function Products() {
                       product={{
                         name: product.name,
                         desc: product.desc,
-                        longDesc: longDescBySlug.get(product.slug),
                         images: findProductImages(product.slug),
                       }}
                       pi={pi}
