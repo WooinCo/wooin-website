@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, type FormEvent } from "react";
+import Link from "next/link";
 import { upload } from "@vercel/blob/client";
 
 interface FormFields {
@@ -40,6 +41,8 @@ export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [uploadPhase, setUploadPhase] = useState<"upload" | "send" | null>(null);
+  const [agree, setAgree] = useState(false);
+  const [agreeError, setAgreeError] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const set = (field: keyof FormFields) => (
@@ -73,6 +76,12 @@ export default function ContactForm() {
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (!agree) {
+      setAgreeError("개인정보 수집·이용에 동의해주세요.");
+      return;
+    }
+    setAgreeError("");
     setStatus("loading");
     setErrorMessage("");
 
@@ -103,6 +112,7 @@ export default function ContactForm() {
         setStatus("success");
         setForm(initialForm);
         setFiles([]);
+        setAgree(false);
       } else {
         let msg = `서버 오류 (HTTP ${res.status})`;
         try {
@@ -341,6 +351,35 @@ export default function ContactForm() {
           으로 직접 전화 주세요.
         </div>
       )}
+
+      {/* 개인정보 수집·이용 동의 */}
+      <div>
+        <label className="flex items-start gap-2.5 text-sm text-gray-600 cursor-pointer select-none">
+          <input
+            type="checkbox"
+            checked={agree}
+            onChange={(e) => {
+              setAgree(e.target.checked);
+              if (e.target.checked) setAgreeError("");
+            }}
+            className="mt-0.5 w-4 h-4 rounded border-gray-300 text-navy focus:ring-navy shrink-0"
+          />
+          <span>
+            <Link
+              href="/privacy"
+              target="_blank"
+              className="text-navy font-semibold underline underline-offset-2"
+            >
+              개인정보처리방침
+            </Link>
+            에 따른 개인정보 수집·이용에 동의합니다.{" "}
+            <span className="text-red-500">*</span>
+          </span>
+        </label>
+        {agreeError && (
+          <p className="mt-1.5 text-xs text-red-500 pl-6">{agreeError}</p>
+        )}
+      </div>
 
       <button
         type="submit"
