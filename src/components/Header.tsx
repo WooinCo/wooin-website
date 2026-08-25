@@ -245,44 +245,55 @@ export default function Header() {
           </nav>
 
           {/* 우측 CTA */}
-          <div className="hidden lg:flex items-center gap-4">
-            {/* SNS 아이콘 */}
-            <div className="flex items-center gap-2">
-              {socialLinks.map((s) => (
-                <a
-                  key={s.href}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 hover:scale-110 transition-all ${
-                    transparent
-                      ? "bg-white/20 hover:bg-white/35"
-                      : `bg-gray-400 ${s.hoverBg}`
-                  }`}
-                >
-                  {s.icon}
-                </a>
-              ))}
+          <div className="hidden lg:flex items-center gap-5">
+            {/* 정보 그룹: SNS + 전화 */}
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                {socialLinks.map((s) => (
+                  <a
+                    key={s.href}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 hover:scale-110 transition-all ${
+                      transparent
+                        ? "bg-white/20 hover:bg-white/35"
+                        : `bg-gray-400 ${s.hoverBg}`
+                    }`}
+                  >
+                    {s.icon}
+                  </a>
+                ))}
+              </div>
+              <a
+                href="tel:031-662-7890"
+                className={`flex items-center gap-1.5 text-sm font-bold transition-colors ${
+                  transparent ? "text-white" : "text-navy"
+                }`}
+              >
+                <span className="text-base">☎</span>
+                031-662-7890
+              </a>
             </div>
-            <a
-              href="tel:031-662-7890"
-              className={`flex items-center gap-1.5 text-sm font-bold transition-colors ${
-                transparent ? "text-white" : "text-navy"
+
+            {/* 구분선 */}
+            <div
+              className={`w-px h-6 ${
+                transparent ? "bg-white/25" : "bg-gray-200"
               }`}
-            >
-              <span className="text-base">☎</span>
-              031-662-7890
-            </a>
+            />
+
+            {/* 견적문의 CTA */}
             <Link
               href="/contact"
-              className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
+              className={`flex items-center gap-1.5 px-6 py-3 rounded-full text-sm font-extrabold shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all ${
                 transparent
                   ? "bg-white text-navy hover:bg-blue-50"
                   : "bg-navy text-white hover:bg-navy-dark"
               }`}
             >
-              견적문의
+              견적문의 <span>→</span>
             </Link>
           </div>
 
