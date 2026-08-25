@@ -87,19 +87,22 @@ body {
 }
 
 .reveal.in-view .timeline-line {
-  animation: growLine 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: 0.15s;
+  animation: growLine 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation-delay: 0.1s;
 }
 
-/* 타임라인 점 — 선이 그려진 뒤 통통 튀며 팝인 */
+/* 타임라인 점 — 선이 다 그려진 뒤 크게 튀며 착지 */
 @keyframes dotPop {
   0% {
     transform: scale(0);
     opacity: 0;
   }
-  60% {
-    transform: scale(1.35);
+  55% {
+    transform: scale(1.8);
     opacity: 1;
+  }
+  75% {
+    transform: scale(0.85);
   }
   100% {
     transform: scale(1);
@@ -113,8 +116,57 @@ body {
 }
 
 .reveal.in-view .timeline-dot {
-  animation: dotPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  animation-delay: 0.5s;
+  animation: dotPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 0.75s;
+}
+
+/* 점이 착지하는 순간 — 충격파처럼 링이 확 퍼지며 사라짐 */
+@keyframes dotRing {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+.timeline-ring {
+  transform: scale(0.4);
+  opacity: 0;
+}
+
+.reveal.in-view .timeline-ring {
+  animation: dotRing 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.8s;
+}
+
+/* 연도 숫자 — 크게 확대된 상태에서 튕기듯 제자리로 */
+@keyframes yearPunch {
+  0% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+  55% {
+    transform: scale(0.92);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.timeline-year {
+  display: inline-block;
+  transform: scale(2.2);
+  opacity: 0;
+}
+
+.reveal.in-view .timeline-year {
+  animation: yearPunch 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 0.85s;
 }
 
 /* 타임라인 항목 텍스트 — 옆에서 슬라이드하며 크게 등장 */
