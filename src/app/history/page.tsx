@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import PageBanner from "@/components/PageBanner";
 import Reveal from "@/components/Reveal";
-import CountUp from "@/components/CountUp";
 
 export const metadata: Metadata = {
   title: "연혁 | (주)우인산업",
@@ -69,38 +68,6 @@ export default function History() {
         current="연혁"
         imageSrc="/images/building.png"
       />
-
-      {/* ── 한눈에 보기 ── */}
-      <section className="bg-navy-dark py-14">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-3 divide-x divide-white/10">
-            <Reveal className="text-center px-2">
-              <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight tabular-nums">
-                <CountUp to={2018} />
-              </div>
-              <div className="text-blue-200/60 text-xs sm:text-sm mt-2">
-                설립연도
-              </div>
-            </Reveal>
-            <Reveal delay={0.12} className="text-center px-2">
-              <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight tabular-nums">
-                <CountUp to={8} suffix="건" />
-              </div>
-              <div className="text-blue-200/60 text-xs sm:text-sm mt-2">
-                인증·등록·특허
-              </div>
-            </Reveal>
-            <Reveal delay={0.24} className="text-center px-2">
-              <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight tabular-nums">
-                <CountUp to={3} suffix="건" />
-              </div>
-              <div className="text-blue-200/60 text-xs sm:text-sm mt-2">
-                ISO 국제인증
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
 
       <section className="py-24 md:py-32 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
