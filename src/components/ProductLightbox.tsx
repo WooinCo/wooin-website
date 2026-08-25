@@ -150,7 +150,7 @@ function Lightbox({
               key={src}
               src={src}
               alt={`${title} ${i + 1}`}
-              className={`w-full h-auto block ${
+              className={`w-full h-auto block p-4 sm:p-6 ${
                 i !== images.length - 1 ? "border-b border-gray-100" : ""
               }`}
             />
