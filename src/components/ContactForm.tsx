@@ -35,6 +35,7 @@ export default function ContactForm() {
   const [dragOver, setDragOver] = useState(false);
   const [fileError, setFileError] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const set = (field: keyof FormFields) => (
@@ -76,12 +77,25 @@ export default function ContactForm() {
 
     try {
       const res = await fetch("/api/contact", { method: "POST", body: fd });
-      setStatus(res.ok ? "success" : "error");
       if (res.ok) {
+        setStatus("success");
         setForm(initialForm);
         setFiles([]);
+      } else {
+        let msg = `서버 오류 (HTTP ${res.status})`;
+        try {
+          const data = await res.json();
+          if (data?.error) msg = data.error;
+        } catch {
+          // 응답이 JSON이 아닌 경우 (예: 플랫폼 레벨 에러 페이지) — 상태 코드만 표시
+        }
+        setErrorMessage(msg);
+        setStatus("error");
       }
-    } catch {
+    } catch (err) {
+      setErrorMessage(
+        err instanceof Error ? err.message : "네트워크 오류가 발생했습니다."
+      );
       setStatus("error");
     }
   }
@@ -291,7 +305,12 @@ export default function ContactForm() {
       {/* 에러 메시지 */}
       {status === "error" && (
         <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-xl text-sm">
-          전송 중 오류가 발생했습니다.{" "}
+          전송 중 오류가 발생했습니다
+          {errorMessage && (
+            <span className="block mt-1 text-red-500 text-xs">
+              ({errorMessage})
+            </span>
+          )}{" "}
           <a href="tel:031-662-7890" className="font-semibold underline">
             031-662-7890
           </a>
