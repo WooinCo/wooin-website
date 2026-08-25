@@ -84,7 +84,7 @@ export default function ContactForm() {
       const uploadedFiles = await Promise.all(
         files.map(async (f) => {
           const blob = await upload(f.name, f, {
-            access: "public",
+            access: "private", // Blob 스토어가 Private로 생성됨 (생성 후 변경 불가)
             handleUploadUrl: "/api/blob-upload",
           });
           return { name: f.name, url: blob.url };
