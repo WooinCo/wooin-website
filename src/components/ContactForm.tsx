@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, type FormEvent } from "react";
+import { upload } from "@vercel/blob/client";
 
 interface FormFields {
   name: string;
@@ -20,8 +21,10 @@ const initialForm: FormFields = {
   message: "",
 };
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB per file
-const MAX_TOTAL_SIZE = 20 * 1024 * 1024; // 20MB total
+// 파일은 서버를 거치지 않고 브라우저에서 Vercel Blob으로 바로 업로드되므로
+// 서버리스 함수 요청 본문 크기 제한(약 4.5MB)과 무관하게 여유 있게 설정 가능
+const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB per file
+const MAX_TOTAL_SIZE = 50 * 1024 * 1024; // 50MB total
 
 function formatBytes(bytes: number) {
   if (bytes < 1024) return bytes + "B";
@@ -36,6 +39,7 @@ export default function ContactForm() {
   const [fileError, setFileError] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [uploadPhase, setUploadPhase] = useState<"upload" | "send" | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const set = (field: keyof FormFields) => (
@@ -50,13 +54,13 @@ export default function ContactForm() {
 
     for (const f of arr) {
       if (f.size > MAX_FILE_SIZE) {
-        setFileError(`"${f.name}" 파일이 10MB를 초과합니다.`);
+        setFileError(`"${f.name}" 파일이 25MB를 초과합니다.`);
         return;
       }
     }
     const total = updated.reduce((s, f) => s + f.size, 0);
     if (total > MAX_TOTAL_SIZE) {
-      setFileError("첨부파일 총 용량이 20MB를 초과합니다.");
+      setFileError("첨부파일 총 용량이 50MB를 초과합니다.");
       return;
     }
     setFiles(updated);
@@ -70,13 +74,31 @@ export default function ContactForm() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
-
-    const fd = new FormData();
-    Object.entries(form).forEach(([k, v]) => fd.append(k, v));
-    files.forEach((f) => fd.append("files", f));
+    setErrorMessage("");
 
     try {
-      const res = await fetch("/api/contact", { method: "POST", body: fd });
+      // 1) 첨부파일을 브라우저에서 곧장 Vercel Blob으로 업로드.
+      //    서버(우리 API 라우트)를 거치지 않으므로 서버리스 함수의 요청
+      //    본문 크기 제한(약 4.5MB)과 무관하게 큰 파일도 안전하게 처리된다.
+      setUploadPhase(files.length > 0 ? "upload" : "send");
+      const uploadedFiles = await Promise.all(
+        files.map(async (f) => {
+          const blob = await upload(f.name, f, {
+            access: "public",
+            handleUploadUrl: "/api/blob-upload",
+          });
+          return { name: f.name, url: blob.url };
+        })
+      );
+
+      // 2) 폼 데이터 + 업로드된 파일의 URL만 서버로 전송 (용량이 작아 안전함)
+      setUploadPhase("send");
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, files: uploadedFiles }),
+      });
+
       if (res.ok) {
         setStatus("success");
         setForm(initialForm);
@@ -94,9 +116,11 @@ export default function ContactForm() {
       }
     } catch (err) {
       setErrorMessage(
-        err instanceof Error ? err.message : "네트워크 오류가 발생했습니다."
+        err instanceof Error ? err.message : "파일 업로드 중 오류가 발생했습니다."
       );
       setStatus("error");
+    } finally {
+      setUploadPhase(null);
     }
   }
 
@@ -235,7 +259,7 @@ export default function ContactForm() {
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1.5">
           파일 첨부{" "}
-          <span className="text-gray-400 text-xs">(선택 · 이미지·PDF·도면 등 · 최대 20MB)</span>
+          <span className="text-gray-400 text-xs">(선택 · 이미지·PDF·도면 등 · 최대 50MB)</span>
         </label>
 
         {/* 드래그 앤 드롭 영역 */}
@@ -259,7 +283,7 @@ export default function ContactForm() {
             클릭하거나 파일을 끌어다 놓으세요
           </p>
           <p className="text-xs text-gray-400 mt-1">
-            JPG, PNG, PDF, DWG, XLSX 등 · 파일당 10MB 이하
+            JPG, PNG, PDF, DWG, XLSX 등 · 파일당 25MB 이하
           </p>
           <input
             ref={fileInputRef}
@@ -323,7 +347,11 @@ export default function ContactForm() {
         disabled={status === "loading"}
         className="w-full bg-navy text-white py-4 rounded-xl font-bold text-base hover:bg-navy-dark disabled:opacity-60 transition-colors"
       >
-        {status === "loading" ? "전송 중..." : "견적 문의 보내기"}
+        {status === "loading"
+          ? uploadPhase === "upload"
+            ? "파일 업로드 중..."
+            : "전송 중..."
+          : "견적 문의 보내기"}
       </button>
 
       <p className="text-center text-xs text-gray-400">* 표시는 필수 입력 항목입니다</p>
