@@ -215,7 +215,7 @@ export default function About() {
             </div>
           </Reveal>
 
-          {/* 총괄 → 3개 본부 (총괄 위치에서만 아래로 내려감) */}
+          {/* 총괄 → 3개 본부 레이블 (총괄 위치에서만 아래로 내려감) */}
           <Reveal>
             <div className="hidden md:block max-w-2xl mx-auto">
               <div className="grid grid-cols-3">
@@ -228,78 +228,92 @@ export default function About() {
               items={[
                 <div
                   key="build"
-                  className="rounded-2xl bg-white ring-1 ring-gray-100 shadow-[0_8px_30px_rgba(15,31,77,0.06)] overflow-hidden h-full"
+                  className="px-4 py-3 rounded-xl bg-navy text-white font-extrabold text-xs sm:text-sm text-center shadow-sm"
                 >
-                  <div className="bg-navy text-white font-extrabold text-center text-sm py-3.5 px-4">
-                    건축사업본부
-                  </div>
-                  <div className="p-5 space-y-4">
-                    {[
-                      { pt: "건축 Pt.", teams: ["건축1팀", "건축2팀", "금속창호팀"] },
-                      { pt: "공무 Pt.", teams: ["공무관리팀", "설계기술팀"] },
-                      { pt: "영업 Pt.", teams: ["TS팀", "AM팀"] },
-                    ].map((group) => (
-                      <div key={group.pt}>
-                        <p className="text-xs font-bold text-navy tracking-wide mb-2">
-                          {group.pt}
-                        </p>
-                        <div className="flex flex-wrap gap-1.5">
-                          {group.teams.map((team) => (
-                            <span
-                              key={team}
-                              className="px-2.5 py-1.5 rounded-lg bg-sky text-navy text-xs font-semibold"
-                            >
-                              {team}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  건축사업본부
                 </div>,
                 <div
                   key="solar"
-                  className="rounded-2xl bg-white ring-1 ring-gray-100 shadow-[0_8px_30px_rgba(15,31,77,0.06)] overflow-hidden h-full"
+                  className="px-4 py-3 rounded-xl bg-navy text-white font-extrabold text-xs sm:text-sm text-center shadow-sm"
                 >
-                  <div className="bg-navy text-white font-extrabold text-center text-sm py-3.5 px-4">
-                    태양광사업본부
-                  </div>
-                  <div className="p-5">
-                    <div className="flex flex-wrap gap-1.5">
-                      {["태양광사업개발팀", "태양광시공기술팀"].map((team) => (
-                        <span
-                          key={team}
-                          className="px-2.5 py-1.5 rounded-lg bg-sky text-navy text-xs font-semibold"
-                        >
-                          {team}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                  태양광사업본부
                 </div>,
                 <div
                   key="strategy"
-                  className="rounded-2xl bg-white ring-1 ring-gray-100 shadow-[0_8px_30px_rgba(15,31,77,0.06)] overflow-hidden h-full"
+                  className="px-4 py-3 rounded-xl bg-navy text-white font-extrabold text-xs sm:text-sm text-center shadow-sm"
                 >
-                  <div className="bg-navy text-white font-extrabold text-center text-sm py-3.5 px-4">
-                    전략사업지원본부
-                  </div>
-                  <div className="p-5">
-                    <div className="flex flex-wrap gap-1.5">
-                      {["MARCOM팀", "경영지원팀"].map((team) => (
-                        <span
-                          key={team}
-                          className="px-2.5 py-1.5 rounded-lg bg-sky text-navy text-xs font-semibold"
-                        >
-                          {team}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                  전략사업지원본부
                 </div>,
               ]}
             />
           </Reveal>
+
+          {/* 본부별 세부 조직 — 각 본부가 전체 폭을 써서 하위 노드를 개별 박스+연결선으로 표시 */}
+          <div className="space-y-10 mt-10">
+            {/* 건축사업본부: 본부 → Pt. → 팀, 2단 하위 구조 */}
+            <Reveal>
+              <div className="rounded-3xl bg-white ring-1 ring-gray-100 shadow-[0_8px_30px_rgba(15,31,77,0.06)] p-6 md:p-10">
+                <p className="text-center text-xs font-bold text-navy/50 tracking-[0.15em] uppercase mb-6">
+                  건축사업본부
+                </p>
+                <OrgBranch
+                  items={[
+                    { pt: "건축 Pt.", teams: ["건축1팀", "건축2팀", "금속창호팀"] },
+                    { pt: "공무 Pt.", teams: ["공무관리팀", "설계기술팀"] },
+                    { pt: "영업 Pt.", teams: ["TS팀", "AM팀"] },
+                  ].map((group) => (
+                    <div key={group.pt} className="flex flex-col items-center">
+                      <div className="px-4 py-2.5 rounded-lg bg-navy-light text-white font-bold text-xs sm:text-sm text-center shadow-sm w-full sm:w-auto">
+                        {group.pt}
+                      </div>
+                      <OrgBranch
+                        items={group.teams.map((team) => (
+                          <div
+                            key={team}
+                            className="px-3 py-2.5 rounded-lg bg-white ring-1 ring-gray-200 text-gray-700 text-xs sm:text-sm font-semibold text-center shadow-sm"
+                          >
+                            {team}
+                          </div>
+                        ))}
+                      />
+                    </div>
+                  ))}
+                />
+              </div>
+            </Reveal>
+
+            {/* 태양광사업본부 / 전략사업지원본부: 본부 → 팀, 1단 구조 */}
+            <div className="grid md:grid-cols-2 gap-10">
+              {[
+                {
+                  name: "태양광사업본부",
+                  teams: ["태양광사업개발팀", "태양광시공기술팀"],
+                },
+                {
+                  name: "전략사업지원본부",
+                  teams: ["MARCOM팀", "경영지원팀"],
+                },
+              ].map((div) => (
+                <Reveal key={div.name}>
+                  <div className="rounded-3xl bg-white ring-1 ring-gray-100 shadow-[0_8px_30px_rgba(15,31,77,0.06)] p-6 md:p-10 h-full">
+                    <p className="text-center text-xs font-bold text-navy/50 tracking-[0.15em] uppercase mb-6">
+                      {div.name}
+                    </p>
+                    <OrgBranch
+                      items={div.teams.map((team) => (
+                        <div
+                          key={team}
+                          className="px-3 py-2.5 rounded-lg bg-white ring-1 ring-gray-200 text-gray-700 text-xs sm:text-sm font-semibold text-center shadow-sm"
+                        >
+                          {team}
+                        </div>
+                      ))}
+                    />
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
 
           {/* 약어 안내 */}
           <Reveal>
