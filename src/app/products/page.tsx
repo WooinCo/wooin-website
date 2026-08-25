@@ -59,15 +59,23 @@ const PRODUCTS_DIR = path.join(process.cwd(), "public", "products");
 const IMAGE_EXTS = ["jpg", "jpeg", "png", "webp"];
 const MAX_IMAGES_PER_PRODUCT = 6;
 
+function findFile(name: string): string | undefined {
+  const ext = IMAGE_EXTS.find((e) =>
+    fs.existsSync(path.join(PRODUCTS_DIR, `${name}.${e}`))
+  );
+  return ext ? `/products/${name}.${ext}` : undefined;
+}
+
 function findProductImages(slug: string): string[] {
   const images: string[] = [];
-  for (let i = 1; i <= MAX_IMAGES_PER_PRODUCT; i++) {
-    const name = i === 1 ? slug : `${slug}${i}`;
-    const ext = IMAGE_EXTS.find((e) =>
-      fs.existsSync(path.join(PRODUCTS_DIR, `${name}.${e}`))
-    );
-    if (!ext) break;
-    images.push(`/products/${name}.${ext}`);
+  // 첫 장은 slug.jpg 또는 slug1.jpg 둘 다 허용
+  const first = findFile(slug) ?? findFile(`${slug}1`);
+  if (!first) return images;
+  images.push(first);
+  for (let i = 2; i <= MAX_IMAGES_PER_PRODUCT; i++) {
+    const next = findFile(`${slug}${i}`);
+    if (!next) break;
+    images.push(next);
   }
   return images;
 }
