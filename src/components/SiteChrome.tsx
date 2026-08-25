@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Header from "./Header";
+import FloatingCTA from "./FloatingCTA";
 
 /**
  * 사이트 공통 헤더/풋터 래퍼.
@@ -29,6 +30,7 @@ export default function SiteChrome({
       <Header />
       <main className="flex-1">{children}</main>
       {footer}
+      <FloatingCTA />
     </>
   );
 }
