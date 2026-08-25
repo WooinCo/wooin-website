@@ -134,6 +134,131 @@ export default function About() {
         </div>
       </section>
 
+      {/* ── 조직도 ── */}
+      <section className="py-24 md:py-32 bg-mist">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="text-center mb-16">
+            <p className="text-navy font-bold text-sm tracking-[0.2em] uppercase mb-3">
+              Organizational Chart
+            </p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
+              조직도
+            </h2>
+          </Reveal>
+
+          {/* 대표이사 */}
+          <Reveal>
+            <div className="flex justify-center mb-4">
+              <div className="px-10 py-4 rounded-2xl bg-navy text-white font-extrabold text-lg shadow-lg">
+                대표이사
+              </div>
+            </div>
+            <div className="w-px h-8 bg-gray-300 mx-auto" />
+          </Reveal>
+
+          {/* 대표이사 직속: 사업조정실 / 총괄 / 기술연구소 */}
+          <Reveal>
+            <div className="grid grid-cols-3 gap-3 sm:gap-5 max-w-2xl mx-auto mb-4">
+              <div className="flex items-center justify-center px-3 py-3.5 rounded-xl bg-white ring-1 ring-gray-200 text-gray-800 font-bold text-xs sm:text-sm text-center shadow-sm">
+                사업조정실
+              </div>
+              <div className="flex items-center justify-center px-3 py-3.5 rounded-xl bg-navy-light text-white font-bold text-xs sm:text-sm text-center shadow-sm">
+                총괄
+              </div>
+              <div className="flex items-center justify-center px-3 py-3.5 rounded-xl bg-white ring-1 ring-gray-200 text-gray-800 font-bold text-xs sm:text-sm text-center shadow-sm">
+                기술연구소
+              </div>
+            </div>
+            <div className="w-px h-8 bg-gray-300 mx-auto" />
+          </Reveal>
+
+          {/* 총괄 산하 3개 본부 */}
+          <Reveal>
+            <div className="grid md:grid-cols-3 gap-5">
+              {/* 건축사업본부 */}
+              <div className="rounded-3xl bg-white ring-1 ring-gray-100 shadow-[0_8px_30px_rgba(15,31,77,0.06)] overflow-hidden">
+                <div className="bg-navy text-white font-extrabold text-center py-4 px-4">
+                  건축사업본부
+                </div>
+                <div className="p-5 space-y-4">
+                  {[
+                    { pt: "건축 Pt.", teams: ["건축1팀", "건축2팀", "금속창호팀"] },
+                    { pt: "공무 Pt.", teams: ["공무관리팀", "설계기술팀"] },
+                    { pt: "영업 Pt.", teams: ["TS팀", "AM팀"] },
+                  ].map((group) => (
+                    <div key={group.pt}>
+                      <p className="text-xs font-bold text-navy tracking-wide mb-2">
+                        {group.pt}
+                      </p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {group.teams.map((team) => (
+                          <span
+                            key={team}
+                            className="px-2.5 py-1.5 rounded-lg bg-sky text-navy text-xs font-semibold"
+                          >
+                            {team}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* 태양광사업본부 */}
+              <div className="rounded-3xl bg-white ring-1 ring-gray-100 shadow-[0_8px_30px_rgba(15,31,77,0.06)] overflow-hidden">
+                <div className="bg-navy text-white font-extrabold text-center py-4 px-4">
+                  태양광사업본부
+                </div>
+                <div className="p-5">
+                  <div className="flex flex-wrap gap-1.5">
+                    {["태양광사업개발팀", "태양광시공기술팀"].map((team) => (
+                      <span
+                        key={team}
+                        className="px-2.5 py-1.5 rounded-lg bg-sky text-navy text-xs font-semibold"
+                      >
+                        {team}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* 전략사업지원본부 */}
+              <div className="rounded-3xl bg-white ring-1 ring-gray-100 shadow-[0_8px_30px_rgba(15,31,77,0.06)] overflow-hidden">
+                <div className="bg-navy text-white font-extrabold text-center py-4 px-4">
+                  전략사업지원본부
+                </div>
+                <div className="p-5">
+                  <div className="flex flex-wrap gap-1.5">
+                    {["MARCOM팀", "경영지원팀"].map((team) => (
+                      <span
+                        key={team}
+                        className="px-2.5 py-1.5 rounded-lg bg-sky text-navy text-xs font-semibold"
+                      >
+                        {team}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* 약어 안내 */}
+          <Reveal>
+            <div className="mt-10 text-xs text-gray-400 leading-relaxed max-w-2xl mx-auto">
+              <p>* AM : Account Management (고객관리 중심 일반영업)</p>
+              <p>* TS : Technical Sales (기술중심영업)</p>
+              <p>
+                * marcom : Marketing Communication (마케팅 목적 달성을 위한
+                고객 및 대중과의 모든 홍보, 소통 활동)
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ── 회사 정보 ── */}
       <section className="py-24 md:py-32 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
