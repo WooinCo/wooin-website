@@ -25,16 +25,6 @@ const certificates: Certificate[] = [
     title: "ISO 45001",
     desc: "안전보건경영시스템 인증",
   },
-  {
-    src: "/certificates/venture-certificate.jpg",
-    title: "벤처기업확인서",
-    desc: "혁신성장유형 벤처기업 인증",
-  },
-  {
-    src: "/certificates/rnd-department-certificate.jpg",
-    title: "연구개발전담부서 인정서",
-    desc: "기업부설 연구개발전담부서 인정",
-  },
 ];
 
 export default function CertificateGallery() {
@@ -42,7 +32,7 @@ export default function CertificateGallery() {
 
   return (
     <div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 max-w-2xl mx-auto">
         {certificates.map((cert) => (
           <button
             key={cert.src}
@@ -51,13 +41,13 @@ export default function CertificateGallery() {
             aria-label={`${cert.title} 크게 보기`}
             className="group text-left"
           >
-            <div className="relative aspect-[210/297] rounded-xl overflow-hidden bg-white shadow-[0_8px_30px_rgba(15,31,77,0.06)] ring-1 ring-gray-100 group-hover:shadow-lg transition-shadow">
+            <div className="relative aspect-[210/297] rounded-xl overflow-hidden bg-white shadow-[0_8px_30px_rgba(15,31,77,0.06)] ring-1 ring-gray-100 group-hover:shadow-lg transition-shadow p-2">
               <Image
                 src={cert.src}
                 alt={cert.title}
                 fill
                 sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 18vw"
-                className="object-cover object-top"
+                className="object-contain"
               />
               <span className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/25 transition-colors">
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity w-9 h-9 rounded-full bg-white/90 text-navy flex items-center justify-center text-sm shadow-lg">
