@@ -61,14 +61,14 @@ export default function Newbuild() {
               Overview
             </p>
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight leading-snug">
-              신축 현장의 외피(외장),
+              신축 현장의 시작부터 끝까지,
               <br />
-              시작부터 끝까지 직접 시공합니다
+              직접 책임집니다
             </h2>
             <p className="text-gray-500 leading-relaxed mt-6 text-lg">
               신축 현장에서 외벽·지붕 판넬 시공을 주력으로 담당합니다. 창호
               시공도 함께 진행하며, 현장 여건에 따라 철골 구조물 시공까지
-              책임집니다. 공장·창고·물류센터 등 산업용 건축물의 외피(외장)를
+              책임집니다. 공장·창고·물류센터 등 산업용 건축물 신축을
               전문으로 합니다.
             </p>
           </Reveal>
