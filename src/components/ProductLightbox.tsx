@@ -137,13 +137,13 @@ function Lightbox({
       </button>
 
       <div
-        className="relative w-full max-w-3xl max-h-full flex flex-col"
+        className="relative w-full max-w-5xl max-h-full flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <p className="text-center text-white text-lg font-bold mb-3 shrink-0">
           {title}
         </p>
-        <div className="rounded-xl overflow-y-auto bg-white shadow-2xl max-h-[80vh]">
+        <div className="rounded-xl overflow-y-auto bg-white shadow-2xl max-h-[85vh]">
           {images.map((src, i) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
