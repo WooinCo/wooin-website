@@ -61,9 +61,9 @@ export default function Remodel() {
               Overview
             </p>
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight leading-snug">
-              증축부터 보수까지,
+              건물 상태에 맞는
               <br />
-              건물 상태에 맞게 진행합니다
+              최적의 솔루션을 제공합니다
             </h2>
             <p className="text-gray-500 leading-relaxed mt-6 text-lg">
               운영 중인 건물의 증축·리모델링부터 노후 지붕·외벽의 누수·부식
