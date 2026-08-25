@@ -56,13 +56,18 @@ export async function POST(request: NextRequest) {
       .map((s) => s.trim())
       .filter(Boolean);
 
+    // Blob 스토어가 Private라 원본 URL은 토큰 없이 열람 불가 — 우리 서버가 인증을
+    // 대신 처리하는 다운로드 프록시(/api/attachment) 링크를 메일에 넣는다.
+    const origin = new URL(request.url).origin;
     const fileListHtml =
       uploadedFiles.length > 0
         ? uploadedFiles
-            .map(
-              (f) =>
-                `<a href="${f.url}" style="color:#1c3177;text-decoration:underline;" target="_blank" rel="noopener noreferrer">📎 ${f.name}</a>`
-            )
+            .map((f) => {
+              const proxyUrl = `${origin}/api/attachment?url=${encodeURIComponent(
+                f.url
+              )}&name=${encodeURIComponent(f.name)}`;
+              return `<a href="${proxyUrl}" style="color:#1c3177;text-decoration:underline;" target="_blank" rel="noopener noreferrer">📎 ${f.name}</a>`;
+            })
             .join("<br/>")
         : "없음";
 
