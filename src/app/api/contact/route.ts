@@ -3,17 +3,31 @@ import { Resend } from "resend";
 
 export const runtime = "nodejs";
 
+interface UploadedFile {
+  name: string;
+  url: string;
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const formData = await request.formData();
-
-    const name = formData.get("name") as string;
-    const phone = formData.get("phone") as string;
-    const email = formData.get("email") as string;
-    const serviceType = formData.get("serviceType") as string;
-    const location = formData.get("location") as string;
-    const message = formData.get("message") as string;
-    const files = formData.getAll("files") as File[];
+    const body = await request.json();
+    const {
+      name,
+      phone,
+      email,
+      serviceType,
+      location,
+      message,
+      files,
+    }: {
+      name: string;
+      phone: string;
+      email: string;
+      serviceType: string;
+      location?: string;
+      message: string;
+      files?: UploadedFile[];
+    } = body;
 
     if (!name || !phone || !email || !serviceType || !message) {
       return NextResponse.json(
@@ -32,27 +46,31 @@ export async function POST(request: NextRequest) {
     }
     const resend = new Resend(apiKey);
 
-    // 첨부파일 처리
-    const attachments = await Promise.all(
-      files
-        .filter((f) => f.size > 0)
-        .map(async (file) => ({
-          filename: file.name,
-          content: Buffer.from(await file.arrayBuffer()),
-        }))
-    );
+    // 첨부파일은 서버를 거치지 않고 브라우저에서 Vercel Blob으로 바로 업로드됨.
+    // 여기선 그 결과 URL만 받아 메일 본문에 다운로드 링크로 넣는다
+    // (직접 첨부하지 않으므로 서버리스 함수 요청 본문 크기 제한에 걸리지 않음).
+    const uploadedFiles = Array.isArray(files) ? files : [];
 
     const toList = (process.env.EMAIL_TO || "info@wooin-j.co.kr")
       .split(",")
       .map((s) => s.trim())
       .filter(Boolean);
 
+    const fileListHtml =
+      uploadedFiles.length > 0
+        ? uploadedFiles
+            .map(
+              (f) =>
+                `<a href="${f.url}" style="color:#1c3177;text-decoration:underline;" target="_blank" rel="noopener noreferrer">📎 ${f.name}</a>`
+            )
+            .join("<br/>")
+        : "없음";
+
     const { error } = await resend.emails.send({
       from: process.env.EMAIL_FROM || "우인산업 홈페이지 <onboarding@resend.dev>",
       to: toList,
       replyTo: email,
       subject: `[우인산업 견적문의] ${name}님 / ${serviceType}`,
-      attachments: attachments.length > 0 ? attachments : undefined,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;border:1px solid #e5e7eb;border-radius:12px;">
           <h2 style="color:#1c3177;margin-bottom:24px;border-bottom:2px solid #1c3177;padding-bottom:12px;">
@@ -81,7 +99,7 @@ export async function POST(request: NextRequest) {
             </tr>
             <tr>
               <td style="padding:10px 14px;font-weight:bold;color:#1c3177;">첨부파일</td>
-              <td style="padding:10px 14px;">${attachments.length > 0 ? attachments.map((a) => a.filename).join(", ") : "없음"}</td>
+              <td style="padding:10px 14px;">${fileListHtml}</td>
             </tr>
           </table>
           <div style="margin-top:20px;background:#f9fafb;border-radius:8px;padding:16px;">
