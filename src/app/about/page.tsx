@@ -34,37 +34,39 @@ type OrgNodeDef = {
   h: number;
   label: string;
   tone: "dark" | "mid" | "light" | "leaf";
+  /** 세로쓰기 — 말단 조직은 세로로 눕혀 폭을 줄인다 */
+  vertical?: boolean;
 };
 type OrgEdgeDef = { from: string; to: string };
 
 const orgNodes: OrgNodeDef[] = [
-  { id: "ceo", cx: 700, cy: 34, w: 170, h: 54, label: "대표이사", tone: "dark" },
+  { id: "ceo", cx: 465, cy: 34, w: 170, h: 54, label: "대표이사", tone: "dark" },
 
-  { id: "coord", cx: 460, cy: 148, w: 150, h: 48, label: "사업조정실", tone: "light" },
-  { id: "general", cx: 700, cy: 148, w: 150, h: 48, label: "총괄", tone: "mid" },
-  { id: "tech", cx: 940, cy: 148, w: 150, h: 48, label: "기술연구소", tone: "light" },
+  { id: "coord", cx: 230, cy: 148, w: 140, h: 46, label: "사업조정실", tone: "light" },
+  { id: "general", cx: 465, cy: 148, w: 140, h: 46, label: "총괄", tone: "mid" },
+  { id: "tech", cx: 700, cy: 148, w: 140, h: 46, label: "기술연구소", tone: "light" },
 
-  { id: "build", cx: 310, cy: 270, w: 220, h: 52, label: "건축사업본부", tone: "dark" },
-  { id: "solar", cx: 820, cy: 270, w: 220, h: 52, label: "태양광사업본부", tone: "dark" },
-  { id: "strat", cx: 1210, cy: 270, w: 240, h: 52, label: "전략사업지원본부", tone: "dark" },
+  { id: "build", cx: 175, cy: 268, w: 170, h: 50, label: "건축사업본부", tone: "dark" },
+  { id: "solar", cx: 515, cy: 268, w: 170, h: 50, label: "태양광사업본부", tone: "dark" },
+  { id: "strat", cx: 825, cy: 268, w: 190, h: 50, label: "전략사업지원본부", tone: "dark" },
 
-  { id: "ptBuild", cx: 150, cy: 388, w: 110, h: 46, label: "건축 Pt.", tone: "mid" },
-  { id: "ptGm", cx: 310, cy: 388, w: 110, h: 46, label: "공무 Pt.", tone: "mid" },
-  { id: "ptSales", cx: 470, cy: 388, w: 110, h: 46, label: "영업 Pt.", tone: "mid" },
+  { id: "ptBuild", cx: 60, cy: 384, w: 88, h: 42, label: "건축 Pt.", tone: "mid" },
+  { id: "ptGm", cx: 190, cy: 384, w: 88, h: 42, label: "공무 Pt.", tone: "mid" },
+  { id: "ptSales", cx: 320, cy: 384, w: 88, h: 42, label: "영업 Pt.", tone: "mid" },
 
-  { id: "solarDev", cx: 750, cy: 388, w: 150, h: 46, label: "태양광사업개발팀", tone: "light" },
-  { id: "solarTech", cx: 910, cy: 388, w: 150, h: 46, label: "태양광시공기술팀", tone: "light" },
+  { id: "solarDev", cx: 490, cy: 400, w: 42, h: 150, label: "태양광사업개발팀", tone: "leaf", vertical: true },
+  { id: "solarTech", cx: 542, cy: 400, w: 42, h: 150, label: "태양광시공기술팀", tone: "leaf", vertical: true },
 
-  { id: "marcom", cx: 1140, cy: 388, w: 130, h: 46, label: "MARCOM팀", tone: "light" },
-  { id: "mgmt", cx: 1290, cy: 388, w: 130, h: 46, label: "경영지원팀", tone: "light" },
+  { id: "marcom", cx: 800, cy: 380, w: 42, h: 110, label: "MARCOM팀", tone: "leaf", vertical: true },
+  { id: "mgmt", cx: 852, cy: 380, w: 42, h: 110, label: "경영지원팀", tone: "leaf", vertical: true },
 
-  { id: "t1", cx: 70, cy: 498, w: 82, h: 46, label: "건축1팀", tone: "leaf" },
-  { id: "t2", cx: 158, cy: 498, w: 82, h: 46, label: "건축2팀", tone: "leaf" },
-  { id: "t3", cx: 248, cy: 498, w: 92, h: 46, label: "금속창호팀", tone: "leaf" },
-  { id: "t4", cx: 345, cy: 498, w: 92, h: 46, label: "공무관리팀", tone: "leaf" },
-  { id: "t5", cx: 442, cy: 498, w: 84, h: 46, label: "설계기술팀", tone: "leaf" },
-  { id: "t6", cx: 526, cy: 498, w: 70, h: 46, label: "TS팀", tone: "leaf" },
-  { id: "t7", cx: 600, cy: 498, w: 70, h: 46, label: "AM팀", tone: "leaf" },
+  { id: "t1", cx: 20, cy: 470, w: 36, h: 90, label: "건축1팀", tone: "leaf", vertical: true },
+  { id: "t2", cx: 60, cy: 470, w: 36, h: 90, label: "건축2팀", tone: "leaf", vertical: true },
+  { id: "t3", cx: 100, cy: 470, w: 36, h: 110, label: "금속창호팀", tone: "leaf", vertical: true },
+  { id: "t4", cx: 170, cy: 470, w: 36, h: 110, label: "공무관리팀", tone: "leaf", vertical: true },
+  { id: "t5", cx: 210, cy: 470, w: 36, h: 110, label: "설계기술팀", tone: "leaf", vertical: true },
+  { id: "t6", cx: 300, cy: 470, w: 36, h: 90, label: "TS팀", tone: "leaf", vertical: true },
+  { id: "t7", cx: 340, cy: 470, w: 36, h: 90, label: "AM팀", tone: "leaf", vertical: true },
 ];
 
 const orgEdges: OrgEdgeDef[] = [
@@ -138,7 +140,14 @@ function OrgChart() {
             height={n.h}
           >
             <div
-              className={`w-full h-full rounded-lg flex items-center justify-center text-center px-1.5 leading-tight text-[11px] sm:text-xs ${orgTone[n.tone]}`}
+              className={`w-full h-full rounded-lg flex items-center justify-center text-center leading-tight text-[11px] sm:text-xs ${
+                n.vertical ? "py-2 px-0.5" : "px-1.5"
+              } ${orgTone[n.tone]}`}
+              style={
+                n.vertical
+                  ? { writingMode: "vertical-rl", textOrientation: "mixed" }
+                  : undefined
+              }
             >
               {n.label}
             </div>
@@ -270,7 +279,7 @@ export default function About() {
             </h2>
           </Reveal>
 
-          <p className="text-center text-xs text-gray-400 mb-3">
+          <p className="md:hidden text-center text-xs text-gray-400 mb-3">
             ← 옆으로 스크롤하면 전체 조직도를 볼 수 있어요 →
           </p>
           <Reveal>
