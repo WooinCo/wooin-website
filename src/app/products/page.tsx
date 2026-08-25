@@ -1,7 +1,10 @@
+import fs from "node:fs";
+import path from "node:path";
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageBanner from "@/components/PageBanner";
 import Reveal from "@/components/Reveal";
+import { ProductCard } from "@/components/ProductLightbox";
 
 export const metadata: Metadata = {
   title: "제품소개 | (주)우인산업",
@@ -15,14 +18,14 @@ const categories = [
     eng: "Sandwich Panel",
     desc: "다양한 용도와 환경에 맞는 고품질 샌드위치 패널 라인업",
     products: [
-      { name: "징크패널", desc: "고급스러운 외관과 내구성을 갖춘 징크 소재 패널" },
-      { name: "징크강판", desc: "징크 도금 처리로 내식성이 뛰어난 강판" },
-      { name: "라인메탈패널", desc: "선명한 라인 디자인의 금속 외장 패널" },
-      { name: "대리석·노출콘크리트", desc: "대리석 및 노출콘크리트 질감을 구현한 패널" },
-      { name: "EPS패널", desc: "경량 단열재를 적용한 범용 샌드위치 패널" },
-      { name: "그라스울패널", desc: "유리섬유 단열재 적용, 우수한 방화·단열 성능" },
-      { name: "우레탄패널", desc: "고발포 우레탄 심재로 단열 성능이 탁월한 패널" },
-      { name: "흡음패널", desc: "소음 차단이 필요한 공간에 적합한 흡음 패널" },
+      { slug: "zinc-panel", name: "징크패널", desc: "고급스러운 외관과 내구성을 갖춘 징크 소재 패널" },
+      { slug: "zinc-steel", name: "징크강판", desc: "징크 도금 처리로 내식성이 뛰어난 강판" },
+      { slug: "line-metal-panel", name: "라인메탈패널", desc: "선명한 라인 디자인의 금속 외장 패널" },
+      { slug: "marble-exposed-concrete", name: "대리석·노출콘크리트", desc: "대리석 및 노출콘크리트 질감을 구현한 패널" },
+      { slug: "eps-panel", name: "EPS패널", desc: "경량 단열재를 적용한 범용 샌드위치 패널" },
+      { slug: "glass-wool-panel", name: "그라스울패널", desc: "유리섬유 단열재 적용, 우수한 방화·단열 성능" },
+      { slug: "urethane-panel", name: "우레탄패널", desc: "고발포 우레탄 심재로 단열 성능이 탁월한 패널" },
+      { slug: "sound-absorbing-panel", name: "흡음패널", desc: "소음 차단이 필요한 공간에 적합한 흡음 패널" },
     ],
   },
   {
@@ -30,9 +33,9 @@ const categories = [
     eng: "Formed Steel",
     desc: "현장 맞춤 성형이 가능한 다양한 강판 제품",
     products: [
-      { name: "성형강판", desc: "현장에서 직접 성형하여 이음새 없이 시공 가능한 강판" },
-      { name: "전통기와", desc: "전통 기와 형태를 현대적으로 재현한 금속 기와" },
-      { name: "폴리카보네이트", desc: "채광이 필요한 지붕·벽면에 적합한 투명 패널" },
+      { slug: "formed-steel", name: "성형강판", desc: "현장에서 직접 성형하여 이음새 없이 시공 가능한 강판" },
+      { slug: "traditional-tile", name: "전통기와", desc: "전통 기와 형태를 현대적으로 재현한 금속 기와" },
+      { slug: "polycarbonate", name: "폴리카보네이트", desc: "채광이 필요한 지붕·벽면에 적합한 투명 패널" },
     ],
   },
   {
@@ -40,14 +43,29 @@ const categories = [
     eng: "Accessories",
     desc: "시공 완성도를 높이는 각종 부자재",
     products: [
-      { name: "후레싱", desc: "외벽·지붕 마감에 사용되는 금속 마감재" },
-      { name: "부속자재", desc: "시공에 필요한 각종 연결·고정 부속 자재" },
-      { name: "크린룸AL부속자재", desc: "클린룸 환경에 적합한 알루미늄 전용 부속자재" },
+      { slug: "flashing", name: "후레싱", desc: "외벽·지붕 마감에 사용되는 금속 마감재" },
+      { slug: "accessories", name: "부속자재", desc: "시공에 필요한 각종 연결·고정 부속 자재" },
+      { slug: "cleanroom-al-accessories", name: "크린룸AL부속자재", desc: "클린룸 환경에 적합한 알루미늄 전용 부속자재" },
     ],
   },
 ];
 
 const sectionBg = ["bg-white", "bg-navy-dark", "bg-white"];
+
+// products 폴더에 slug와 일치하는 이미지 파일이 있으면 그 경로를 붙여준다.
+// (제품 이미지 규격이 아직 통일되지 않아, 있는 제품만 클릭 시 확대해서 보여줌)
+const PRODUCTS_DIR = path.join(process.cwd(), "public", "products");
+const IMAGE_EXTS = ["jpg", "jpeg", "png", "webp"];
+
+function findProductImage(slug: string): string | undefined {
+  for (const ext of IMAGE_EXTS) {
+    const file = `${slug}.${ext}`;
+    if (fs.existsSync(path.join(PRODUCTS_DIR, file))) {
+      return `/products/${file}`;
+    }
+  }
+  return undefined;
+}
 
 export default function Products() {
   return (
@@ -107,39 +125,15 @@ export default function Products() {
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {cat.products.map((product, pi) => (
                   <Reveal key={product.name} delay={pi * 0.04}>
-                    <div
-                      className={`rounded-2xl p-6 h-full group transition-all duration-300 ${
-                        isDark
-                          ? "bg-white/[0.06] ring-1 ring-white/10 hover:bg-white/10"
-                          : "bg-mist hover:bg-navy hover:text-white"
-                      }`}
-                    >
-                      <p
-                        className={`text-xs font-bold tabular-nums mb-3 tracking-widest ${
-                          isDark
-                            ? "text-sky/70 group-hover:text-sky"
-                            : "text-navy/40 group-hover:text-sky"
-                        }`}
-                      >
-                        No. {String(pi + 1).padStart(2, "0")}
-                      </p>
-                      <h3
-                        className={`font-bold mb-2 ${
-                          isDark ? "text-white" : "text-gray-900 group-hover:text-white"
-                        }`}
-                      >
-                        {product.name}
-                      </h3>
-                      <p
-                        className={`text-sm leading-relaxed ${
-                          isDark
-                            ? "text-blue-200/60"
-                            : "text-gray-500 group-hover:text-blue-100/70"
-                        }`}
-                      >
-                        {product.desc}
-                      </p>
-                    </div>
+                    <ProductCard
+                      product={{
+                        name: product.name,
+                        desc: product.desc,
+                        image: findProductImage(product.slug),
+                      }}
+                      pi={pi}
+                      isDark={isDark}
+                    />
                   </Reveal>
                 ))}
               </div>
