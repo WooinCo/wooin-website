@@ -25,34 +25,126 @@ const values = [
   { icon: "💙", title: "책임", desc: "시공 완료 후에도 끝까지 책임지는 사후관리를 약속합니다." },
 ];
 
-/**
- * 상위 노드 하나에서 N개 하위 노드로 뻗는 조직도 연결선.
- * md 이상: 수직 줄기 → 수평 바 → 개별 드롭라인. 모바일: 연결선 없이 세로 스택.
- */
-function OrgBranch({ items }: { items: React.ReactNode[] }) {
+/** 조직도 노드 — 지명원 원본 배치를 좌표 그대로 재현 */
+type OrgNodeDef = {
+  id: string;
+  cx: number;
+  cy: number;
+  w: number;
+  h: number;
+  label: string;
+  tone: "dark" | "mid" | "light" | "leaf";
+};
+type OrgEdgeDef = { from: string; to: string };
+
+const orgNodes: OrgNodeDef[] = [
+  { id: "ceo", cx: 700, cy: 34, w: 170, h: 54, label: "대표이사", tone: "dark" },
+
+  { id: "coord", cx: 460, cy: 148, w: 150, h: 48, label: "사업조정실", tone: "light" },
+  { id: "general", cx: 700, cy: 148, w: 150, h: 48, label: "총괄", tone: "mid" },
+  { id: "tech", cx: 940, cy: 148, w: 150, h: 48, label: "기술연구소", tone: "light" },
+
+  { id: "build", cx: 310, cy: 270, w: 220, h: 52, label: "건축사업본부", tone: "dark" },
+  { id: "solar", cx: 820, cy: 270, w: 220, h: 52, label: "태양광사업본부", tone: "dark" },
+  { id: "strat", cx: 1210, cy: 270, w: 240, h: 52, label: "전략사업지원본부", tone: "dark" },
+
+  { id: "ptBuild", cx: 150, cy: 388, w: 110, h: 46, label: "건축 Pt.", tone: "mid" },
+  { id: "ptGm", cx: 310, cy: 388, w: 110, h: 46, label: "공무 Pt.", tone: "mid" },
+  { id: "ptSales", cx: 470, cy: 388, w: 110, h: 46, label: "영업 Pt.", tone: "mid" },
+
+  { id: "solarDev", cx: 750, cy: 388, w: 150, h: 46, label: "태양광사업개발팀", tone: "light" },
+  { id: "solarTech", cx: 910, cy: 388, w: 150, h: 46, label: "태양광시공기술팀", tone: "light" },
+
+  { id: "marcom", cx: 1140, cy: 388, w: 130, h: 46, label: "MARCOM팀", tone: "light" },
+  { id: "mgmt", cx: 1290, cy: 388, w: 130, h: 46, label: "경영지원팀", tone: "light" },
+
+  { id: "t1", cx: 70, cy: 498, w: 82, h: 46, label: "건축1팀", tone: "leaf" },
+  { id: "t2", cx: 158, cy: 498, w: 82, h: 46, label: "건축2팀", tone: "leaf" },
+  { id: "t3", cx: 248, cy: 498, w: 92, h: 46, label: "금속창호팀", tone: "leaf" },
+  { id: "t4", cx: 345, cy: 498, w: 92, h: 46, label: "공무관리팀", tone: "leaf" },
+  { id: "t5", cx: 442, cy: 498, w: 84, h: 46, label: "설계기술팀", tone: "leaf" },
+  { id: "t6", cx: 526, cy: 498, w: 70, h: 46, label: "TS팀", tone: "leaf" },
+  { id: "t7", cx: 600, cy: 498, w: 70, h: 46, label: "AM팀", tone: "leaf" },
+];
+
+const orgEdges: OrgEdgeDef[] = [
+  { from: "ceo", to: "coord" },
+  { from: "ceo", to: "general" },
+  { from: "ceo", to: "tech" },
+  { from: "general", to: "build" },
+  { from: "general", to: "solar" },
+  { from: "general", to: "strat" },
+  { from: "build", to: "ptBuild" },
+  { from: "build", to: "ptGm" },
+  { from: "build", to: "ptSales" },
+  { from: "solar", to: "solarDev" },
+  { from: "solar", to: "solarTech" },
+  { from: "strat", to: "marcom" },
+  { from: "strat", to: "mgmt" },
+  { from: "ptBuild", to: "t1" },
+  { from: "ptBuild", to: "t2" },
+  { from: "ptBuild", to: "t3" },
+  { from: "ptGm", to: "t4" },
+  { from: "ptGm", to: "t5" },
+  { from: "ptSales", to: "t6" },
+  { from: "ptSales", to: "t7" },
+];
+
+const orgTone: Record<OrgNodeDef["tone"], string> = {
+  dark: "bg-navy text-white font-extrabold shadow-sm",
+  mid: "bg-navy-light text-white font-bold shadow-sm",
+  light: "bg-white ring-1 ring-gray-200 text-gray-800 font-bold shadow-sm",
+  leaf: "bg-sky text-navy font-semibold ring-1 ring-navy/10",
+};
+
+function OrgChart() {
+  const byId = Object.fromEntries(orgNodes.map((n) => [n.id, n]));
+  const maxX = Math.max(...orgNodes.map((n) => n.cx + n.w / 2)) + 20;
+  const maxY = Math.max(...orgNodes.map((n) => n.cy + n.h / 2)) + 20;
+
   return (
-    <div>
-      <div className="hidden md:block w-px h-6 bg-gray-300 mx-auto" />
-      <div className="flex flex-col gap-4 md:flex-row md:gap-0">
-        {items.map((item, i) => (
-          <div key={i} className="md:flex-1 relative md:px-2 lg:px-3">
-            {items.length > 1 && (
-              <span
-                aria-hidden="true"
-                className={`hidden md:block absolute top-0 h-px bg-gray-300 ${
-                  i === 0
-                    ? "left-1/2 right-0"
-                    : i === items.length - 1
-                      ? "left-0 right-1/2"
-                      : "left-0 right-0"
-                }`}
-              />
-            )}
-            <div className="hidden md:block w-px h-6 bg-gray-300 mx-auto" />
-            {item}
-          </div>
+    <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+      <svg
+        viewBox={`0 0 ${maxX} ${maxY}`}
+        width={maxX}
+        height={maxY}
+        className="mx-auto"
+        style={{ minWidth: 900 }}
+      >
+        {/* 연결선 */}
+        {orgEdges.map((e, i) => {
+          const a = byId[e.from];
+          const b = byId[e.to];
+          const ay = a.cy + a.h / 2;
+          const by = b.cy - b.h / 2;
+          const midY = (ay + by) / 2;
+          return (
+            <path
+              key={i}
+              d={`M ${a.cx} ${ay} V ${midY} H ${b.cx} V ${by}`}
+              fill="none"
+              stroke="#cbd5e1"
+              strokeWidth={1.5}
+            />
+          );
+        })}
+        {/* 노드 */}
+        {orgNodes.map((n) => (
+          <foreignObject
+            key={n.id}
+            x={n.cx - n.w / 2}
+            y={n.cy - n.h / 2}
+            width={n.w}
+            height={n.h}
+          >
+            <div
+              className={`w-full h-full rounded-lg flex items-center justify-center text-center px-1.5 leading-tight text-[11px] sm:text-xs ${orgTone[n.tone]}`}
+            >
+              {n.label}
+            </div>
+          </foreignObject>
         ))}
-      </div>
+      </svg>
     </div>
   );
 }
@@ -178,142 +270,12 @@ export default function About() {
             </h2>
           </Reveal>
 
-          {/* 대표이사 */}
+          <p className="text-center text-xs text-gray-400 mb-3">
+            ← 옆으로 스크롤하면 전체 조직도를 볼 수 있어요 →
+          </p>
           <Reveal>
-            <div className="flex justify-center">
-              <div className="px-10 py-4 rounded-2xl bg-navy text-white font-extrabold text-lg shadow-lg shadow-navy/20">
-                대표이사
-              </div>
-            </div>
+            <OrgChart />
           </Reveal>
-
-          {/* 대표이사 직속: 사업조정실 / 총괄 / 기술연구소 */}
-          <Reveal>
-            <div className="max-w-2xl mx-auto">
-              <OrgBranch
-                items={[
-                  <div
-                    key="a"
-                    className="flex items-center justify-center px-3 py-3.5 rounded-xl bg-white ring-1 ring-gray-200 text-gray-800 font-bold text-xs sm:text-sm text-center shadow-sm"
-                  >
-                    사업조정실
-                  </div>,
-                  <div
-                    key="b"
-                    className="flex items-center justify-center px-3 py-3.5 rounded-xl bg-navy-light text-white font-bold text-xs sm:text-sm text-center shadow-sm ring-2 ring-navy-light/30"
-                  >
-                    총괄
-                  </div>,
-                  <div
-                    key="c"
-                    className="flex items-center justify-center px-3 py-3.5 rounded-xl bg-white ring-1 ring-gray-200 text-gray-800 font-bold text-xs sm:text-sm text-center shadow-sm"
-                  >
-                    기술연구소
-                  </div>,
-                ]}
-              />
-            </div>
-          </Reveal>
-
-          {/* 총괄 → 3개 본부 레이블 (총괄 위치에서만 아래로 내려감) */}
-          <Reveal>
-            <div className="hidden md:block max-w-2xl mx-auto">
-              <div className="grid grid-cols-3">
-                <div />
-                <div className="w-px h-6 bg-gray-300 mx-auto" />
-                <div />
-              </div>
-            </div>
-            <OrgBranch
-              items={[
-                <div
-                  key="build"
-                  className="px-4 py-3 rounded-xl bg-navy text-white font-extrabold text-xs sm:text-sm text-center shadow-sm"
-                >
-                  건축사업본부
-                </div>,
-                <div
-                  key="solar"
-                  className="px-4 py-3 rounded-xl bg-navy text-white font-extrabold text-xs sm:text-sm text-center shadow-sm"
-                >
-                  태양광사업본부
-                </div>,
-                <div
-                  key="strategy"
-                  className="px-4 py-3 rounded-xl bg-navy text-white font-extrabold text-xs sm:text-sm text-center shadow-sm"
-                >
-                  전략사업지원본부
-                </div>,
-              ]}
-            />
-          </Reveal>
-
-          {/* 본부별 세부 조직 — 각 본부가 전체 폭을 써서 하위 노드를 개별 박스+연결선으로 표시 */}
-          <div className="space-y-10 mt-10">
-            {/* 건축사업본부: 본부 → Pt. → 팀, 2단 하위 구조 */}
-            <Reveal>
-              <div className="rounded-3xl bg-white ring-1 ring-gray-100 shadow-[0_8px_30px_rgba(15,31,77,0.06)] p-6 md:p-10">
-                <p className="text-center text-xs font-bold text-navy/50 tracking-[0.15em] uppercase mb-6">
-                  건축사업본부
-                </p>
-                <OrgBranch
-                  items={[
-                    { pt: "건축 Pt.", teams: ["건축1팀", "건축2팀", "금속창호팀"] },
-                    { pt: "공무 Pt.", teams: ["공무관리팀", "설계기술팀"] },
-                    { pt: "영업 Pt.", teams: ["TS팀", "AM팀"] },
-                  ].map((group) => (
-                    <div key={group.pt} className="flex flex-col items-center">
-                      <div className="px-4 py-2.5 rounded-lg bg-navy-light text-white font-bold text-xs sm:text-sm text-center shadow-sm w-full sm:w-auto">
-                        {group.pt}
-                      </div>
-                      <OrgBranch
-                        items={group.teams.map((team) => (
-                          <div
-                            key={team}
-                            className="px-3 py-2.5 rounded-lg bg-white ring-1 ring-gray-200 text-gray-700 text-xs sm:text-sm font-semibold text-center shadow-sm"
-                          >
-                            {team}
-                          </div>
-                        ))}
-                      />
-                    </div>
-                  ))}
-                />
-              </div>
-            </Reveal>
-
-            {/* 태양광사업본부 / 전략사업지원본부: 본부 → 팀, 1단 구조 */}
-            <div className="grid md:grid-cols-2 gap-10">
-              {[
-                {
-                  name: "태양광사업본부",
-                  teams: ["태양광사업개발팀", "태양광시공기술팀"],
-                },
-                {
-                  name: "전략사업지원본부",
-                  teams: ["MARCOM팀", "경영지원팀"],
-                },
-              ].map((div) => (
-                <Reveal key={div.name}>
-                  <div className="rounded-3xl bg-white ring-1 ring-gray-100 shadow-[0_8px_30px_rgba(15,31,77,0.06)] p-6 md:p-10 h-full">
-                    <p className="text-center text-xs font-bold text-navy/50 tracking-[0.15em] uppercase mb-6">
-                      {div.name}
-                    </p>
-                    <OrgBranch
-                      items={div.teams.map((team) => (
-                        <div
-                          key={team}
-                          className="px-3 py-2.5 rounded-lg bg-white ring-1 ring-gray-200 text-gray-700 text-xs sm:text-sm font-semibold text-center shadow-sm"
-                        >
-                          {team}
-                        </div>
-                      ))}
-                    />
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
 
           {/* 약어 안내 */}
           <Reveal>
