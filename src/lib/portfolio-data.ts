@@ -142,6 +142,16 @@ export const portfolioItems: PortfolioItem[] = [
     location: '경기 용인',
     year: 2021,
   },
+  {
+    id: 14,
+    title: '화성 지붕 덧방공사',
+    category: '증축·보수·리모델링',
+    type: 'image',
+    src: '/portfolio/hwaseong-daeseok-after.jpg',
+    beforeSrc: '/portfolio/hwaseong-daeseok-before.jpg',
+    location: '경기 화성',
+    year: 2026,
+  },
 ];
 
 export const youtubeVideos: { id: string; title: string }[] = [
