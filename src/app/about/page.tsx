@@ -25,139 +25,6 @@ const values = [
   { icon: "💙", title: "책임", desc: "시공 완료 후에도 끝까지 책임지는 사후관리를 약속합니다." },
 ];
 
-/** 조직도 노드 — 지명원 원본 배치를 좌표 그대로 재현 */
-type OrgNodeDef = {
-  id: string;
-  cx: number;
-  cy: number;
-  w: number;
-  h: number;
-  label: string;
-  tone: "dark" | "mid" | "light" | "leaf";
-  /** 세로쓰기 — 말단 조직은 세로로 눕혀 폭을 줄인다 */
-  vertical?: boolean;
-};
-type OrgEdgeDef = { from: string; to: string };
-
-const orgNodes: OrgNodeDef[] = [
-  { id: "ceo", cx: 465, cy: 34, w: 170, h: 54, label: "대표이사", tone: "dark" },
-
-  { id: "coord", cx: 230, cy: 148, w: 140, h: 46, label: "사업조정실", tone: "light" },
-  { id: "general", cx: 465, cy: 148, w: 140, h: 46, label: "총괄", tone: "mid" },
-  { id: "tech", cx: 700, cy: 148, w: 140, h: 46, label: "기술연구소", tone: "light" },
-
-  { id: "build", cx: 175, cy: 268, w: 170, h: 50, label: "건축사업본부", tone: "dark" },
-  { id: "solar", cx: 515, cy: 268, w: 170, h: 50, label: "태양광사업본부", tone: "dark" },
-  { id: "strat", cx: 825, cy: 268, w: 190, h: 50, label: "전략사업지원본부", tone: "dark" },
-
-  { id: "ptBuild", cx: 60, cy: 384, w: 88, h: 42, label: "건축 Pt.", tone: "mid" },
-  { id: "ptGm", cx: 190, cy: 384, w: 88, h: 42, label: "공무 Pt.", tone: "mid" },
-  { id: "ptSales", cx: 320, cy: 384, w: 88, h: 42, label: "영업 Pt.", tone: "mid" },
-
-  { id: "solarDev", cx: 490, cy: 400, w: 42, h: 150, label: "태양광사업개발팀", tone: "leaf", vertical: true },
-  { id: "solarTech", cx: 542, cy: 400, w: 42, h: 150, label: "태양광시공기술팀", tone: "leaf", vertical: true },
-
-  { id: "marcom", cx: 800, cy: 380, w: 42, h: 110, label: "MARCOM팀", tone: "leaf", vertical: true },
-  { id: "mgmt", cx: 852, cy: 380, w: 42, h: 110, label: "경영지원팀", tone: "leaf", vertical: true },
-
-  { id: "t1", cx: 20, cy: 470, w: 36, h: 90, label: "건축1팀", tone: "leaf", vertical: true },
-  { id: "t2", cx: 60, cy: 470, w: 36, h: 90, label: "건축2팀", tone: "leaf", vertical: true },
-  { id: "t3", cx: 100, cy: 470, w: 36, h: 110, label: "금속창호팀", tone: "leaf", vertical: true },
-  { id: "t4", cx: 170, cy: 470, w: 36, h: 110, label: "공무관리팀", tone: "leaf", vertical: true },
-  { id: "t5", cx: 210, cy: 470, w: 36, h: 110, label: "설계기술팀", tone: "leaf", vertical: true },
-  { id: "t6", cx: 300, cy: 470, w: 36, h: 90, label: "TS팀", tone: "leaf", vertical: true },
-  { id: "t7", cx: 340, cy: 470, w: 36, h: 90, label: "AM팀", tone: "leaf", vertical: true },
-];
-
-const orgEdges: OrgEdgeDef[] = [
-  { from: "ceo", to: "coord" },
-  { from: "ceo", to: "general" },
-  { from: "ceo", to: "tech" },
-  { from: "general", to: "build" },
-  { from: "general", to: "solar" },
-  { from: "general", to: "strat" },
-  { from: "build", to: "ptBuild" },
-  { from: "build", to: "ptGm" },
-  { from: "build", to: "ptSales" },
-  { from: "solar", to: "solarDev" },
-  { from: "solar", to: "solarTech" },
-  { from: "strat", to: "marcom" },
-  { from: "strat", to: "mgmt" },
-  { from: "ptBuild", to: "t1" },
-  { from: "ptBuild", to: "t2" },
-  { from: "ptBuild", to: "t3" },
-  { from: "ptGm", to: "t4" },
-  { from: "ptGm", to: "t5" },
-  { from: "ptSales", to: "t6" },
-  { from: "ptSales", to: "t7" },
-];
-
-const orgTone: Record<OrgNodeDef["tone"], string> = {
-  dark: "bg-navy text-white font-extrabold shadow-sm",
-  mid: "bg-navy-light text-white font-bold shadow-sm",
-  light: "bg-white ring-1 ring-gray-200 text-gray-800 font-bold shadow-sm",
-  leaf: "bg-sky text-navy font-semibold ring-1 ring-navy/10",
-};
-
-function OrgChart() {
-  const byId = Object.fromEntries(orgNodes.map((n) => [n.id, n]));
-  const maxX = Math.max(...orgNodes.map((n) => n.cx + n.w / 2)) + 20;
-  const maxY = Math.max(...orgNodes.map((n) => n.cy + n.h / 2)) + 20;
-
-  return (
-    <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
-      <svg
-        viewBox={`0 0 ${maxX} ${maxY}`}
-        width={maxX}
-        height={maxY}
-        className="mx-auto"
-        style={{ minWidth: 900 }}
-      >
-        {/* 연결선 */}
-        {orgEdges.map((e, i) => {
-          const a = byId[e.from];
-          const b = byId[e.to];
-          const ay = a.cy + a.h / 2;
-          const by = b.cy - b.h / 2;
-          const midY = (ay + by) / 2;
-          return (
-            <path
-              key={i}
-              d={`M ${a.cx} ${ay} V ${midY} H ${b.cx} V ${by}`}
-              fill="none"
-              stroke="#cbd5e1"
-              strokeWidth={1.5}
-            />
-          );
-        })}
-        {/* 노드 */}
-        {orgNodes.map((n) => (
-          <foreignObject
-            key={n.id}
-            x={n.cx - n.w / 2}
-            y={n.cy - n.h / 2}
-            width={n.w}
-            height={n.h}
-          >
-            <div
-              className={`w-full h-full rounded-lg flex items-center justify-center text-center leading-tight text-[11px] sm:text-xs ${
-                n.vertical ? "py-2 px-0.5" : "px-1.5"
-              } ${orgTone[n.tone]}`}
-              style={
-                n.vertical
-                  ? { writingMode: "vertical-rl", textOrientation: "mixed" }
-                  : undefined
-              }
-            >
-              {n.label}
-            </div>
-          </foreignObject>
-        ))}
-      </svg>
-    </div>
-  );
-}
-
 export default function About() {
   return (
     <div>
@@ -267,36 +134,18 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── 조직도 ── */}
-      <section className="py-24 md:py-32 bg-mist">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="text-center mb-16">
-            <p className="text-navy font-bold text-sm tracking-[0.2em] uppercase mb-3">
-              Organizational Chart
-            </p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
-              조직도
-            </h2>
-          </Reveal>
-
-          <p className="md:hidden text-center text-xs text-gray-400 mb-3">
-            ← 옆으로 스크롤하면 전체 조직도를 볼 수 있어요 →
+      {/* ── 조직도 안내 ── */}
+      <section className="py-16 bg-mist">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-gray-500">
+            (주)우인산업의 조직 구성이 궁금하신가요?
           </p>
-          <Reveal>
-            <OrgChart />
-          </Reveal>
-
-          {/* 약어 안내 */}
-          <Reveal>
-            <div className="mt-10 text-xs text-gray-400 leading-relaxed max-w-2xl mx-auto">
-              <p>* AM : Account Management (고객관리 중심 일반영업)</p>
-              <p>* TS : Technical Sales (기술중심영업)</p>
-              <p>
-                * marcom : Marketing Communication (마케팅 목적 달성을 위한
-                고객 및 대중과의 모든 홍보, 소통 활동)
-              </p>
-            </div>
-          </Reveal>
+          <Link
+            href="/organization"
+            className="inline-flex items-center gap-2 mt-4 px-7 py-3.5 rounded-full bg-navy text-white font-bold text-sm hover:bg-navy-dark transition-colors"
+          >
+            조직도 보기 <span>→</span>
+          </Link>
         </div>
       </section>
 
