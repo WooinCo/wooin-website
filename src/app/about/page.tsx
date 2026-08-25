@@ -25,6 +25,38 @@ const values = [
   { icon: "💙", title: "책임", desc: "시공 완료 후에도 끝까지 책임지는 사후관리를 약속합니다." },
 ];
 
+/**
+ * 상위 노드 하나에서 N개 하위 노드로 뻗는 조직도 연결선.
+ * md 이상: 수직 줄기 → 수평 바 → 개별 드롭라인. 모바일: 연결선 없이 세로 스택.
+ */
+function OrgBranch({ items }: { items: React.ReactNode[] }) {
+  return (
+    <div>
+      <div className="hidden md:block w-px h-6 bg-gray-300 mx-auto" />
+      <div className="flex flex-col gap-4 md:flex-row md:gap-0">
+        {items.map((item, i) => (
+          <div key={i} className="md:flex-1 relative md:px-2 lg:px-3">
+            {items.length > 1 && (
+              <span
+                aria-hidden="true"
+                className={`hidden md:block absolute top-0 h-px bg-gray-300 ${
+                  i === 0
+                    ? "left-1/2 right-0"
+                    : i === items.length - 1
+                      ? "left-0 right-1/2"
+                      : "left-0 right-0"
+                }`}
+              />
+            )}
+            <div className="hidden md:block w-px h-6 bg-gray-300 mx-auto" />
+            {item}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function About() {
   return (
     <div>
@@ -148,101 +180,125 @@ export default function About() {
 
           {/* 대표이사 */}
           <Reveal>
-            <div className="flex justify-center mb-4">
-              <div className="px-10 py-4 rounded-2xl bg-navy text-white font-extrabold text-lg shadow-lg">
+            <div className="flex justify-center">
+              <div className="px-10 py-4 rounded-2xl bg-navy text-white font-extrabold text-lg shadow-lg shadow-navy/20">
                 대표이사
               </div>
             </div>
-            <div className="w-px h-8 bg-gray-300 mx-auto" />
           </Reveal>
 
           {/* 대표이사 직속: 사업조정실 / 총괄 / 기술연구소 */}
           <Reveal>
-            <div className="grid grid-cols-3 gap-3 sm:gap-5 max-w-2xl mx-auto mb-4">
-              <div className="flex items-center justify-center px-3 py-3.5 rounded-xl bg-white ring-1 ring-gray-200 text-gray-800 font-bold text-xs sm:text-sm text-center shadow-sm">
-                사업조정실
-              </div>
-              <div className="flex items-center justify-center px-3 py-3.5 rounded-xl bg-navy-light text-white font-bold text-xs sm:text-sm text-center shadow-sm">
-                총괄
-              </div>
-              <div className="flex items-center justify-center px-3 py-3.5 rounded-xl bg-white ring-1 ring-gray-200 text-gray-800 font-bold text-xs sm:text-sm text-center shadow-sm">
-                기술연구소
-              </div>
+            <div className="max-w-2xl mx-auto">
+              <OrgBranch
+                items={[
+                  <div
+                    key="a"
+                    className="flex items-center justify-center px-3 py-3.5 rounded-xl bg-white ring-1 ring-gray-200 text-gray-800 font-bold text-xs sm:text-sm text-center shadow-sm"
+                  >
+                    사업조정실
+                  </div>,
+                  <div
+                    key="b"
+                    className="flex items-center justify-center px-3 py-3.5 rounded-xl bg-navy-light text-white font-bold text-xs sm:text-sm text-center shadow-sm ring-2 ring-navy-light/30"
+                  >
+                    총괄
+                  </div>,
+                  <div
+                    key="c"
+                    className="flex items-center justify-center px-3 py-3.5 rounded-xl bg-white ring-1 ring-gray-200 text-gray-800 font-bold text-xs sm:text-sm text-center shadow-sm"
+                  >
+                    기술연구소
+                  </div>,
+                ]}
+              />
             </div>
-            <div className="w-px h-8 bg-gray-300 mx-auto" />
           </Reveal>
 
-          {/* 총괄 산하 3개 본부 */}
+          {/* 총괄 → 3개 본부 (총괄 위치에서만 아래로 내려감) */}
           <Reveal>
-            <div className="grid md:grid-cols-3 gap-5">
-              {/* 건축사업본부 */}
-              <div className="rounded-3xl bg-white ring-1 ring-gray-100 shadow-[0_8px_30px_rgba(15,31,77,0.06)] overflow-hidden">
-                <div className="bg-navy text-white font-extrabold text-center py-4 px-4">
-                  건축사업본부
-                </div>
-                <div className="p-5 space-y-4">
-                  {[
-                    { pt: "건축 Pt.", teams: ["건축1팀", "건축2팀", "금속창호팀"] },
-                    { pt: "공무 Pt.", teams: ["공무관리팀", "설계기술팀"] },
-                    { pt: "영업 Pt.", teams: ["TS팀", "AM팀"] },
-                  ].map((group) => (
-                    <div key={group.pt}>
-                      <p className="text-xs font-bold text-navy tracking-wide mb-2">
-                        {group.pt}
-                      </p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {group.teams.map((team) => (
-                          <span
-                            key={team}
-                            className="px-2.5 py-1.5 rounded-lg bg-sky text-navy text-xs font-semibold"
-                          >
-                            {team}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* 태양광사업본부 */}
-              <div className="rounded-3xl bg-white ring-1 ring-gray-100 shadow-[0_8px_30px_rgba(15,31,77,0.06)] overflow-hidden">
-                <div className="bg-navy text-white font-extrabold text-center py-4 px-4">
-                  태양광사업본부
-                </div>
-                <div className="p-5">
-                  <div className="flex flex-wrap gap-1.5">
-                    {["태양광사업개발팀", "태양광시공기술팀"].map((team) => (
-                      <span
-                        key={team}
-                        className="px-2.5 py-1.5 rounded-lg bg-sky text-navy text-xs font-semibold"
-                      >
-                        {team}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* 전략사업지원본부 */}
-              <div className="rounded-3xl bg-white ring-1 ring-gray-100 shadow-[0_8px_30px_rgba(15,31,77,0.06)] overflow-hidden">
-                <div className="bg-navy text-white font-extrabold text-center py-4 px-4">
-                  전략사업지원본부
-                </div>
-                <div className="p-5">
-                  <div className="flex flex-wrap gap-1.5">
-                    {["MARCOM팀", "경영지원팀"].map((team) => (
-                      <span
-                        key={team}
-                        className="px-2.5 py-1.5 rounded-lg bg-sky text-navy text-xs font-semibold"
-                      >
-                        {team}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+            <div className="hidden md:block max-w-2xl mx-auto">
+              <div className="grid grid-cols-3">
+                <div />
+                <div className="w-px h-6 bg-gray-300 mx-auto" />
+                <div />
               </div>
             </div>
+            <OrgBranch
+              items={[
+                <div
+                  key="build"
+                  className="rounded-2xl bg-white ring-1 ring-gray-100 shadow-[0_8px_30px_rgba(15,31,77,0.06)] overflow-hidden h-full"
+                >
+                  <div className="bg-navy text-white font-extrabold text-center text-sm py-3.5 px-4">
+                    건축사업본부
+                  </div>
+                  <div className="p-5 space-y-4">
+                    {[
+                      { pt: "건축 Pt.", teams: ["건축1팀", "건축2팀", "금속창호팀"] },
+                      { pt: "공무 Pt.", teams: ["공무관리팀", "설계기술팀"] },
+                      { pt: "영업 Pt.", teams: ["TS팀", "AM팀"] },
+                    ].map((group) => (
+                      <div key={group.pt}>
+                        <p className="text-xs font-bold text-navy tracking-wide mb-2">
+                          {group.pt}
+                        </p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {group.teams.map((team) => (
+                            <span
+                              key={team}
+                              className="px-2.5 py-1.5 rounded-lg bg-sky text-navy text-xs font-semibold"
+                            >
+                              {team}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>,
+                <div
+                  key="solar"
+                  className="rounded-2xl bg-white ring-1 ring-gray-100 shadow-[0_8px_30px_rgba(15,31,77,0.06)] overflow-hidden h-full"
+                >
+                  <div className="bg-navy text-white font-extrabold text-center text-sm py-3.5 px-4">
+                    태양광사업본부
+                  </div>
+                  <div className="p-5">
+                    <div className="flex flex-wrap gap-1.5">
+                      {["태양광사업개발팀", "태양광시공기술팀"].map((team) => (
+                        <span
+                          key={team}
+                          className="px-2.5 py-1.5 rounded-lg bg-sky text-navy text-xs font-semibold"
+                        >
+                          {team}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>,
+                <div
+                  key="strategy"
+                  className="rounded-2xl bg-white ring-1 ring-gray-100 shadow-[0_8px_30px_rgba(15,31,77,0.06)] overflow-hidden h-full"
+                >
+                  <div className="bg-navy text-white font-extrabold text-center text-sm py-3.5 px-4">
+                    전략사업지원본부
+                  </div>
+                  <div className="p-5">
+                    <div className="flex flex-wrap gap-1.5">
+                      {["MARCOM팀", "경영지원팀"].map((team) => (
+                        <span
+                          key={team}
+                          className="px-2.5 py-1.5 rounded-lg bg-sky text-navy text-xs font-semibold"
+                        >
+                          {team}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>,
+              ]}
+            />
           </Reveal>
 
           {/* 약어 안내 */}
