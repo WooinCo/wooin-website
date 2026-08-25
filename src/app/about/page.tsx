@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import PageBanner from "@/components/PageBanner";
 import Reveal from "@/components/Reveal";
+import CertificateGallery from "@/components/CertificateGallery";
 
 export const metadata: Metadata = {
   title: "회사소개 | (주)우인산업",
@@ -190,8 +191,28 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── 오시는 길 ── */}
+      {/* ── 보유 인증 ── */}
       <section className="py-24 md:py-32 bg-mist">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="text-center mb-12">
+            <p className="text-navy font-bold text-sm tracking-[0.2em] uppercase mb-3">
+              Certificates
+            </p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
+              보유 인증 및 인정서
+            </h2>
+            <p className="text-gray-500 mt-3">
+              엄격한 심사를 거쳐 획득한 인증으로 품질과 신뢰를 증명합니다.
+            </p>
+          </Reveal>
+          <Reveal>
+            <CertificateGallery />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── 오시는 길 ── */}
+      <section className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center mb-12">
             <p className="text-navy font-bold text-sm tracking-[0.2em] uppercase mb-3">
