@@ -52,19 +52,24 @@ const categories = [
 
 const sectionBg = ["bg-white", "bg-navy-dark", "bg-white"];
 
-// products 폴더에 slug와 일치하는 이미지 파일이 있으면 그 경로를 붙여준다.
-// (제품 이미지 규격이 아직 통일되지 않아, 있는 제품만 클릭 시 확대해서 보여줌)
+// products 폴더에 slug(2, 3...)와 일치하는 이미지 파일이 있으면 그 경로들을 붙여준다.
+// (제품 이미지가 카탈로그 통이미지라 규격이 통일되지 않아, 있는 제품만 클릭 시
+// 확대해서 보여줌. slug2.jpg, slug3.jpg처럼 번호를 붙이면 한 제품에 여러 장도 가능)
 const PRODUCTS_DIR = path.join(process.cwd(), "public", "products");
 const IMAGE_EXTS = ["jpg", "jpeg", "png", "webp"];
+const MAX_IMAGES_PER_PRODUCT = 6;
 
-function findProductImage(slug: string): string | undefined {
-  for (const ext of IMAGE_EXTS) {
-    const file = `${slug}.${ext}`;
-    if (fs.existsSync(path.join(PRODUCTS_DIR, file))) {
-      return `/products/${file}`;
-    }
+function findProductImages(slug: string): string[] {
+  const images: string[] = [];
+  for (let i = 1; i <= MAX_IMAGES_PER_PRODUCT; i++) {
+    const name = i === 1 ? slug : `${slug}${i}`;
+    const ext = IMAGE_EXTS.find((e) =>
+      fs.existsSync(path.join(PRODUCTS_DIR, `${name}.${e}`))
+    );
+    if (!ext) break;
+    images.push(`/products/${name}.${ext}`);
   }
-  return undefined;
+  return images;
 }
 
 export default function Products() {
@@ -129,7 +134,7 @@ export default function Products() {
                       product={{
                         name: product.name,
                         desc: product.desc,
-                        image: findProductImage(product.slug),
+                        images: findProductImages(product.slug),
                       }}
                       pi={pi}
                       isDark={isDark}
