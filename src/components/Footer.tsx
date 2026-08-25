@@ -62,6 +62,8 @@ export default function Footer() {
                 대표이사 조안다 &nbsp;|&nbsp; TEL 031-662-7890 &nbsp;|&nbsp; FAX
                 031-662-7891
               </p>
+              <p>사업자등록번호 460-87-00805</p>
+              <p>시공지역 전국</p>
             </div>
           </div>
 
@@ -107,9 +109,15 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-white/10 text-center text-blue-300/50 text-xs">
-          © {new Date().getFullYear()} (주)우인산업 WOOIN Construction Industry. All
-          rights reserved.
+        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-center gap-3 text-center text-blue-300/50 text-xs">
+          <span>
+            © {new Date().getFullYear()} (주)우인산업 WOOIN Construction
+            Industry. All rights reserved.
+          </span>
+          <span className="hidden sm:inline">|</span>
+          <Link href="/privacy" className="hover:text-blue-100 transition-colors underline underline-offset-2">
+            개인정보처리방침
+          </Link>
         </div>
       </div>
     </footer>
