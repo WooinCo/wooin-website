@@ -6,6 +6,8 @@ import { createPortal } from "react-dom";
 interface Product {
   name: string;
   desc: string;
+  /** 라이트박스 상단에 보여줄 상세 설명 (카탈로그 이미지 자체에 설명이 없는 제품용) */
+  longDesc?: string;
   images: string[];
 }
 
@@ -90,6 +92,7 @@ export function ProductCard({
         <Lightbox
           images={product.images}
           title={product.name}
+          desc={product.longDesc}
           onClose={() => setOpen(false)}
         />
       )}
@@ -100,10 +103,12 @@ export function ProductCard({
 function Lightbox({
   images,
   title,
+  desc,
   onClose,
 }: {
   images: string[];
   title: string;
+  desc?: string;
   onClose: () => void;
 }) {
   useEffect(() => {
@@ -144,6 +149,13 @@ function Lightbox({
           {title}
         </p>
         <div className="rounded-xl overflow-y-auto bg-white shadow-2xl max-h-[85vh]">
+          {desc && (
+            <div className="p-6 sm:p-8 border-b border-gray-100">
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                {desc}
+              </p>
+            </div>
+          )}
           {images.map((src, i) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img

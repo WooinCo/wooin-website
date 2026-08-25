@@ -55,24 +55,31 @@ const sectionBg = ["bg-white", "bg-navy-dark", "bg-white"];
 // 샌드위치 패널의 핵심 심재 3종 — 페이지 상단에 비교 테이블로 노출
 const keyMaterials = [
   {
+    slug: "eps-panel",
     name: "EPS 패널",
     eng: "EPS Panel",
     desc: "일명 스티로폼패널로 불리며 가장 널리 사용되는 건축외장용 패널입니다. 경제적인 가격과 우수한 단열성능은 물론, 건물의 구조체 역할을 겸할 수 있을 만큼 높은 강도로 두루 사용됩니다. 우인산업은 EPS 알갱이에 난연재를 주입하여 일반 EPS 제품보다 화재 안정성을 높인 난연 EPS를 생산하고 있습니다.",
     features: ["편리한 시공성", "미려한 외관", "화재 안정성"],
   },
   {
+    slug: "glass-wool-panel",
     name: "그라스울 패널",
     eng: "Glasswool Panel",
     desc: "내외피재인 도장용융아연도금강판 사이에 무기질 단열재인 글라스울을 심재로 한 건축외장용 패널로, 화재 안전성이 매우 우수하며 오랜 시간이 지나도 열화에 강한 내구성을 갖춘 고성능 제품입니다.",
     features: ["흡음 효과 우수", "탁월한 내구성", "화재 안정성", "뛰어난 단열성"],
   },
   {
+    slug: "urethane-panel",
     name: "우레탄 패널",
     eng: "Urethane Panel",
     desc: "열전도율(0.020W/mK)이 최대 강점인 우레탄을 내부 단열재로 사용하는 PIR/PUR 패널은 열전도율이 글라스울이나 스티로폼의 절반 수준(50%)에 불과해 단열 성능이 매우 우수합니다. 뛰어난 단열 및 결로 방지 효과를 지닌 친환경 건축자재로, 고객의 요구에 맞춰 다양한 타입의 패널을 제공합니다.",
     features: ["편리한 시공성", "화재 안정성", "뛰어난 단열성"],
   },
 ];
+
+// 라이트박스 상단에 보여줄 설명 — keyMaterials에 있는 제품(EPS/그라스울/우레탄)은
+// 표에 쓴 상세 설명을 그대로 재사용 (카탈로그 이미지 자체에 설명 문구가 없어서)
+const longDescBySlug = new Map(keyMaterials.map((m) => [m.slug, m.desc]));
 
 // products 폴더에 slug(2, 3...)와 일치하는 이미지 파일이 있으면 그 경로들을 붙여준다.
 // (제품 이미지가 카탈로그 통이미지라 규격이 통일되지 않아, 있는 제품만 클릭 시
@@ -227,6 +234,7 @@ export default function Products() {
                       product={{
                         name: product.name,
                         desc: product.desc,
+                        longDesc: longDescBySlug.get(product.slug),
                         images: findProductImages(product.slug),
                       }}
                       pi={pi}
