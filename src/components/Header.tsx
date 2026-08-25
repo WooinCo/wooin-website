@@ -44,7 +44,13 @@ const socialLinks = [
 
 type NavChild = { href: string; label: string; sub?: boolean };
 type NavGroup = { title: string; items: NavChild[] };
-type NavLink = { href: string; label: string; mega?: NavGroup[] };
+type NavLink = {
+  href: string;
+  label: string;
+  mega?: NavGroup[];
+  /** 메가메뉴 컬럼 배치 방향 — 기본은 가로(horizontal) */
+  megaLayout?: "horizontal" | "vertical";
+};
 
 const navLinks: NavLink[] = [
   { href: "/", label: "홈" },
@@ -66,6 +72,7 @@ const navLinks: NavLink[] = [
   {
     href: "/business",
     label: "사업영역",
+    megaLayout: "vertical",
     mega: [
       {
         title: "건축공사",
@@ -177,9 +184,22 @@ export default function Header() {
 
                     {/* 메가메뉴 패널 */}
                     <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0">
-                      <div className="flex divide-x divide-gray-100 bg-white rounded-2xl border border-gray-100 shadow-[0_16px_50px_rgba(15,31,77,0.16)] p-2">
+                      <div
+                        className={`bg-white rounded-2xl border border-gray-100 shadow-[0_16px_50px_rgba(15,31,77,0.16)] p-2 ${
+                          link.megaLayout === "vertical"
+                            ? "flex flex-col divide-y divide-gray-100 w-[200px]"
+                            : "flex divide-x divide-gray-100"
+                        }`}
+                      >
                         {link.mega.map((col) => (
-                          <div key={col.title} className="px-2 min-w-[148px]">
+                          <div
+                            key={col.title}
+                            className={
+                              link.megaLayout === "vertical"
+                                ? "px-1 py-1.5"
+                                : "px-2 min-w-[148px]"
+                            }
+                          >
                             <p className="px-3 pt-2 pb-1 text-[0.7rem] font-bold tracking-wider text-gray-400">
                               {col.title}
                             </p>
