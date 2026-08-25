@@ -293,7 +293,20 @@ export default function Header() {
                   : "bg-navy text-white hover:bg-navy-dark"
               }`}
             >
-              견적문의 <span>→</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-4 h-4 shrink-0"
+              >
+                <path d="M8 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6h-4z" />
+                <path d="M14 3v6h6" />
+                <path d="M9 13h6M9 17h4" />
+              </svg>
+              견적문의
             </Link>
           </div>
 
