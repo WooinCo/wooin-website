@@ -25,6 +25,16 @@ const certificates: Certificate[] = [
     title: "ISO 45001",
     desc: "안전보건경영시스템 인증",
   },
+  {
+    src: "/certificates/venture-certificate.jpg",
+    title: "벤처기업확인서",
+    desc: "혁신성장유형 벤처기업 인증",
+  },
+  {
+    src: "/certificates/rnd-department-certificate.jpg",
+    title: "연구개발전담부서 인정서",
+    desc: "기업부설 연구개발전담부서 인정",
+  },
 ];
 
 export default function CertificateGallery() {
@@ -32,7 +42,7 @@ export default function CertificateGallery() {
 
   return (
     <div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 max-w-2xl mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
         {certificates.map((cert) => (
           <button
             key={cert.src}
