@@ -117,7 +117,7 @@ export default function Products() {
       />
 
       {categories.map((cat, ci) => {
-        const isDark = ci === 1;
+        const isDark = sectionBg[ci] === "bg-navy-dark";
         return (
           <section key={cat.name} className={`py-24 md:py-32 ${sectionBg[ci]}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
