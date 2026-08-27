@@ -152,12 +152,12 @@ export default function Solar() {
           </Reveal>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {/* 솔라1 — 중앙 나사 */}
+            {/* 솔라 Ver.1 — 중앙 나사 */}
             <Reveal>
               <div className="rounded-3xl bg-white/5 ring-1 ring-white/10 overflow-hidden h-full flex flex-col">
                 <div className="px-7 pt-7 pb-5 border-b border-white/10">
-                  <p className="text-xs font-bold tracking-widest text-blue-300 mb-2">TYPE 01</p>
-                  <h3 className="text-2xl font-extrabold text-white mb-1">솔라루프 1형</h3>
+                  <p className="text-xs font-bold tracking-widest text-blue-300 mb-2">Ver.1</p>
+                  <h3 className="text-2xl font-extrabold text-white mb-1">솔라루프 Ver.1</h3>
                   <p className="text-blue-100/60 text-sm">중앙 나사 체결 방식</p>
                 </div>
                 <div className="p-5 flex flex-col gap-4 flex-1">
@@ -165,28 +165,32 @@ export default function Solar() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/images/solar/solar1.gif"
-                    alt="솔라루프 1형 체결 방식"
+                    alt="솔라루프 Ver.1 체결 방식"
                     className="w-full rounded-2xl"
                   />
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="rounded-xl overflow-hidden bg-white/5">
-                      <Image
-                        src="/images/solar/solar1-assembly.png"
-                        alt="1형 결합 예시도"
-                        width={1200}
-                        height={900}
-                        className="w-full h-auto"
-                      />
+                    <div className="rounded-xl overflow-hidden bg-white/5 flex flex-col">
+                      <div className="relative h-44 shrink-0">
+                        <Image
+                          src="/images/solar/solar1-assembly.png"
+                          alt="Ver.1 결합 예시도"
+                          fill
+                          sizes="25vw"
+                          className="object-cover"
+                        />
+                      </div>
                       <p className="text-center text-xs text-blue-100/50 py-2">결합 예시도</p>
                     </div>
-                    <div className="rounded-xl overflow-hidden bg-white/5">
-                      <Image
-                        src="/images/solar/solar1-example.png"
-                        alt="1형 시공 예시"
-                        width={1200}
-                        height={900}
-                        className="w-full h-auto"
-                      />
+                    <div className="rounded-xl overflow-hidden bg-white/5 flex flex-col">
+                      <div className="relative h-44 shrink-0">
+                        <Image
+                          src="/images/solar/solar1-example.png"
+                          alt="Ver.1 시공 예시"
+                          fill
+                          sizes="25vw"
+                          className="object-cover"
+                        />
+                      </div>
                       <p className="text-center text-xs text-blue-100/50 py-2">시공 예시</p>
                     </div>
                   </div>
@@ -194,12 +198,12 @@ export default function Solar() {
               </div>
             </Reveal>
 
-            {/* 솔라2 — 양옆 나사 */}
+            {/* 솔라 Ver.2 — 양옆 나사 */}
             <Reveal delay={0.1}>
               <div className="rounded-3xl bg-white/5 ring-1 ring-white/10 overflow-hidden h-full flex flex-col">
                 <div className="px-7 pt-7 pb-5 border-b border-white/10">
-                  <p className="text-xs font-bold tracking-widest text-blue-300 mb-2">TYPE 02</p>
-                  <h3 className="text-2xl font-extrabold text-white mb-1">솔라루프 2형</h3>
+                  <p className="text-xs font-bold tracking-widest text-blue-300 mb-2">Ver.2</p>
+                  <h3 className="text-2xl font-extrabold text-white mb-1">솔라루프 Ver.2</h3>
                   <p className="text-blue-100/60 text-sm">양옆 나사 체결 방식</p>
                 </div>
                 <div className="p-5 flex flex-col gap-4 flex-1">
@@ -207,28 +211,32 @@ export default function Solar() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/images/solar/solar2.gif"
-                    alt="솔라루프 2형 체결 방식"
+                    alt="솔라루프 Ver.2 체결 방식"
                     className="w-full rounded-2xl"
                   />
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="rounded-xl overflow-hidden bg-white/5">
-                      <Image
-                        src="/images/solar/solar2-assembly.png"
-                        alt="2형 결합 예시도"
-                        width={1200}
-                        height={900}
-                        className="w-full h-auto"
-                      />
+                    <div className="rounded-xl overflow-hidden bg-white/5 flex flex-col">
+                      <div className="relative h-44 shrink-0">
+                        <Image
+                          src="/images/solar/solar2-assembly.png"
+                          alt="Ver.2 결합 예시도"
+                          fill
+                          sizes="25vw"
+                          className="object-cover"
+                        />
+                      </div>
                       <p className="text-center text-xs text-blue-100/50 py-2">결합 예시도</p>
                     </div>
-                    <div className="rounded-xl overflow-hidden bg-white/5">
-                      <Image
-                        src="/images/solar/solar2-example.png"
-                        alt="2형 시공 예시"
-                        width={1200}
-                        height={900}
-                        className="w-full h-auto"
-                      />
+                    <div className="rounded-xl overflow-hidden bg-white/5 flex flex-col">
+                      <div className="relative h-44 shrink-0">
+                        <Image
+                          src="/images/solar/solar2-example.png"
+                          alt="Ver.2 시공 예시"
+                          fill
+                          sizes="25vw"
+                          className="object-cover"
+                        />
+                      </div>
                       <p className="text-center text-xs text-blue-100/50 py-2">시공 예시</p>
                     </div>
                   </div>
