@@ -7,6 +7,8 @@ interface Product {
   name: string;
   desc: string;
   images: string[];
+  /** 라이트박스 상단에 표시할 상세 설명 (선택) */
+  longDesc?: string;
 }
 
 /**
@@ -90,6 +92,7 @@ export function ProductCard({
         <Lightbox
           images={product.images}
           title={product.name}
+          longDesc={product.longDesc}
           onClose={() => setOpen(false)}
         />
       )}
@@ -100,10 +103,12 @@ export function ProductCard({
 function Lightbox({
   images,
   title,
+  longDesc,
   onClose,
 }: {
   images: string[];
   title: string;
+  longDesc?: string;
   onClose: () => void;
 }) {
   useEffect(() => {
@@ -144,6 +149,12 @@ function Lightbox({
           {title}
         </p>
         <div className="rounded-xl overflow-y-auto bg-white shadow-2xl max-h-[85vh]">
+          {/* 상세 설명 — 이미지 위에 표시 */}
+          {longDesc && (
+            <div className="px-6 py-5 border-b border-gray-100 bg-mist">
+              <p className="text-gray-700 text-sm leading-relaxed">{longDesc}</p>
+            </div>
+          )}
           {images.map((src, i) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img

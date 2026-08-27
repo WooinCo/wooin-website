@@ -77,6 +77,11 @@ const keyMaterials = [
   },
 ];
 
+// EPS·그라스울·우레탄 상세 설명 — 라이트박스 상단에 노출
+const keyMaterialDescMap: Record<string, string> = Object.fromEntries(
+  keyMaterials.map((m) => [m.slug, m.desc])
+);
+
 // products 폴더에 slug(2, 3...)와 일치하는 이미지 파일이 있으면 그 경로들을 붙여준다.
 // (제품 이미지가 카탈로그 통이미지라 규격이 통일되지 않아, 있는 제품만 클릭 시
 // 확대해서 보여줌. slug2.jpg, slug3.jpg처럼 번호를 붙이면 한 제품에 여러 장도 가능.
@@ -141,9 +146,8 @@ export default function Products() {
               <table className="w-full text-sm border-collapse min-w-[720px]">
                 <thead>
                   <tr className="bg-mist text-left">
-                    <th className="p-4 font-bold text-navy w-40">구분</th>
-                    <th className="p-4 font-bold text-navy">설명</th>
-                    <th className="p-4 font-bold text-navy w-64">주요 특징</th>
+                    <th className="p-4 font-bold text-navy w-48">구분</th>
+                    <th className="p-4 font-bold text-navy">주요 특징</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -156,14 +160,11 @@ export default function Products() {
                           : ""
                       }
                     >
-                      <td className="p-4 align-top">
+                      <td className="p-4 align-middle">
                         <p className="font-bold text-gray-900">{m.name}</p>
                         <p className="text-xs text-gray-400 mt-0.5">{m.eng}</p>
                       </td>
-                      <td className="p-4 align-top text-gray-600 leading-relaxed">
-                        {m.desc}
-                      </td>
-                      <td className="p-4 align-top">
+                      <td className="p-4 align-middle">
                         <div className="flex flex-wrap gap-1.5">
                           {m.features.map((f) => (
                             <span
@@ -236,6 +237,7 @@ export default function Products() {
                         name: product.name,
                         desc: product.desc,
                         images: findProductImages(product.slug),
+                        longDesc: keyMaterialDescMap[product.slug],
                       }}
                       pi={pi}
                       isDark={isDark}
