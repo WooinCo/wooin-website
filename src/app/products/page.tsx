@@ -48,9 +48,19 @@ const categories = [
       { slug: "cleanroom-al-accessories", name: "크린룸AL부속자재", desc: "클린룸 환경에 적합한 알루미늄 전용 부속자재" },
     ],
   },
+  {
+    name: "기타부속",
+    eng: "Others",
+    desc: "도어 및 기타 부속 제품",
+    products: [
+      { slug: "door", name: "도어", desc: "스윙·방화·기능성 등 다양한 용도의 건축용 도어" },
+      { slug: "color-accessories", name: "동색부자재 / 유니스톤부자재", desc: "패널 색상에 맞춰 마감하는 동색 및 유니스톤 부자재" },
+      { slug: "door-accessories", name: "도어부자재", desc: "도어 시공에 필요한 각종 부속 자재" },
+    ],
+  },
 ];
 
-const sectionBg = ["bg-white", "bg-navy-dark", "bg-white"];
+const sectionBg = ["bg-white", "bg-navy-dark", "bg-white", "bg-navy-dark"];
 
 // EPS·그라스울·우레탄 라이트박스 상단 상세 설명
 const longDescMap: Record<string, string> = {
