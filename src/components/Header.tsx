@@ -36,7 +36,7 @@ const socialLinks = [
     hoverBg: "hover:bg-[#03C75A]",
     icon: (
       // eslint-disable-next-line @next/next/no-img-element
-      <img src="/images/naver-blog-icon.png" alt="네이버 블로그" className="w-4 h-4" />
+      <img src="/images/naver-blog-icon.png" alt="네이버 블로그" className="w-4 h-4" style={{filter:"brightness(0) invert(1)"}} />
     ),
   },
 ];
