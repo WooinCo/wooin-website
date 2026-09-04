@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, type FormEvent } from "react";
+import { useState, useRef, useEffect, type FormEvent } from "react";
 import Link from "next/link";
 import { upload } from "@vercel/blob/client";
 
@@ -44,6 +44,9 @@ export default function ContactForm() {
   const [agree, setAgree] = useState(false);
   const [agreeError, setAgreeError] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
+  // 스팸 방지: 허니팟 필드 + 폼 마운트 시각
+  const [honeypot, setHoneypot] = useState("");
+  const mountedAt = useRef<number>(Date.now());
 
   const set = (field: keyof FormFields) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -82,6 +85,11 @@ export default function ContactForm() {
       return;
     }
     setAgreeError("");
+
+    // 스팸 방지 검사 (클라이언트 1차)
+    if (honeypot) return; // 허니팟 필드가 채워졌으면 봇
+    if (Date.now() - mountedAt.current < 3000) return; // 3초 미만이면 봇
+
     setStatus("loading");
     setErrorMessage("");
 
@@ -105,7 +113,7 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, files: uploadedFiles }),
+        body: JSON.stringify({ ...form, files: uploadedFiles, _hp: honeypot, _t: mountedAt.current }),
       });
 
       if (res.ok) {
@@ -159,6 +167,19 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      {/* 허니팟: 봇만 채우는 숨겨진 필드 — 절대 스타일 수정 금지 */}
+      <div style={{position:"absolute",left:"-9999px",opacity:0,height:0,overflow:"hidden"}} aria-hidden="true">
+        <label htmlFor="website_url">Website</label>
+        <input
+          id="website_url"
+          type="text"
+          name="website_url"
+          value={honeypot}
+          onChange={e => setHoneypot(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
       {/* 이름 + 연락처 */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>

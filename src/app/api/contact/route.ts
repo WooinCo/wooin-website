@@ -19,6 +19,8 @@ export async function POST(request: NextRequest) {
       location,
       message,
       files,
+      _hp,
+      _t,
     }: {
       name: string;
       phone: string;
@@ -27,7 +29,17 @@ export async function POST(request: NextRequest) {
       location?: string;
       message: string;
       files?: UploadedFile[];
+      _hp?: string;
+      _t?: number;
     } = body;
+
+    // 스팸 방지: 허니팟 필드가 채워졌거나 3초 미만 제출이면 무시
+    if (_hp) {
+      return NextResponse.json({ success: true }); // 봇에게 성공처럼 보여줌
+    }
+    if (_t && Date.now() - _t < 3000) {
+      return NextResponse.json({ success: true });
+    }
 
     if (!name || !phone || !email || !serviceType || !message) {
       return NextResponse.json(
