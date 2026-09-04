@@ -140,8 +140,9 @@ function PortfolioCard({
         <button
           type="button"
           onClick={onOpen}
+          onContextMenu={(e) => e.preventDefault()}
           aria-label={`${item.title} 크게 보기`}
-          className="relative aspect-video bg-gray-100 w-full block cursor-pointer overflow-hidden"
+          className="relative aspect-video bg-gray-100 w-full block cursor-pointer overflow-hidden select-none"
         >
           {item.beforeSrc ? (
             /* 비포/애프터 분할 썸네일 */
@@ -168,9 +169,11 @@ function PortfolioCard({
               src={item.src}
               alt={item.title}
               fill
+              draggable={false}
               className="object-cover group-hover:scale-105 transition-transform duration-300"
             />
           )}
+          <Watermark />
           {/* 확대 힌트 */}
           <span className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/25 transition-colors z-20">
             <span className="opacity-0 group-hover:opacity-100 transition-opacity w-11 h-11 rounded-full bg-white/90 text-navy flex items-center justify-center text-lg shadow-lg">
@@ -261,6 +264,7 @@ function Lightbox({
                     src={src}
                     alt={label}
                     fill
+                    draggable={false}
                     sizes="(max-width: 1024px) 50vw, 512px"
                     className="object-contain"
                   />
@@ -273,10 +277,11 @@ function Lightbox({
             ))}
           </div>
         ) : (
-          <div className="relative w-full aspect-video bg-black rounded-xl overflow-hidden">
+          <div className="relative w-full aspect-video bg-black rounded-xl overflow-hidden" onContextMenu={(e) => e.preventDefault()}>
             <Image
               src={item.src}
               alt={item.title}
+              draggable={false}
               fill
               sizes="(max-width: 1024px) 100vw, 1024px"
               className="object-contain"
@@ -309,10 +314,12 @@ function Watermark() {
   return (
     <div
       aria-hidden="true"
-      className="absolute inset-0 z-20 pointer-events-none select-none"
+      className="absolute inset-0 z-20 select-none"
+      onContextMenu={(e) => e.preventDefault()}
       style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='20' font-weight='bold' fill='rgba(255%2C255%2C255%2C0.35)' text-anchor='middle' dominant-baseline='middle' transform='rotate(-35 110 110)'%3E%28%EC%A3%BC%29%EC%9A%B0%EC%9D%B8%EC%82%B0%EC%97%85%3C%2Ftext%3E%3C%2Fsvg%3E")`,
         backgroundSize: "220px 220px",
+        cursor: "default",
       }}
     />
   );
