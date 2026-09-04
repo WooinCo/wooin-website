@@ -173,7 +173,6 @@ function PortfolioCard({
               className="object-cover group-hover:scale-105 transition-transform duration-300"
             />
           )}
-          <Watermark />
           {/* 확대 힌트 */}
           <span className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/25 transition-colors z-20">
             <span className="opacity-0 group-hover:opacity-100 transition-opacity w-11 h-11 rounded-full bg-white/90 text-navy flex items-center justify-center text-lg shadow-lg">
