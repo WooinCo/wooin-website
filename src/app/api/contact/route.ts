@@ -41,6 +41,23 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true });
     }
 
+    // 스팸 키워드 필터 (투자사기·영문 광고성 메일 차단)
+    const SPAM_KEYWORDS = [
+      "investment", "invest", "roi", "return on investment",
+      "financial consultant", "loan funding", "funding program",
+      "collaboration", "capital returns", "diversified",
+      "sir/madam", "attn:", "dear sir", "dear madam",
+      "gulf cooperation", "saudi arabia", "cryptocurrency",
+      "bitcoin", "forex", "binary option", "wire transfer",
+      "inheritance", "beneficiary", "next of kin",
+    ];
+    const msgLower = (message + " " + name + " " + email).toLowerCase();
+    const isSpam = SPAM_KEYWORDS.some((kw) => msgLower.includes(kw));
+    if (isSpam) {
+      console.warn("Spam detected, silently dropping:", { name, email });
+      return NextResponse.json({ success: true }); // 스패머에게 성공처럼 보여줌
+    }
+
     if (!name || !phone || !email || !serviceType || !message) {
       return NextResponse.json(
         { error: "필수 항목을 모두 입력해주세요." },
