@@ -147,7 +147,7 @@ export default function Solar() {
               두 가지 체결 방식
             </h2>
             <p className="text-blue-100/60 mt-4">
-              현장 환경과 지붕 구조에 맞게 최적의 타입을 선택하세요.
+              현장 환경과 지붕 구조에 맞게 최적의 타입을 제안해 드립니다.
             </p>
           </Reveal>
 
