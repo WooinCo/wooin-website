@@ -36,7 +36,7 @@ const socialLinks = [
     hoverBg: "hover:bg-[#03C75A]",
     icon: (
       <svg viewBox="0 0 24 24" fill="white" className="w-4 h-4">
-        <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 3c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM7 7h3v1H7V7zm10 10H7v-1h10v1zm0-3H7v-1h10v1zm0-3H7v-1h10v1z"/>
+        <text x="12" y="19" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="20">B</text>
       </svg>
     ),
   },
