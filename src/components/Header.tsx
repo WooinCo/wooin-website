@@ -35,9 +35,8 @@ const socialLinks = [
     bg: "bg-[#03C75A]",
     hoverBg: "hover:bg-[#03C75A]",
     icon: (
-      <svg viewBox="0 0 24 24" fill="white" className="w-4 h-4">
-        <text x="12" y="19" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="20">B</text>
-      </svg>
+      // eslint-disable-next-line @next/next/no-img-element
+      <img src="/images/naver-blog-icon.png" alt="네이버 블로그" className="w-4 h-4" />
     ),
   },
 ];
