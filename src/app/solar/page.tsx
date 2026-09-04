@@ -161,13 +161,6 @@ export default function Solar() {
                   <p className="text-blue-100/60 text-sm">중앙 나사 체결 방식</p>
                 </div>
                 <div className="p-5 flex flex-col gap-4 flex-1">
-                  {/* GIF */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/images/solar/solar1.gif"
-                    alt="솔라루프 Ver.1 체결 방식"
-                    className="w-full rounded-2xl"
-                  />
                   <div className="grid grid-cols-2 gap-3">
                     <div className="rounded-xl overflow-hidden bg-white/5 flex flex-col">
                       <div className="relative h-44 shrink-0">
@@ -207,13 +200,6 @@ export default function Solar() {
                   <p className="text-blue-100/60 text-sm">양옆 나사 체결 방식</p>
                 </div>
                 <div className="p-5 flex flex-col gap-4 flex-1">
-                  {/* GIF */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/images/solar/solar2.gif"
-                    alt="솔라루프 Ver.2 체결 방식"
-                    className="w-full rounded-2xl"
-                  />
                   <div className="grid grid-cols-2 gap-3">
                     <div className="rounded-xl overflow-hidden bg-white/5 flex flex-col">
                       <div className="relative h-44 shrink-0">
