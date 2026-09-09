@@ -143,6 +143,15 @@ export const portfolioItems: PortfolioItem[] = [
     year: 2021,
   },
   {
+    id: 21,
+    title: '포항 솔라루프',
+    category: '태양광',
+    type: 'image',
+    src: '/portfolio/pohang-solar.png',
+    location: '경북 포항',
+    year: 2026,
+  },
+  {
     id: 20,
     title: '평택 솔라루프',
     category: '태양광',
