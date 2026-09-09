@@ -143,6 +143,15 @@ export const portfolioItems: PortfolioItem[] = [
     year: 2021,
   },
   {
+    id: 20,
+    title: '평택 솔라루프',
+    category: '태양광',
+    type: 'image',
+    src: '/portfolio/pyeongtaek-solar.png',
+    location: '경기 평택',
+    year: 2026,
+  },
+  {
     id: 19,
     title: '안성 솔라루프',
     category: '태양광',
