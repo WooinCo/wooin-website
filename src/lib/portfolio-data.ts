@@ -152,6 +152,7 @@ export const portfolioItems: PortfolioItem[] = [
     src: '/portfolio/pohang-solar.png',
     location: '경북 포항',
     year: 2026,
+    thumbnailPosition: 'top',
   },
   {
     id: 20,
