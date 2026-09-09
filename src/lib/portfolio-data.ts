@@ -143,6 +143,15 @@ export const portfolioItems: PortfolioItem[] = [
     year: 2021,
   },
   {
+    id: 18,
+    title: '함안 솔라루프',
+    category: '태양광',
+    type: 'image',
+    src: '/portfolio/haman-solar.png',
+    location: '경남 함안',
+    year: 2026,
+  },
+  {
     id: 16,
     title: '완주 신축공사',
     category: '신축공사',
