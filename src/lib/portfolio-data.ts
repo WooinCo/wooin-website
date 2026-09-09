@@ -143,6 +143,15 @@ export const portfolioItems: PortfolioItem[] = [
     year: 2021,
   },
   {
+    id: 15,
+    title: '평택 신축공사',
+    category: '신축공사',
+    type: 'image',
+    src: '/portfolio/이화산업.png',
+    location: '경기 평택',
+    year: 2026,
+  },
+  {
     id: 14,
     title: '화성 지붕 덧방공사',
     category: '증축·보수·리모델링',
