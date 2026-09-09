@@ -171,6 +171,12 @@ function PortfolioCard({
               fill
               draggable={false}
               className="object-cover group-hover:scale-105 transition-transform duration-300"
+              style={{
+                objectPosition:
+                  item.thumbnailPosition === 'top' ? 'center top' :
+                  item.thumbnailPosition === 'bottom' ? 'center bottom' :
+                  'center center',
+              }}
             />
           )}
           {/* 확대 힌트 */}

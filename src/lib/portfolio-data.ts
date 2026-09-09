@@ -11,6 +11,8 @@ export interface PortfolioItem {
   src: string;
   /** 비포/애프터 썸네일용 — 있으면 src가 AFTER, 이 값이 BEFORE */
   beforeSrc?: string;
+  /** 썸네일 표시 위치 — 위아래 합성 이미지일 때 'top' 또는 'bottom' 지정 */
+  thumbnailPosition?: 'top' | 'bottom' | 'center';
   description?: string;
   location?: string;
   year?: number;
