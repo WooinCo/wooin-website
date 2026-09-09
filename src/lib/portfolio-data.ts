@@ -143,6 +143,15 @@ export const portfolioItems: PortfolioItem[] = [
     year: 2021,
   },
   {
+    id: 19,
+    title: '안성 솔라루프',
+    category: '태양광',
+    type: 'image',
+    src: '/portfolio/ansung-solar.png',
+    location: '경기 안성',
+    year: 2026,
+  },
+  {
     id: 18,
     title: '함안 솔라루프',
     category: '태양광',
