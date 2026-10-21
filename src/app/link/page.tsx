@@ -125,7 +125,7 @@ export default function LinkPage() {
           {/* 유튜브 홍보영상 (자동재생 없음) */}
           <div className="mt-5 rounded-2xl overflow-hidden shadow-lg aspect-video bg-black">
             <iframe
-              src="https://www.youtube.com/embed/FIkuBe-KMnw"
+              src="https://www.youtube.com/embed/pdJUpg7AOUs"
               title="(주)우인산업 홍보영상"
               allow="clipboard-write; encrypted-media; picture-in-picture; fullscreen"
               allowFullScreen
